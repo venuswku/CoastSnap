@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/coastsnap/static/css/main.073c9b0a.css",
+    "main.js": "/coastsnap/static/js/main.28c59170.js",
+    "static/js/787.bee7bf00.chunk.js": "/coastsnap/static/js/787.bee7bf00.chunk.js",
+    "static/media/logo.svg": "/coastsnap/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/coastsnap/index.html",
+    "main.073c9b0a.css.map": "/coastsnap/static/css/main.073c9b0a.css.map",
+    "main.28c59170.js.map": "/coastsnap/static/js/main.28c59170.js.map",
+    "787.bee7bf00.chunk.js.map": "/coastsnap/static/js/787.bee7bf00.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.28c59170.js"
+  ]
+}
