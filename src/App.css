@@ -1,3 +1,7 @@
+.centeredContent {
+  text-align: center;
+}
+
 .uploadButton {
   color: white;
   text-decoration: none;
