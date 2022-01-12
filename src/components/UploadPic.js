@@ -2,13 +2,12 @@ import React from "react";
 import { FormControl, Button, InputLabel, Select, MenuItem, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import DateAdapter from "@mui/lab/AdapterDateFns";
-import { LocalizationProvider, DatePicker, TimePicker, DateTimePicker } from "@mui/lab";
+import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 
 const UploadPic = () => {
   const scLocations = ["Natural Bridges Site 1", "Natural Bridges Site 2"];
   const [location, setLocation] = React.useState("");
-  const [dateTime, setDateTime] = React.useState(new Date());
-  // const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const dateTime = new Date();
 
   return (
     <div className="centeredContent">
@@ -50,12 +49,6 @@ const UploadPic = () => {
             }}
             renderInput={(params) => <TextField {...params} />}
           />
-          {/* <DateTimePicker
-            renderInput={(params) => <TextField {...params} />}
-            value={dateTime}
-            label="Date &amp; Time"
-            onChange={(newValue) => { setDateTime(newValue); }}
-          /> */}
         </LocalizationProvider>
       </FormControl>
       <Button variant="contained">
