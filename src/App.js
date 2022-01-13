@@ -16,6 +16,11 @@ function App() {
         main: lightBlue[500],
       },
     },
+    typography: {
+      button: {
+        textTransform: "none",
+      }
+    },
   });
 
   return (
