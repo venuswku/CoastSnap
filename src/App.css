@@ -1,6 +1,18 @@
 .centeredContent {
   text-align: center;
-  padding: 0 5% 5%;
+  padding: 0px 5% 5%;
+}
+
+#uploadedImg {
+  width: 100%;
+}
+
+/* Add top margin to each form field (children of parent/form element), except for the first one. */
+#form > * {
+  margin: 10px 0px;
+}
+#form > *:first-child {
+  margin-top: 0px;
 }
 
 .uploadButton {
