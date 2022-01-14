@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
-import { FormControl, FormHelperText, Button, InputLabel, Select, MenuItem, TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { FormControl, FormHelperText, Button, InputLabel, Select, MenuItem, TextField, Stack } from "@mui/material";
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { isValid, parseJSON } from "date-fns";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 
-const UploadPic = () => {
-  const navigate = useNavigate();
+const UploadPic = (props) => {
+  const { togglePopup } = props;
   const imageUploader = React.useRef(null);
   const [images, setImages] = React.useState([]);
   const [imageURLs, setImageURLs] = React.useState([]);
+  const [photoError, setPhotoError] = React.useState(false);
   const scLocations = ["Natural Bridges Site 1", "Natural Bridges Site 2"];
   const [location, setLocation] = React.useState("");
   const [locationError, setLocationError] = React.useState(false);
-  const dateTime = new Date();
+  let dateTime = new Date();
   const [dateError, setDateError] = React.useState(false);
   const [timeError, setTimeError] = React.useState(false);
 
@@ -59,6 +59,10 @@ const UploadPic = () => {
     let canSubmit = true;
 
     // On error, display error message(s) for the invalid form field(s).
+    if (images.length === 0 || imageURLs.length === 0) {
+      setPhotoError(true);
+      canSubmit = false;
+    }
     if (location.length === 0) {
       setLocationError(true);
       canSubmit = false;
@@ -69,9 +73,16 @@ const UploadPic = () => {
       canSubmit = false;
     }
 
-    // On success, show confimation popup & navigate back to homepage.
+    // On success, show confirmation popup & clear out old form input.
     if (canSubmit) {
-      navigate("/");
+      togglePopup(true);
+      setImages([]);
+      setImageURLs([]);
+      setLocation("");
+      setLocationError(false);
+      dateTime = new Date();
+      setDateError(false);
+      setTimeError(false);
     }
   };
 
@@ -86,17 +97,22 @@ const UploadPic = () => {
   return (
     <div className="centeredContent">
       <h1>Upload Your Photo</h1>
-      <Button variant="contained" endIcon={<PhotoCameraIcon />} style={{margin: "0px 5px 15px"}}>
-        Take Photo
-      </Button>
-      <Button variant="contained" onClick={() => imageUploader.current.click()} endIcon={<InsertPhotoIcon />} style={{margin: "0px 5px 15px"}}>
-        Choose Photo
-        <input type="file" required multiple accept="image/*" onChange={onImageChange} ref={imageUploader} style={{display: "none"}} />
-      </Button>
+      <FormControl error={photoError ? true : false} style={{marginBottom: "10px"}}>
+        <Stack direction="row">
+          <Button variant="contained" endIcon={<PhotoCameraIcon />} style={{margin: "0px 5px"}}>
+            Take Photo
+          </Button>
+          <Button variant="contained" onClick={() => imageUploader.current.click()} endIcon={<InsertPhotoIcon />} style={{margin: "0px 5px"}}>
+            Choose Photo
+            <input type="file" required multiple accept="image/*" onChange={onImageChange} ref={imageUploader} style={{display: "none"}} />
+          </Button>
+        </Stack>
+        {photoError && <FormHelperText style={{textAlign: "center"}}>Please add a photo.</FormHelperText>}
+      </FormControl>
       {/* Show preview of uploaded image(s). */}
       {imageURLs.map((imgSrc, i) => <img src={imgSrc} alt={images[i].name} key={i} id="uploadedImg" />)}
       <FormControl fullWidth id="form">
-        <FormControl error={locationError ? true : false}>
+        <FormControl error={locationError ? true : false} style={locationError ? {marginBottom: "0px"} : {}}>
           <InputLabel id="location-label" required>Location</InputLabel>
           <Select
             labelId="location-label"
@@ -104,6 +120,7 @@ const UploadPic = () => {
             value={location}
             label="Location"
             onChange={onLocationChange}
+            style={{ textAlign: "left" }}
           >
             {scLocations.map((loc, i) => <MenuItem value={i} key={i}>{loc}</MenuItem>)}
           </Select>
