@@ -2,6 +2,10 @@
   text-align: center;
   padding: 0px 5% 5%;
 }
+.leftAlignedContent {
+  text-align: left;
+  padding: 0px 5% 5%;
+}
 
 #uploadedImg {
   width: 100%;
@@ -15,7 +19,7 @@
   margin-top: 0px;
 }
 
-.uploadButton {
+.button {
   color: white;
   text-decoration: none;
 }

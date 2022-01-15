@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { blue, lightBlue } from '@mui/material/colors';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import UploadPic from "./components/UploadPic";
+import UploadPicForm from "./components/UploadPicForm";
 import UploadConfirmationPopup from "./components/UploadConfirmationPopup";
 
 function App() {
@@ -25,14 +25,14 @@ function App() {
     },
   });
   const [confirmUpload, setConfirmUpload] = React.useState(false);
+  const [scrollElement, setScrollElement] = React.useState("");
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
+      <Navbar scrollTo={setScrollElement} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="upload" element={<UploadPic togglePopup={setConfirmUpload} />} />
-        {/* <Route path="about" element={<About />} /> */}
+        <Route path="/" element={<Home scrollElement={scrollElement} />} />
+        <Route path="upload" element={<UploadPicForm togglePopup={setConfirmUpload} />} />
       </Routes>
       {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} />}
     </ThemeProvider>

@@ -1,22 +1,26 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AppBar, Toolbar, CssBaseline, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
-  navlinks: {
-    marginLeft: theme.spacing(10),
-    display: "flex",
-  },
+  // navlinks: {
+  //   marginLeft: theme.spacing(10),
+  //   display: "flex",
+  // },
   logo: {
     flexGrow: "1",
     cursor: "pointer",
+  },
+  whiteLink: {
+    textDecoration: "none",
+    color: "white",
   },
   link: {
     textDecoration: "none",
     color: "white",
     fontSize: "20px",
-    marginLeft: theme.spacing(20),
+    marginLeft: theme.spacing(5),
     "&:hover": {
       color: "yellow",
       borderBottom: "1px solid white",
@@ -24,25 +28,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { scrollTo } = props;
   const classes = useStyles();
-  const navigate = useNavigate();
 
   return (
     <AppBar position="static">
       <CssBaseline />
       <Toolbar>
-        <Typography variant="h4" className={classes.logo} onClick={() => navigate('/')}>
-          CoastSnap
+        <Typography variant="h4" className={classes.logo} onClick={() => scrollTo("")}>
+          <Link to="/" className={classes.whiteLink}>CoastSnap</Link>
         </Typography>
-          <div className={classes.navlinks}>
-            <Link to="/" className={classes.link}>
-              Home
-            </Link>
-            {/* <Link to="/about" className={classes.link}>
-              About
-            </Link> */}
-          </div>
+        <div className={classes.navlinks}>
+          <Link to="/upload" className={classes.link}>Upload</Link>
+          <Link to="/" className={classes.link} onClick={() => scrollTo("about")}>About</Link>
+          <Link to="/" className={classes.link} onClick={() => scrollTo("locations")}>Locations</Link>
+        </div>
       </Toolbar>
     </AppBar>
   );
