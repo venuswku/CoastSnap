@@ -9,8 +9,8 @@ import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 const UploadPic = (props) => {
   const { togglePopup } = props;
   const imageUploader = React.useRef(null);
-  const [images, setImages] = React.useState([]);
-  const [imageURLs, setImageURLs] = React.useState([]);
+  const [image, setImage] = React.useState(null);
+  const [imageURL, setImageURL] = React.useState(null);
   const [photoError, setPhotoError] = React.useState(false);
   const scLocations = ["Natural Bridges Site 1", "Natural Bridges Site 2"];
   const [location, setLocation] = React.useState("");
@@ -21,7 +21,7 @@ const UploadPic = (props) => {
 
   // Stores the user's chosen photos.
   const onImageChange = (event) => {
-    setImages([...event.target.files]);
+    setImage(event.target.files[0]);
   };
 
   // Stores the inputted location.
@@ -54,12 +54,12 @@ const UploadPic = (props) => {
     }
   };
 
-  // Submits the user's photo(s) and their inputted info.
+  // Submits the user's photo and their inputted info.
   const submitForm = () => {
     let canSubmit = true;
 
     // On error, display error message(s) for the invalid form field(s).
-    if (images.length === 0 || imageURLs.length === 0) {
+    if (image.length === 0 || imageURL.length === 0) {
       setPhotoError(true);
       canSubmit = false;
     }
@@ -76,8 +76,8 @@ const UploadPic = (props) => {
     // On success, show confirmation popup & clear out old form input.
     if (canSubmit) {
       togglePopup(true);
-      setImages([]);
-      setImageURLs([]);
+      setImage(null);
+      setImageURL(null);
       setLocation("");
       setLocationError(false);
       dateTime = new Date();
@@ -88,11 +88,9 @@ const UploadPic = (props) => {
 
   // For each image object, get its temporary local source with URL.createObjectURL(image).
   useEffect(() => {
-    if (images.length < 1) return;
-    const newImageURLs = [];
-    images.forEach(image => newImageURLs.push(URL.createObjectURL(image)));
-    setImageURLs(newImageURLs);
-  }, [images]);
+    if (image === null) return;
+    setImageURL(URL.createObjectURL(image));
+  }, [image]);
 
   return (
     <div className="centeredContent">
@@ -104,13 +102,13 @@ const UploadPic = (props) => {
           </Button>
           <Button variant="contained" onClick={() => imageUploader.current.click()} endIcon={<InsertPhotoIcon />} style={{margin: "0px 5px"}}>
             Choose Photo
-            <input type="file" required multiple accept="image/*" onChange={onImageChange} ref={imageUploader} style={{display: "none"}} />
+            <input type="file" required accept="image/*" onChange={onImageChange} ref={imageUploader} style={{display: "none"}} />
           </Button>
         </Stack>
         {photoError && <FormHelperText style={{textAlign: "center"}}>Please add a photo.</FormHelperText>}
       </FormControl>
       {/* Show preview of uploaded image(s). */}
-      {imageURLs.map((imgSrc, i) => <img src={imgSrc} alt={images[i].name} key={i} id="uploadedImg" />)}
+      {image && imageURL && <img src={imageURL} alt={image.name} id="uploadedImg" />}
       <FormControl fullWidth id="form">
         <FormControl error={locationError ? true : false} style={locationError ? {marginBottom: "0px"} : {}}>
           <InputLabel id="location-label" required>Location</InputLabel>
