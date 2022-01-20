@@ -34,29 +34,54 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = (props) => {
-  const { scrollTo } = props;
+  const { scrollElement, scrollTo } = props;
   const classes = useStyles();
   const location = useLocation();
 
+  // Checks if the current URL path matches the given path.
   const atPath = (path) => {
     if (location.pathname === path) {
       return true;
     } else {
       return false;
     }
-  }
+  };
+  // Changes the element that the user scrolls to.
+  const changeScrollElement = (ele) => {
+    const currentScrollEle = scrollElement.toLowerCase();
+    if (ele === currentScrollEle) {
+      switch (scrollElement) {
+        case "about":
+          scrollTo("ABOUT");
+          break;
+        case "ABOUT":
+          scrollTo("about");
+          break;
+        case "locations":
+          scrollTo("LOCATIONS");
+          break;
+        case "LOCATIONS":
+          scrollTo("locations");
+          break;
+        default:
+          break;
+      }
+    } else {
+      scrollTo(ele);
+    }
+  };
 
   return (
     <AppBar position={atPath("/") ? "absolute" : "static"} color={atPath("/") ? "transparent": "primary"} elevation={0}>
       <CssBaseline />
       <Toolbar>
-        <Typography variant="h4" className={classes.logo} onClick={() => scrollTo("")}>
+        <Typography variant="h4" className={classes.logo} onClick={() => changeScrollElement("")}>
           <Link to="/" className={classes.whiteLink}>CoastSnap</Link>
         </Typography>
         <div className={classes.navlinks}>
           <Link to="/upload" className={classes.link + " " + (atPath("/upload") ? classes.active : "")}>Upload</Link>
-          <Link to="/" className={classes.link} onClick={() => scrollTo("about")}>About</Link>
-          <Link to="/" className={classes.link} onClick={() => scrollTo("locations")}>Locations</Link>
+          <Link to="/" className={classes.link} onClick={() => changeScrollElement("about")}>About</Link>
+          <Link to="/" className={classes.link} onClick={() => changeScrollElement("locations")}>Locations</Link>
         </div>
       </Toolbar>
     </AppBar>

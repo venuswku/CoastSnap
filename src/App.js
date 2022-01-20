@@ -29,7 +29,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar scrollTo={setScrollElement} />
+      <Navbar scrollElement={scrollElement} scrollTo={setScrollElement} />
       <Routes>
         <Route path="/" element={<Home scrollElement={scrollElement} />} />
         <Route path="upload" element={<UploadPicForm togglePopup={setConfirmUpload} />} />

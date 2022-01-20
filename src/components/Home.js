@@ -17,9 +17,11 @@ const Home = (props) => {
   useEffect(() => {
     switch (scrollElement) {
       case "about":
+      case "ABOUT":
         scrollTo(aboutRef);
         break;
       case "locations":
+      case "LOCATIONS":
         scrollTo(locationsRef);
         break;
       default:
@@ -45,9 +47,9 @@ const Home = (props) => {
         </Stack>
         <h1 ref={aboutRef}>About CoastSnap</h1>
         <p>CoastSnap is a project that provides a low-cost method for mapping shoreline changes by crowdsourcing images that are uploaded from community members to social media. Numerous CoastSnap stations have already been successfully implemented in different countries such as Australia, France, the United Kingdom, Spain and Canada. Our project aims to engage people on coastal issues and the impacts that climate change will have on local communities throughout Santa Cruz in the United States. We currently are partnering with the United States Geological Survey (USGS), the City of Santa Cruz, and many other supportive local organizations to bring CoastSnap to Santa Cruz. Growing interest and participation in CoastSnap from the general public will allow an increased amount of public awareness on sustainable issues, as well as a larger set of data collection for concise and accurate information about rising sea levels.</p>
-        <Button variant="contained">
-          <a href="https://www.coastsnap.com/" target="_blank" rel="noopener noreferrer" className="button">Visit the CoastSnap Website</a>
-        </Button>
+        <a href="https://www.coastsnap.com/" target="_blank" rel="noopener noreferrer" className="button">
+          <Button variant="contained">Visit the CoastSnap Website</Button>
+        </a>
         <h1 ref={locationsRef}>Santa Cruz Locations</h1>
         <p>Natural Bridges Site 1</p>
         <p>Natural Bridges Site 2</p>

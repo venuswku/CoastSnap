@@ -59,7 +59,7 @@ const UploadPic = (props) => {
     let canSubmit = true;
 
     // On error, display error message(s) for the invalid form field(s).
-    if (image.length === 0 || imageURL.length === 0) {
+    if (image === null || imageURL === null) {
       setPhotoError(true);
       canSubmit = false;
     }
