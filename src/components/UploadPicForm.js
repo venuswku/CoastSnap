@@ -18,16 +18,39 @@ const UploadPic = (props) => {
   let dateTime = new Date();
   const [dateError, setDateError] = React.useState(false);
   const [timeError, setTimeError] = React.useState(false);
+  const [name, setName] = React.useState("");
+  const [nameError, setNameError] = React.useState(false);
+  const devices = ["Apple iPhone 13", "Google Pixel 6", "Apple iPhone 13 Pro", "Apple iPhone 13 Pro Max", "Apple iPhone 13 Mini", "Samsung Galaxy Note 20 Ultra", "Samsung Galaxy Z Flip 3", "Google Pixel 5A", "Samsung Galaxy Z Fold 3", "Samsung Galaxy S20 Ultra", "Galaxy S8", "Samsung Galaxy Note 10 Plus", "Galaxy Note 9", "Galaxy S10 Plus", "Galaxy S7 Edge", "Apple iPad Air", "Apple iPad Mini", "Not Listed"];
+  const [device, setDevice] = React.useState("");
+  const [unlistedDevice, setUnlistedDevice] = React.useState("");
+  const [deviceError, setDeviceError] = React.useState(false);
+  const [comments, setComments] = React.useState("");
 
   // Stores the user's chosen photos.
   const onImageChange = (event) => {
     setImage(event.target.files[0]);
   };
 
-  // Stores the inputted location.
-  const onLocationChange = (event) => {
-    setLocation(event.target.value);
-    setLocationError(false);
+  // Stores the selected option.
+  const onSelectChange = (selectedOption, type) => {
+    if (type === "location") {
+      setLocation(selectedOption);
+      setLocationError(false);
+    } else if (type === "device") {
+      setDevice(selectedOption);
+      setDeviceError(false);
+    }
+  };
+
+  // Stores the inputted text.
+  const onTextChange = (newTextValue, type) => {
+    if (type === "name") {
+      setName(newTextValue);
+    } else if (type === "comment") {
+      setComments(newTextValue);
+    } else if (type === "device") {
+      setUnlistedDevice(newTextValue);
+    }
   };
 
   // Validates the inputted date and time before storing it.
@@ -72,9 +95,21 @@ const UploadPic = (props) => {
       setTimeError(true);
       canSubmit = false;
     }
+    if (name.trim().length === 0) {
+      setNameError(true);
+      canSubmit = false;
+    }
+    if (device.length === 0 || (device === "Not Listed" && unlistedDevice.length === 0)) {
+      setDeviceError(true);
+      canSubmit = false;
+    }
 
     // On success, show confirmation popup & clear out old form input.
     if (canSubmit) {
+      // Save photo info.
+      setName(name.trim());
+      setComments(comments.trim());
+      // Clear form.
       togglePopup(true);
       setImage(null);
       setImageURL(null);
@@ -83,6 +118,12 @@ const UploadPic = (props) => {
       dateTime = new Date();
       setDateError(false);
       setTimeError(false);
+      setName("");
+      setNameError(false);
+      setDevice("");
+      setUnlistedDevice("");
+      setDeviceError(false);
+      setComments("");
     }
   };
 
@@ -117,14 +158,13 @@ const UploadPic = (props) => {
             id="select-location"
             value={location}
             label="Location"
-            onChange={onLocationChange}
+            onChange={(event) => onSelectChange(event.target.value, "location")}
             style={{ textAlign: "left" }}
           >
-            {scLocations.map((loc, i) => <MenuItem value={i} key={i}>{loc}</MenuItem>)}
+            {scLocations.map((loc, i) => <MenuItem value={loc} key={i}>{loc}</MenuItem>)}
           </Select>
           {locationError && <FormHelperText>Please select a location.</FormHelperText>}
         </FormControl>
-        <TextField id="name-input" label="Name" variant="outlined" />
         <LocalizationProvider dateAdapter={DateAdapter}>
           <FormControl error={dateError ? true : false}>
             <DatePicker
@@ -145,9 +185,50 @@ const UploadPic = (props) => {
             {timeError && <FormHelperText>Please input a valid time.</FormHelperText>}
           </FormControl>
         </LocalizationProvider>
+        <FormControl error={nameError ? true : false}>
+          <TextField
+            id="name-input"
+            label="Name *"
+            error={nameError ? true : false}
+            value={name}
+            onChange={(event) => onTextChange(event.target.value, "name")}
+            variant="outlined"
+          />
+          {nameError && <FormHelperText>Please enter your name.</FormHelperText>}
+        </FormControl>
+        <FormControl error={deviceError ? true : false} style={{marginBottom: "0px"}}>
+          <InputLabel id="device-label" required>Device</InputLabel>
+          <Select
+            labelId="device-label"
+            id="select-device"
+            value={device}
+            label="Device"
+            onChange={(event) => onSelectChange(event.target.value, "device")}
+            style={{ textAlign: "left" }}
+          >
+            {devices.map((dev, i) => <MenuItem value={dev} key={i}>{dev}</MenuItem>)}
+          </Select>
+          {device === "Not Listed" &&
+            <TextField
+              id="device-input"
+              label="If your device isn't listed above, please enter the name of your device here:"
+              error={deviceError ? true : false}
+              value={unlistedDevice}
+              onChange={(event) => onTextChange(event.target.value, "device")}
+              variant="outlined"
+              style={{marginTop: "10px"}}
+            />
+          }
+          {deviceError ?
+            <FormHelperText>Please select/enter the device that you used to take the photo.</FormHelperText> :
+            <FormHelperText>Mobile device or tablet that was used to take the photo.</FormHelperText>
+          }
+        </FormControl>
         <TextField
           id="comments-input"
           label="Comments"
+          value={comments}
+          onChangeCapture={(event) => onTextChange(event.target.value, "comments")}
           multiline
         />
       </FormControl>
