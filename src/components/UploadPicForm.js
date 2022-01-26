@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { FormControl, FormHelperText, Button, InputLabel, Select, MenuItem, TextField, Stack } from "@mui/material";
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import { FormControl, FormHelperText, Button, InputLabel, Select, MenuItem, TextField } from "@mui/material";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { isValid, parseJSON } from "date-fns";
 import DateAdapter from "@mui/lab/AdapterDateFns";
@@ -137,15 +136,10 @@ const UploadPic = (props) => {
     <div className="centeredContent">
       <h1>Upload Your Photo</h1>
       <FormControl error={photoError ? true : false} style={{marginBottom: "10px"}}>
-        <Stack direction="row">
-          <Button variant="contained" endIcon={<PhotoCameraIcon />} style={{margin: "0px 5px"}}>
-            Take Photo
-          </Button>
-          <Button variant="contained" onClick={() => imageUploader.current.click()} endIcon={<InsertPhotoIcon />} style={{margin: "0px 5px"}}>
-            Choose Photo
-            <input type="file" required accept="image/*" onChange={onImageChange} ref={imageUploader} style={{display: "none"}} />
-          </Button>
-        </Stack>
+        <Button variant="contained" onClick={() => imageUploader.current.click()} endIcon={<InsertPhotoIcon />} style={{margin: "0px 5px"}}>
+          Choose Photo
+          <input type="file" required accept="image/*" onChange={onImageChange} ref={imageUploader} style={{display: "none"}} />
+        </Button>
         {photoError && <FormHelperText style={{textAlign: "center"}}>Please add a photo.</FormHelperText>}
       </FormControl>
       {/* Show preview of uploaded image(s). */}
