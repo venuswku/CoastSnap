@@ -10,7 +10,11 @@ const UploadConfirmationPopup = (props) => {
 
   const handleClose = (nextPath) => {
     togglePopup(false);
-    navigate("/" + nextPath);
+    if (nextPath === "upload") {
+      window.location.reload(false);
+    } else if (nextPath === "") {
+      navigate("/" + nextPath);
+    }
   };
 
   return (

@@ -7,6 +7,11 @@ import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 
 const UploadPic = (props) => {
   const { togglePopup } = props;
+  const [googleAuth, setGoogleAuth] = React.useState("");
+  // The specified scope will allow	the user to "View and manage Google Drive files and folders that you have opened or created with this app".
+  const SCOPE = "https://www.googleapis.com/auth/drive.file";
+  // Retrieves the API discovery document for version 3 of the Google Drive API.
+  const DISCOVERY_DOC = "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest";
   const imageUploader = React.useRef(null);
   const [image, setImage] = React.useState(null);
   const [imageURL, setImageURL] = React.useState(null);
@@ -28,6 +33,8 @@ const UploadPic = (props) => {
   // Stores the user's chosen photos.
   const onImageChange = (event) => {
     setImage(event.target.files[0]);
+    // Get the image object's temporary local source with URL.createObjectURL().
+    setImageURL(URL.createObjectURL(event.target.files[0]));
   };
 
   // Stores the selected option.
@@ -106,8 +113,56 @@ const UploadPic = (props) => {
     // On success, show confirmation popup & clear out old form input.
     if (canSubmit) {
       // Save photo info.
-      setName(name.trim());
-      setComments(comments.trim());
+      googleAuth.signIn();
+      const user = googleAuth.currentUser.get();
+      if (user) {
+        console.log("Full Name:", user.su.qf);
+        const isAuthorized = user.hasGrantedScopes(SCOPE);
+        if (isAuthorized) {
+          const boundary = "..............................";
+          const delimiter = "\r\n--" + boundary + "\r\n";
+          const close_delim = "\r\n--" + boundary + "--";
+          const deviceName = (device === "Not Listed") ? unlistedDevice : device;
+          const fileName =
+            location.replaceAll(" ", "") + "_" +
+            dateTime.toDateString().replaceAll(" ", ".") + "_" +
+            dateTime.toTimeString().replaceAll(" ", ".").replaceAll(":", "-") + "_" +
+            deviceName.replaceAll(" ", "") + "_" +
+            name.trim().replaceAll(" ", ".") +
+            ".jpg";
+          const fileData = image;
+          const contentType = image.type;
+          const additionalInfo = comments.trim();
+          const metadata = {
+            "name": fileName,
+            "mimeType": contentType,
+            "description": additionalInfo,
+          };
+
+          const multipartRequestBody =
+            delimiter +
+            "Content-Type: application/json; charset=UTF-8\r\n\r\n" + JSON.stringify(metadata) +
+            delimiter +
+            "Content-Type: " + contentType + "\r\n\r\n" + fileData + "\r\n"+
+            close_delim;
+
+          console.log(multipartRequestBody);
+          // const request = window.gapi.client.request({
+          //   "path": "https://www.googleapis.com/upload/drive/v3/files",
+          //   "method": "POST",
+          //   "params": { "uploadType": "multipart" },
+          //   "headers": {
+          //     "Content-Type": "multipart/related; boundary=" + boundary + ""
+          //   },
+          //   "body": multipartRequestBody
+          // });
+
+          // request.execute((file) => {
+          //   console.log(file);
+          // });
+        }
+      }
+      
       // Clear form.
       togglePopup(true);
       setImage(null);
@@ -126,11 +181,32 @@ const UploadPic = (props) => {
     }
   };
 
-  // For each image object, get its temporary local source with URL.createObjectURL(image).
+  // When the form renders, run a script to load the Google API client
+  // since there's no Google Drive API package that can be imported.
   useEffect(() => {
-    if (image === null) return;
-    setImageURL(URL.createObjectURL(image));
-  }, [image]);
+    const script = document.createElement('script');
+    script.onload = handleClientLoad;
+    script.src = "https://apis.google.com/js/api.js";
+    document.body.appendChild(script);
+  }, []);
+
+  const handleClientLoad = () => {
+    window.gapi.load("client:auth2", () => {
+      try {
+        window.gapi.client.init({
+            "apiKey": process.env.REACT_APP_GOOGLE_DRIVE_API_KEY,
+            "clientId": process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_ID,
+            "scope": SCOPE,
+            "discoveryDocs": [DISCOVERY_DOC]
+          }).then(() => {
+            setGoogleAuth(window.gapi.auth2.getAuthInstance());
+          }
+        );
+      } catch(error) {
+        console.log(error);
+      }
+    });
+  }
 
   return (
     <div className="centeredContent">
@@ -143,7 +219,7 @@ const UploadPic = (props) => {
         {photoError && <FormHelperText style={{textAlign: "center"}}>Please add a photo.</FormHelperText>}
       </FormControl>
       {/* Show preview of uploaded image(s). */}
-      {image && imageURL && <img src={imageURL} alt={image.name} id="uploadedImg" />}
+      {image && imageURL && <img src={imageURL} alt={image.name} id={image.name} />}
       <FormControl fullWidth id="form">
         <FormControl error={locationError ? true : false} style={locationError ? {marginBottom: "0px"} : {}}>
           <InputLabel id="location-label" required>Location</InputLabel>
