@@ -14,7 +14,7 @@ const UploadPic = (props) => {
   const scLocations = ["Natural Bridges Site 1", "Natural Bridges Site 2"];
   const [location, setLocation] = React.useState("");
   const [locationError, setLocationError] = React.useState(false);
-  let dateTime = new Date();
+  const [dateTime, setDateTime] = React.useState(new Date());
   const [dateError, setDateError] = React.useState(false);
   const [timeError, setTimeError] = React.useState(false);
   const [name, setName] = React.useState("");
@@ -45,7 +45,7 @@ const UploadPic = (props) => {
   const onTextChange = (newTextValue, type) => {
     if (type === "name") {
       setName(newTextValue);
-    } else if (type === "comment") {
+    } else if (type === "comments") {
       setComments(newTextValue);
     } else if (type === "device") {
       setUnlistedDevice(newTextValue);
@@ -114,7 +114,7 @@ const UploadPic = (props) => {
       setImageURL(null);
       setLocation("");
       setLocationError(false);
-      dateTime = new Date();
+      setDateTime(new Date());
       setDateError(false);
       setTimeError(false);
       setName("");
