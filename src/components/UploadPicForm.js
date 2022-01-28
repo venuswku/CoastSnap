@@ -7,7 +7,6 @@ import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 
 const UploadPic = (props) => {
   const { togglePopup } = props;
-  const [googleAuth, setGoogleAuth] = React.useState("");
   // The specified scope will allow	the user to "View and manage Google Drive files and folders that you have opened or created with this app".
   const SCOPE = "https://www.googleapis.com/auth/drive.file";
   // Retrieves the API discovery document for version 3 of the Google Drive API.
@@ -33,6 +32,7 @@ const UploadPic = (props) => {
   // Stores the user's chosen photos.
   const onImageChange = (event) => {
     setImage(event.target.files[0]);
+    console.log(event.target.files[0]);
     // Get the image object's temporary local source with URL.createObjectURL().
     setImageURL(URL.createObjectURL(event.target.files[0]));
   };
@@ -113,71 +113,75 @@ const UploadPic = (props) => {
     // On success, show confirmation popup & clear out old form input.
     if (canSubmit) {
       // Save photo info.
-      googleAuth.signIn();
-      const user = googleAuth.currentUser.get();
-      if (user) {
-        console.log("Full Name:", user.su.qf);
-        const isAuthorized = user.hasGrantedScopes(SCOPE);
-        if (isAuthorized) {
-          const boundary = "..............................";
-          const delimiter = "\r\n--" + boundary + "\r\n";
-          const close_delim = "\r\n--" + boundary + "--";
-          const deviceName = (device === "Not Listed") ? unlistedDevice : device;
-          const fileName =
-            location.replaceAll(" ", "") + "_" +
-            dateTime.toDateString().replaceAll(" ", ".") + "_" +
-            dateTime.toTimeString().replaceAll(" ", ".").replaceAll(":", "-") + "_" +
-            deviceName.replaceAll(" ", "") + "_" +
-            name.trim().replaceAll(" ", ".") +
-            ".jpg";
-          const fileData = image;
-          const contentType = image.type;
-          const additionalInfo = comments.trim();
-          const metadata = {
-            "name": fileName,
-            "mimeType": contentType,
-            "description": additionalInfo,
-          };
+      const boundary = "..............................";
+      const delimiter = "\r\n--" + boundary + "\r\n";
+      const close_delim = "\r\n--" + boundary + "--";
+      const deviceName = (device === "Not Listed") ? unlistedDevice : device;
+      const fileName =
+        location.replaceAll(" ", "") + "_" +
+        dateTime.toDateString().replaceAll(" ", ".") + "_" +
+        dateTime.toTimeString().replaceAll(" ", "").replaceAll(":", ".").replaceAll("-", "") + "_" +
+        deviceName.replaceAll(" ", "") + "_" +
+        name.trim().replaceAll(" ", ".") +
+        ".jpg";
+      const fileData = new FormData();
+      fileData.append("imageFile", image);
+      const contentType = image.type;
+      const additionalComments = comments.trim();
 
-          const multipartRequestBody =
-            delimiter +
-            "Content-Type: application/json; charset=UTF-8\r\n\r\n" + JSON.stringify(metadata) +
-            delimiter +
-            "Content-Type: " + contentType + "\r\n\r\n" + fileData + "\r\n"+
-            close_delim;
+      // Properties allowed in metadata: https://developers.google.com/drive/api/v3/reference/files/create
+      const metadata = JSON.stringify({
+        name: fileName,
+        mimeType: contentType,
+        description: additionalComments,
+        parents: ["1oG_oqE2KM03Zze9nXmwxi8fOU5-50E_U"],
+      });
+      const multipartRequestBody =
+      delimiter +
+      "Content-Type: application/json; charset=UTF-8\r\n\r\n" + JSON.stringify(metadata) +
+      delimiter +
+      "Content-Type: " + contentType + "\r\n\r\n" + fileData + "\r\n"+
+        close_delim;
+      console.log(multipartRequestBody);
 
-          console.log(multipartRequestBody);
-          // const request = window.gapi.client.request({
-          //   "path": "https://www.googleapis.com/upload/drive/v3/files",
-          //   "method": "POST",
-          //   "params": { "uploadType": "multipart" },
-          //   "headers": {
-          //     "Content-Type": "multipart/related; boundary=" + boundary + ""
-          //   },
-          //   "body": multipartRequestBody
-          // });
+      // 1. Initiate resumable upload session.
+      window.gapi.client.request({
+        path: "https://www.googleapis.com/upload/drive/v3/files",
+        method: "POST",
+        params: { uploadType: "resumable" },
+        headers: { "Content-Type": "application/json" },
+        body: metadata,
+      }).execute((jsonResp, rawResp) => {
+        const response = JSON.parse(rawResp);
+        console.log(response);
+        console.log();
 
-          // request.execute((file) => {
-          //   console.log(file);
-          // });
-        }
-      }
-      
-      // Clear form.
-      togglePopup(true);
-      setImage(null);
-      setImageURL(null);
-      setLocation("");
-      setLocationError(false);
-      setDateTime(new Date());
-      setDateError(false);
-      setTimeError(false);
-      setName("");
-      setNameError(false);
-      setDevice("");
-      setUnlistedDevice("");
-      setDeviceError(false);
-      setComments("");
+        // 2. Upload the image file.
+        window.gapi.client.request({
+          path: response.gapiRequest.data.headers.location,
+          method: "PUT",
+          headers: { "Content-Length": image.size },
+          body: image
+        }).execute((jsonResp, rawResp) => {
+          console.log(jsonResp, rawResp);
+        });
+        
+        // Clear form.
+        togglePopup(true);
+        setImage(null);
+        setImageURL(null);
+        setLocation("");
+        setLocationError(false);
+        setDateTime(new Date());
+        setDateError(false);
+        setTimeError(false);
+        setName("");
+        setNameError(false);
+        setDevice("");
+        setUnlistedDevice("");
+        setDeviceError(false);
+        setComments("");
+      });
     }
   };
 
@@ -194,14 +198,11 @@ const UploadPic = (props) => {
     window.gapi.load("client:auth2", () => {
       try {
         window.gapi.client.init({
-            "apiKey": process.env.REACT_APP_GOOGLE_DRIVE_API_KEY,
-            "clientId": process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_ID,
-            "scope": SCOPE,
-            "discoveryDocs": [DISCOVERY_DOC]
-          }).then(() => {
-            setGoogleAuth(window.gapi.auth2.getAuthInstance());
-          }
-        );
+          "apiKey": process.env.REACT_APP_GOOGLE_DRIVE_API_KEY,
+          "clientId": process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_ID,
+          "scope": SCOPE,
+          "discoveryDocs": [DISCOVERY_DOC]
+        });
       } catch(error) {
         console.log(error);
       }
