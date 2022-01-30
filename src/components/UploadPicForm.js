@@ -28,11 +28,11 @@ const UploadPic = (props) => {
   const [unlistedDevice, setUnlistedDevice] = React.useState("");
   const [deviceError, setDeviceError] = React.useState(false);
   const [comments, setComments] = React.useState("");
+  const [disableSubmitButton, setDisableSubmitButton] = React.useState(false);
 
   // Stores the user's chosen photos.
   const onImageChange = (event) => {
     setImage(event.target.files[0]);
-    console.log(event.target.files[0]);
     // Get the image object's temporary local source with URL.createObjectURL().
     setImageURL(URL.createObjectURL(event.target.files[0]));
   };
@@ -86,7 +86,7 @@ const UploadPic = (props) => {
   // Submits the user's photo and their inputted info.
   const submitForm = () => {
     let canSubmit = true;
-
+    
     // On error, display error message(s) for the invalid form field(s).
     if (image === null || imageURL === null) {
       setPhotoError(true);
@@ -112,76 +112,148 @@ const UploadPic = (props) => {
 
     // On success, show confirmation popup & clear out old form input.
     if (canSubmit) {
+      setDisableSubmitButton(true);
+      togglePopup(true);
+
       // Save photo info.
-      const boundary = "..............................";
-      const delimiter = "\r\n--" + boundary + "\r\n";
-      const close_delim = "\r\n--" + boundary + "--";
+      const user = window.gapi.auth2.getAuthInstance().currentUser.get();
+      const oauthToken = user.getAuthResponse().access_token;
       const deviceName = (device === "Not Listed") ? unlistedDevice : device;
+      const contentType = image.type;
+      const additionalComments = comments.trim();
+      let description = "Last Modified Date: " + image.lastModifiedDate;
+      if (additionalComments.length > 0) {
+        description += "; Comments: " + additionalComments;
+      }
       const fileName =
         location.replaceAll(" ", "") + "_" +
         dateTime.toDateString().replaceAll(" ", ".") + "_" +
         dateTime.toTimeString().replaceAll(" ", "").replaceAll(":", ".").replaceAll("-", "") + "_" +
         deviceName.replaceAll(" ", "") + "_" +
         name.trim().replaceAll(" ", ".") +
-        ".jpg";
-      const fileData = new FormData();
-      fileData.append("imageFile", image);
-      const contentType = image.type;
-      const additionalComments = comments.trim();
-
+        image.name.substring(image.name.lastIndexOf("."));
       // Properties allowed in metadata: https://developers.google.com/drive/api/v3/reference/files/create
-      const metadata = JSON.stringify({
+      const metadata = {
         name: fileName,
         mimeType: contentType,
-        description: additionalComments,
+        description: description,
+        // parents = IDs of Google Drive folders that you want to save images to.
         parents: ["1oG_oqE2KM03Zze9nXmwxi8fOU5-50E_U"],
-      });
-      const multipartRequestBody =
-      delimiter +
-      "Content-Type: application/json; charset=UTF-8\r\n\r\n" + JSON.stringify(metadata) +
-      delimiter +
-      "Content-Type: " + contentType + "\r\n\r\n" + fileData + "\r\n"+
-        close_delim;
-      console.log(multipartRequestBody);
+      };
 
       // 1. Initiate resumable upload session.
-      window.gapi.client.request({
-        path: "https://www.googleapis.com/upload/drive/v3/files",
-        method: "POST",
-        params: { uploadType: "resumable" },
-        headers: { "Content-Type": "application/json" },
-        body: metadata,
-      }).execute((jsonResp, rawResp) => {
-        const response = JSON.parse(rawResp);
-        console.log(response);
-        console.log();
-
-        // 2. Upload the image file.
-        window.gapi.client.request({
-          path: response.gapiRequest.data.headers.location,
-          method: "PUT",
-          headers: { "Content-Length": image.size },
-          body: image
-        }).execute((jsonResp, rawResp) => {
-          console.log(jsonResp, rawResp);
-        });
-        
-        // Clear form.
-        togglePopup(true);
-        setImage(null);
-        setImageURL(null);
-        setLocation("");
-        setLocationError(false);
-        setDateTime(new Date());
-        setDateError(false);
-        setTimeError(false);
-        setName("");
-        setNameError(false);
-        setDevice("");
-        setUnlistedDevice("");
-        setDeviceError(false);
-        setComments("");
-      });
+      const initResumable = new XMLHttpRequest();
+      initResumable.open("POST", "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable", true);
+      initResumable.setRequestHeader("Authorization", "Bearer " + oauthToken);
+      initResumable.setRequestHeader("Content-Type", "application/json");
+      initResumable.setRequestHeader("X-Upload-Content-Length", image.size);
+      initResumable.setRequestHeader("X-Upload-Content-Type", contentType);
+      initResumable.onreadystatechange = () => {
+        if (initResumable.readyState === XMLHttpRequest.DONE && initResumable.status === 200) {
+          const locationUrl = initResumable.getResponseHeader("Location");
+          const reader = new FileReader();
+          reader.readAsArrayBuffer(image);
+          reader.onload = (e) => {
+            // 2. Upload the image file after the it finished reading/loading.
+            const uploadResumable = new XMLHttpRequest();
+            uploadResumable.open("PUT", locationUrl, true);
+            uploadResumable.setRequestHeader("Content-Type", contentType);
+            uploadResumable.setRequestHeader("X-Upload-Content-Type", contentType);
+            uploadResumable.upload.onprogress = (event) => {
+              // event.loaded = how many bytes are uploaded
+              // event.total = total number of bytes -> only available if server sends `Content-Length` header
+              console.log(`Uploaded ${event.loaded} of ${event.total} bytes`);
+            };
+            uploadResumable.onreadystatechange = () => {
+              if (uploadResumable.readyState === XMLHttpRequest.DONE && uploadResumable.status === 200) {
+                // console.log(uploadResumable.response);
+                // Clear form.
+                setImage(null);
+                setImageURL(null);
+                setLocation("");
+                setLocationError(false);
+                setDateTime(new Date());
+                setDateError(false);
+                setTimeError(false);
+                setName("");
+                setNameError(false);
+                setDevice("");
+                setUnlistedDevice("");
+                setDeviceError(false);
+                setComments("");
+                setDisableSubmitButton(false);
+              }
+            };
+            uploadResumable.send(reader.result);
+          };
+        }
+      };
+      initResumable.send(JSON.stringify(metadata));
+      
+      // Convert image into base64 string to prevent it from being corrupted.
+    //   const reader = new FileReader();
+    //   reader.readAsDataURL(image);
+    //   reader.onload = () => {
+    //     const fileData = new FormData();
+    //     fileData.append("file", reader.result.substring(reader.result.indexOf("base64,")));
+    //     // console.log(reader.result);
+    //     // 1. Initiate resumable upload session.
+    //     window.gapi.client.request({
+    //       path: "https://www.googleapis.com/upload/drive/v3/files",
+    //       method: "POST",
+    //       params: { uploadType: "resumable" },
+    //       headers: {
+    //         "X-Upload-Content-Type": contentType,
+    //         "X-Upload-Content-Length": image.size,
+    //         "Content-Type": "application/json; charset=UTF-8",
+    //       },
+    //       body: JSON.stringify(metadata),
+    //     }).execute((jsonResp, rawResp) => {
+    //       const response = JSON.parse(rawResp);
+    //       console.log(response);
+    //       if (response.gapiRequest.data.status === 200) {
+    //         // 2. Upload the image file.
+    //         // window.gapi.client.request({
+    //         //   path: response.gapiRequest.data.headers.location,
+    //         //   method: "PUT",
+    //         //   headers: {
+    //         //     "Content-Type": contentType,
+    //         //     // "Content-Type": "multipart/form-data",
+    //         //     "Content-Length": image.size,
+    //         //     "Content-Transfer-Encoding": "base64",
+    //         //   },
+    //         //   body: reader.result.substring(reader.result.indexOf("base64,"))
+    //         // }).execute((jsonResp, rawResp) => {
+    //         //   console.log(jsonResp, rawResp);
+    //         // });
+    //         const xhr = new XMLHttpRequest();
+    //         xhr.open("PUT", response.gapiRequest.data.headers.location, true);
+    //         xhr.setRequestHeader("Content-Type", contentType);
+    //         xhr.setRequestHeader("Content-Range", image.size);
+    //         // xhr.setRequestHeader("Authorization", `Bearer ${window.gapi.auth.getToken().access_token}`);
+    //         if (xhr.upload) {
+    //           // TODO: Display progress bar for uploading image.
+    //         }
+    //         xhr.send(image);
+            
+    //         // Clear form.
+    //         togglePopup(true);
+    //         setImage(null);
+    //         setImageURL(null);
+    //         setLocation("");
+    //         setLocationError(false);
+    //         setDateTime(new Date());
+    //         setDateError(false);
+    //         setTimeError(false);
+    //         setName("");
+    //         setNameError(false);
+    //         setDevice("");
+    //         setUnlistedDevice("");
+    //         setDeviceError(false);
+    //         setComments("");
+    //       }
+    //     });
+    //   };
     }
   };
 
@@ -195,6 +267,7 @@ const UploadPic = (props) => {
   }, []);
 
   const handleClientLoad = () => {
+    // Documentation for gapi's client library: https://github.com/google/google-api-javascript-client/blob/master/docs/reference.md
     window.gapi.load("client:auth2", () => {
       try {
         window.gapi.client.init({
@@ -220,7 +293,7 @@ const UploadPic = (props) => {
         {photoError && <FormHelperText style={{textAlign: "center"}}>Please add a photo.</FormHelperText>}
       </FormControl>
       {/* Show preview of uploaded image(s). */}
-      {image && imageURL && <img src={imageURL} alt={image.name} id={image.name} />}
+      {image && imageURL && <img src={imageURL} alt={image.name} id="uploadedImg" />}
       <FormControl fullWidth id="form">
         <FormControl error={locationError ? true : false} style={locationError ? {marginBottom: "0px"} : {}}>
           <InputLabel id="location-label" required>Location</InputLabel>
@@ -303,7 +376,7 @@ const UploadPic = (props) => {
           multiline
         />
       </FormControl>
-      <Button variant="contained" onClick={submitForm}>
+      <Button variant="contained" onClick={submitForm} disabled={disableSubmitButton}>
         Submit
       </Button>
     </div>
