@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { Button, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import BackgroundImg from "../images/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.jpeg";
+import LocationCard from "../components/LocationCard";
 
 const Home = (props) => {
-  const { scrollElement } = props;
+  const { scLocations, scrollElement } = props;
   const aboutRef = React.useRef(null);
   const locationsRef = React.useRef(null);
 
@@ -51,8 +52,11 @@ const Home = (props) => {
           <Button variant="contained">Visit the CoastSnap Website</Button>
         </a>
         <h1 ref={locationsRef}>Santa Cruz Locations</h1>
-        <p>Natural Bridges Site 1</p>
-        <p>Natural Bridges Site 2</p>
+        <Stack direction="row" spacing={3}>
+          {scLocations.map((loc, i) => <LocationCard location={loc} />)}
+        </Stack>
+        <h1>Santa Cruz Team</h1>
+        <h1>Connect with us!</h1>
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ const Navbar = (props) => {
 
   // Checks if the current URL path matches the given path.
   const atPath = (path) => {
-    if (location.pathname === path) {
+    if (location.pathname === path || (path === "/" && location.pathname === "/CoastSnap")) {
       return true;
     } else {
       return false;

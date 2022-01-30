@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import UploadPicForm from "./components/UploadPicForm";
 import UploadConfirmationPopup from "./components/UploadConfirmationPopup";
+import LocationInfo from "./components/LocationInfo";
 
 function App() {
   const theme = createTheme({
@@ -27,13 +28,17 @@ function App() {
   const [confirmUpload, setConfirmUpload] = React.useState(false);
   const [uploadProgress, setUploadProgress] = React.useState(0);
   const [scrollElement, setScrollElement] = React.useState("");
+  // NOTE: Add more locations here!
+  const scLocations = ["Natural Bridges Site 1", "Natural Bridges Site 2"];
 
   return (
     <ThemeProvider theme={theme}>
       <Navbar scrollElement={scrollElement} scrollTo={setScrollElement} />
       <Routes>
-        <Route path="/" element={<Home scrollElement={scrollElement} />} />
-        <Route path="upload" element={<UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />} />
+        <Route path="/" element={<Home scLocations={scLocations} scrollElement={scrollElement} />} />
+        <Route path="/CoastSnap" element={<Home scLocations={scLocations} scrollElement={scrollElement} />} />
+        <Route path="/upload" element={<UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} scLocations={scLocations} />} />
+        <Route path="/:location" element={<LocationInfo />}></Route>
       </Routes>
       {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} />}
     </ThemeProvider>

@@ -6,7 +6,7 @@ import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 
 const UploadPic = (props) => {
-  const { togglePopup, setUploadProgress } = props;
+  const { scLocations, togglePopup, setUploadProgress } = props;
   // The specified scope will allow	the user to "View and manage Google Drive files and folders that you have opened or created with this app".
   const SCOPE = "https://www.googleapis.com/auth/drive.file";
   // Retrieves the API discovery document for version 3 of the Google Drive API.
@@ -15,7 +15,6 @@ const UploadPic = (props) => {
   const [image, setImage] = React.useState(null);
   const [imageURL, setImageURL] = React.useState(null);
   const [photoError, setPhotoError] = React.useState(false);
-  const scLocations = ["Natural Bridges Site 1", "Natural Bridges Site 2"];
   const [location, setLocation] = React.useState("");
   const [locationError, setLocationError] = React.useState(false);
   const [dateTime, setDateTime] = React.useState(new Date());
@@ -23,6 +22,7 @@ const UploadPic = (props) => {
   const [timeError, setTimeError] = React.useState(false);
   const [name, setName] = React.useState("");
   const [nameError, setNameError] = React.useState(false);
+  // NOTE: Edit/add more devices here!
   const devices = ["Apple iPhone 13", "Google Pixel 6", "Apple iPhone 13 Pro", "Apple iPhone 13 Pro Max", "Apple iPhone 13 Mini", "Samsung Galaxy Note 20 Ultra", "Samsung Galaxy Z Flip 3", "Google Pixel 5A", "Samsung Galaxy Z Fold 3", "Samsung Galaxy S20 Ultra", "Galaxy S8", "Samsung Galaxy Note 10 Plus", "Galaxy Note 9", "Galaxy S10 Plus", "Galaxy S7 Edge", "Apple iPad Air", "Apple iPad Mini", "Not Listed"];
   const [device, setDevice] = React.useState("");
   const [unlistedDevice, setUnlistedDevice] = React.useState("");
