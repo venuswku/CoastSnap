@@ -25,6 +25,7 @@ function App() {
     },
   });
   const [confirmUpload, setConfirmUpload] = React.useState(false);
+  const [uploadProgress, setUploadProgress] = React.useState(0);
   const [scrollElement, setScrollElement] = React.useState("");
 
   return (
@@ -32,9 +33,9 @@ function App() {
       <Navbar scrollElement={scrollElement} scrollTo={setScrollElement} />
       <Routes>
         <Route path="/" element={<Home scrollElement={scrollElement} />} />
-        <Route path="upload" element={<UploadPicForm togglePopup={setConfirmUpload} />} />
+        <Route path="upload" element={<UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />} />
       </Routes>
-      {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} />}
+      {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} />}
     </ThemeProvider>
   );
 }

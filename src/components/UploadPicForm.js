@@ -6,7 +6,7 @@ import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 
 const UploadPic = (props) => {
-  const { togglePopup } = props;
+  const { togglePopup, setUploadProgress } = props;
   // The specified scope will allow	the user to "View and manage Google Drive files and folders that you have opened or created with this app".
   const SCOPE = "https://www.googleapis.com/auth/drive.file";
   // Retrieves the API discovery document for version 3 of the Google Drive API.
@@ -162,7 +162,7 @@ const UploadPic = (props) => {
             uploadResumable.upload.onprogress = (event) => {
               // event.loaded = how many bytes are uploaded
               // event.total = total number of bytes -> only available if server sends `Content-Length` header
-              console.log(`Uploaded ${event.loaded} of ${event.total} bytes`);
+              setUploadProgress(Math.round((event.loaded / event.total) * 100));
             };
             uploadResumable.onreadystatechange = () => {
               if (uploadResumable.readyState === XMLHttpRequest.DONE && uploadResumable.status === 200) {
