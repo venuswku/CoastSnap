@@ -1,13 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AppBar, Toolbar, CssBaseline, Typography } from "@mui/material";
+import { AppBar, Toolbar, CssBaseline, Typography, Box, IconButton, Menu, MenuItem } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const useStyles = makeStyles((theme) => ({
-  // navlinks: {
-  //   marginLeft: theme.spacing(10),
-  //   display: "flex",
-  // },
   logo: {
     flexGrow: "1",
     cursor: "pointer",
@@ -37,6 +34,15 @@ const Navbar = (props) => {
   const { scrollElement, scrollTo } = props;
   const classes = useStyles();
   const location = useLocation();
+  const menuPages = ["Upload", "About", "Locations"];
+  // Initialize anchor and handlers for opening and closing mobile navigation menu.
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const handleOpenMobileNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleCloseMobileNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   // Checks if the current URL path matches the given path.
   const atPath = (path) => {
@@ -78,11 +84,53 @@ const Navbar = (props) => {
         <Typography variant="h4" className={classes.logo} onClick={() => changeScrollElement("")}>
           <Link to="/" className={classes.whiteLink}>CoastSnap</Link>
         </Typography>
-        <div className={classes.navlinks}>
+        <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <Link to="/upload" className={classes.link + " " + (atPath("/upload") ? classes.active : "")}>Upload</Link>
           <Link to="/" className={classes.link} onClick={() => changeScrollElement("about")}>About</Link>
           <Link to="/" className={classes.link} onClick={() => changeScrollElement("locations")}>Locations</Link>
-        </div>
+        </Box>
+        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <IconButton
+            size="large"
+            aria-label="mobile-navlinks"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenMobileNavMenu}
+            style={{ color: "white" }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseMobileNavMenu}
+            sx={{
+              display: { xs: "block", md: "none" },
+            }}
+          >
+            {menuPages.map((page) => (
+              <Link
+                to={"/" + (page === "Upload" ? "upload" : "")}
+                onClick={() => changeScrollElement(page.toLowerCase())}
+                key={page} style={{ textDecoration: "none", color: "black" }}
+              >
+                <MenuItem onClick={handleCloseMobileNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              </Link>
+            ))}
+          </Menu>
+        </Box>
       </Toolbar>
     </AppBar>
   );
