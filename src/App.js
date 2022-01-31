@@ -28,17 +28,28 @@ function App() {
   const [confirmUpload, setConfirmUpload] = React.useState(false);
   const [uploadProgress, setUploadProgress] = React.useState(0);
   const [scrollElement, setScrollElement] = React.useState("");
-  // NOTE: Add more locations here!
-  const scLocations = ["Natural Bridges Site 1", "Natural Bridges Site 2"];
+  // NOTE: Add more location info here!
+  const scLocationInfo = [
+    {
+      name: "Natural Bridges Site 1",
+      description: "Description for Natural Bridges Site 1...",
+      timelapseVids: ["https://youtu.be/eeafBFo4oIQ"],
+    },
+    {
+      name: "Natural Bridges Site 2",
+      description: "Different description for Natural Bridges Site 2...",
+      timelapseVids: [],
+    },
+  ];
 
   return (
     <ThemeProvider theme={theme}>
       <Navbar scrollElement={scrollElement} scrollTo={setScrollElement} />
       <Routes>
-        <Route path="/" element={<Home scLocations={scLocations} scrollElement={scrollElement} />} />
-        <Route path="/CoastSnap" element={<Home scLocations={scLocations} scrollElement={scrollElement} />} />
-        <Route path="/upload" element={<UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} scLocations={scLocations} />} />
-        <Route path="/:location" element={<LocationInfo />}></Route>
+        <Route path="/" element={<Home scLocations={scLocationInfo} scrollElement={scrollElement} />} />
+        <Route path="/CoastSnap" element={<Home scLocations={scLocationInfo} scrollElement={scrollElement} />} />
+        <Route path="/upload" element={<UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} scLocations={scLocationInfo.map(loc => loc.name)} />} />
+        <Route path="/:location" element={<LocationInfo scLocations={scLocationInfo} />}></Route>
       </Routes>
       {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} />}
     </ThemeProvider>

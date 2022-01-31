@@ -7,21 +7,21 @@ const LocationCard = (props) => {
   const { location } = props;
 
   return (
-    <Link to={"/" + location} key={location} style={{textDecoration: "none"}}>
+    <Link to={"/" + location.name} key={location.name} style={{textDecoration: "none"}}>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <CardMedia
             component="img"
             height="140"
             image={LocImg}
-            alt={location}
+            alt={location.name}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {location}
+              {location.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              This site is located near ...
+              {location.description}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -53,7 +53,7 @@ const Home = (props) => {
         </a>
         <h1 ref={locationsRef}>Santa Cruz Locations</h1>
         <Stack direction="row" spacing={3}>
-          {scLocations.map((loc) => <LocationCard location={loc} key={loc} />)}
+          {scLocations.map((loc) => <LocationCard location={loc} key={loc.name} />)}
         </Stack>
         <h1>Santa Cruz Team</h1>
         <h1>Connect with us!</h1>
