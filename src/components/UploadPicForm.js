@@ -23,7 +23,8 @@ const UploadPic = (props) => {
   const [name, setName] = React.useState("");
   const [nameError, setNameError] = React.useState(false);
   // NOTE: Edit/add more devices here!
-  const devices = ["Apple iPhone 13", "Google Pixel 6", "Apple iPhone 13 Pro", "Apple iPhone 13 Pro Max", "Apple iPhone 13 Mini", "Samsung Galaxy Note 20 Ultra", "Samsung Galaxy Z Flip 3", "Google Pixel 5A", "Samsung Galaxy Z Fold 3", "Samsung Galaxy S20 Ultra", "Galaxy S8", "Samsung Galaxy Note 10 Plus", "Galaxy Note 9", "Galaxy S10 Plus", "Galaxy S7 Edge", "Apple iPad Air", "Apple iPad Mini", "Not Listed"];
+  const deviceNotListed = "Not Listed (please enter your device in the following input box)";
+  const devices = ["Apple iPhone 13", "Google Pixel 6", "Apple iPhone 13 Pro", "Apple iPhone 13 Pro Max", "Apple iPhone 13 Mini", "Samsung Galaxy Note 20 Ultra", "Samsung Galaxy Z Flip 3", "Google Pixel 5A", "Samsung Galaxy Z Fold 3", "Samsung Galaxy S20 Ultra", "Galaxy S8", "Samsung Galaxy Note 10 Plus", "Galaxy Note 9", "Galaxy S10 Plus", "Galaxy S7 Edge", "Apple iPad Air", "Apple iPad Mini", deviceNotListed];
   const [device, setDevice] = React.useState("");
   const [unlistedDevice, setUnlistedDevice] = React.useState("");
   const [deviceError, setDeviceError] = React.useState(false);
@@ -105,7 +106,7 @@ const UploadPic = (props) => {
       setNameError(true);
       canSubmit = false;
     }
-    if (device.length === 0 || (device === "Not Listed" && unlistedDevice.length === 0)) {
+    if (device.length === 0 || (device === deviceNotListed && unlistedDevice.length === 0)) {
       setDeviceError(true);
       canSubmit = false;
     }
@@ -115,84 +116,101 @@ const UploadPic = (props) => {
       setDisableSubmitButton(true);
       togglePopup(true);
 
-      // Save photo info.
-      const user = window.gapi.auth2.getAuthInstance().currentUser.get();
-      const oauthToken = user.getAuthResponse().access_token;
-      const deviceName = (device === "Not Listed") ? unlistedDevice : device;
-      const contentType = image.type;
-      const additionalComments = comments.trim();
-      let description = "Last Modified Date: " + image.lastModifiedDate;
-      if (additionalComments.length > 0) {
-        description += "; Comments: " + additionalComments;
-      }
-      const fileName =
-        location.replaceAll(" ", "") + "_" +
-        dateTime.toDateString().replaceAll(" ", ".") + "_" +
-        dateTime.toTimeString().replaceAll(" ", "").replaceAll(":", ".").replaceAll("-", "") + "_" +
-        deviceName.replaceAll(" ", "") + "_" +
-        name.trim().replaceAll(" ", ".") +
-        image.name.substring(image.name.lastIndexOf("."));
-      // Properties allowed in metadata: https://developers.google.com/drive/api/v3/reference/files/create
-      const metadata = {
-        name: fileName,
-        mimeType: contentType,
-        description: description,
-        // parents = IDs of Google Drive folders that you want to save images to.
-        parents: ["1oG_oqE2KM03Zze9nXmwxi8fOU5-50E_U"],
-      };
+      // 1. Get OAuth access token: https://developers.google.com/identity/protocols/oauth2/web-server#offline
+      let oauthToken = "";
+      const accessTokenReq = new XMLHttpRequest();
+      accessTokenReq.open("POST", "https://oauth2.googleapis.com/token", true);
+      accessTokenReq.setRequestHeader("Content-Type", "application/json");
+      accessTokenReq.onreadystatechange = () => {
+        if (accessTokenReq.readyState === XMLHttpRequest.DONE && accessTokenReq.status === 200) {
+          const response = JSON.parse(accessTokenReq.response);
+          // console.log(response);
+          oauthToken = response.access_token;
 
-      // 1. Initiate resumable upload session.
-      const initResumable = new XMLHttpRequest();
-      initResumable.open("POST", "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable", true);
-      initResumable.setRequestHeader("Authorization", "Bearer " + oauthToken);
-      initResumable.setRequestHeader("Content-Type", "application/json");
-      initResumable.setRequestHeader("X-Upload-Content-Length", image.size);
-      initResumable.setRequestHeader("X-Upload-Content-Type", contentType);
-      initResumable.onreadystatechange = () => {
-        if (initResumable.readyState === XMLHttpRequest.DONE && initResumable.status === 200) {
-          const locationUrl = initResumable.getResponseHeader("Location");
-          const reader = new FileReader();
-          reader.readAsArrayBuffer(image);
-          reader.onload = (e) => {
-            // 2. Upload the image file after the it finished reading/loading.
-            const uploadResumable = new XMLHttpRequest();
-            uploadResumable.open("PUT", locationUrl, true);
-            uploadResumable.setRequestHeader("Content-Type", contentType);
-            uploadResumable.setRequestHeader("X-Upload-Content-Type", contentType);
-            uploadResumable.upload.onprogress = (event) => {
-              // event.loaded = how many bytes are uploaded
-              // event.total = total number of bytes -> only available if server sends `Content-Length` header
-              setUploadProgress(Math.round((event.loaded / event.total) * 100));
-            };
-            uploadResumable.onreadystatechange = () => {
-              if (uploadResumable.readyState === XMLHttpRequest.DONE && uploadResumable.status === 200) {
-                // console.log(uploadResumable.response);
-                // Clear form.
-                setImage(null);
-                setImageURL(null);
-                setLocation("");
-                setLocationError(false);
-                setDateTime(new Date());
-                setDateError(false);
-                setTimeError(false);
-                setName("");
-                setNameError(false);
-                setDevice("");
-                setUnlistedDevice("");
-                setDeviceError(false);
-                setComments("");
-                setDisableSubmitButton(false);
-              }
-            };
-            uploadResumable.send(reader.result);
+          // Save photo info.
+          const deviceName = (device === deviceNotListed) ? unlistedDevice : device;
+          const contentType = image.type;
+          const additionalComments = comments.trim();
+          let description = "Last Modified Date: " + image.lastModifiedDate;
+          if (additionalComments.length > 0) {
+            description += "; Comments: " + additionalComments;
+          }
+          const fileName =
+            location.replaceAll(" ", "") + "_" +
+            dateTime.toDateString().replaceAll(" ", ".") + "_" +
+            dateTime.toTimeString().replaceAll(" ", "").replaceAll(":", ".").replaceAll("-", "") + "_" +
+            deviceName.replaceAll(" ", "") + "_" +
+            name.trim().replaceAll(" ", ".") +
+            image.name.substring(image.name.lastIndexOf("."));
+          // Properties allowed in metadata: https://developers.google.com/drive/api/v3/reference/files/create
+          const metadata = {
+            name: fileName,
+            mimeType: contentType,
+            description: description,
+            // parents = IDs of Google Drive folders that you want to save images to.
+            parents: ["1oG_oqE2KM03Zze9nXmwxi8fOU5-50E_U"],
           };
+    
+          // 2. Initiate resumable upload session.
+          const initResumable = new XMLHttpRequest();
+          initResumable.open("POST", "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable", true);
+          initResumable.setRequestHeader("Authorization", "Bearer " + oauthToken);
+          initResumable.setRequestHeader("Content-Type", "application/json");
+          initResumable.setRequestHeader("X-Upload-Content-Length", image.size);
+          initResumable.setRequestHeader("X-Upload-Content-Type", contentType);
+          initResumable.onreadystatechange = () => {
+            if (initResumable.readyState === XMLHttpRequest.DONE && initResumable.status === 200) {
+              const locationUrl = initResumable.getResponseHeader("Location");
+              const reader = new FileReader();
+              reader.readAsArrayBuffer(image);
+              reader.onload = (e) => {
+                // 3. Upload the image file after the it finished reading/loading.
+                const uploadResumable = new XMLHttpRequest();
+                uploadResumable.open("PUT", locationUrl, true);
+                uploadResumable.setRequestHeader("Content-Type", contentType);
+                uploadResumable.setRequestHeader("X-Upload-Content-Type", contentType);
+                uploadResumable.upload.onprogress = (event) => {
+                  // event.loaded = how many bytes are uploaded
+                  // event.total = total number of bytes -> only available if server sends `Content-Length` header
+                  setUploadProgress(Math.round((event.loaded / event.total) * 100));
+                };
+                uploadResumable.onreadystatechange = () => {
+                  if (uploadResumable.readyState === XMLHttpRequest.DONE && uploadResumable.status === 200) {
+                    // console.log(uploadResumable.response);
+                    // 4. Clear form.
+                    setImage(null);
+                    setImageURL(null);
+                    setLocation("");
+                    setLocationError(false);
+                    setDateTime(new Date());
+                    setDateError(false);
+                    setTimeError(false);
+                    setName("");
+                    setNameError(false);
+                    setDevice("");
+                    setUnlistedDevice("");
+                    setDeviceError(false);
+                    setComments("");
+                    setDisableSubmitButton(false);
+                  }
+                };
+                uploadResumable.send(reader.result);
+              };
+            }
+          };
+          initResumable.send(JSON.stringify(metadata));
         }
       };
-      initResumable.send(JSON.stringify(metadata));
+      accessTokenReq.send(JSON.stringify({
+        "client_id": process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_ID,
+        "client_secret": process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_SECRET,
+        "refresh_token": process.env.REACT_APP_GOOGLE_DRIVE_REFRESH_TOKEN,
+        "grant_type": "refresh_token",
+      }));
     }
   };
 
-  // When the form renders, run a script to load the Google API client
+  // When the form renders, run a script to load the Google API client library
   // since there's no Google Drive API package that can be imported.
   useEffect(() => {
     const script = document.createElement('script');
@@ -287,7 +305,7 @@ const UploadPic = (props) => {
           >
             {devices.map((dev, i) => <MenuItem value={dev} key={i}>{dev}</MenuItem>)}
           </Select>
-          {device === "Not Listed" &&
+          {device === deviceNotListed &&
             <TextField
               id="device-input"
               label="If your device isn't listed above, please enter the name of your device here:"
