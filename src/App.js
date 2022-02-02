@@ -1,8 +1,8 @@
 import './App.css';
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { blue, lightBlue } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { blue, lightBlue } from "@mui/material/colors";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import UploadPicForm from "./components/UploadPicForm";
@@ -38,7 +38,7 @@ function App() {
     {
       name: "Natural Bridges Site 2",
       description: "Different description for Natural Bridges Site 2...",
-      timelapseVids: [],
+      timelapseVids: ["https://youtu.be/wbPSyLjDp1k"],
     },
   ];
 

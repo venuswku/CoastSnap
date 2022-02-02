@@ -16,7 +16,10 @@
 }
 
 #uploadedImg {
-  width: 100%;
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 /* Add top margin to each form field (children of parent/form element), except for the first one. */

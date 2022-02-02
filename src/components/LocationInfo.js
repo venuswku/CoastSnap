@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Stack } from "@mui/material";
@@ -7,6 +7,10 @@ const LocationInfo = (props) => {
   const { location } = useParams();
   const { scLocations } = props;
   const info = scLocations.filter(loc => loc.name === location)[0];
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, []);
 
   return (
     <div className="centeredContent">

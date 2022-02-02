@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AppBar, Toolbar, CssBaseline, Typography, Box, IconButton, Menu, MenuItem } from "@mui/material";
+import { AppBar, Toolbar, CssBaseline, Typography, Box, IconButton, Menu, MenuItem, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { styled } from "@mui/material/styles";
+import { yellow } from "@mui/material/colors";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +29,16 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     textDecoration: "none",
     borderBottom: "1px solid white",
+  },
+}));
+
+const UploadButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(yellow[500]),
+  backgroundColor: yellow[500],
+  fontSize: "large",
+  borderRadius: "20px",
+  "&:hover": {
+    backgroundColor: yellow[700],
   },
 }));
 
@@ -84,8 +96,11 @@ const Navbar = (props) => {
         <Typography variant="h4" className={classes.logo} onClick={() => changeScrollElement("")}>
           <Link to="/" className={classes.whiteLink}>CoastSnap</Link>
         </Typography>
-        <Box sx={{ display: { xs: "none", md: "flex" } }}>
-          <Link to="/upload" className={classes.link + " " + (atPath("/upload") ? classes.active : "")}>Upload</Link>
+        <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
+          {/* <Link to="/upload" className={classes.link + " " + (atPath("/upload") ? classes.active : "")}>Upload</Link> */}
+          <Link to="/upload" className="button">
+            <UploadButton variant="contained">Upload Your Photo</UploadButton>
+          </Link>
           <Link to="/" className={classes.link} onClick={() => changeScrollElement("about")}>About</Link>
           <Link to="/" className={classes.link} onClick={() => changeScrollElement("locations")}>Locations</Link>
         </Box>

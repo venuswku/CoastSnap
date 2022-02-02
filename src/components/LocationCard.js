@@ -8,7 +8,7 @@ const LocationCard = (props) => {
 
   return (
     <Link to={"/" + location.name} key={location.name} style={{textDecoration: "none"}}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card>
         <CardActionArea>
           <CardMedia
             component="img"

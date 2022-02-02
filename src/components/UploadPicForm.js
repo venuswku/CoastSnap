@@ -245,7 +245,7 @@ const UploadPic = (props) => {
         </Button>
         {photoError && <FormHelperText style={{textAlign: "center"}}>Please add a photo.</FormHelperText>}
       </FormControl>
-      {/* Show preview of uploaded image(s). */}
+      {/* Show preview of uploaded image. */}
       {image && imageURL && <img src={imageURL} alt={image.name} id="uploadedImg" />}
       <FormControl fullWidth id="form">
         <FormControl error={locationError ? true : false} style={locationError ? {marginBottom: "0px"} : {}}>
