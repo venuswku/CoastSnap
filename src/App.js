@@ -33,12 +33,12 @@ function App() {
     {
       name: "Natural Bridges Site 1",
       description: "Description for Natural Bridges Site 1...",
-      timelapseVids: ["https://youtu.be/eeafBFo4oIQ"],
+      timelapseVids: ["https://youtu.be/akhXr-6nG5g"],
     },
     {
       name: "Natural Bridges Site 2",
       description: "Different description for Natural Bridges Site 2...",
-      timelapseVids: ["https://youtu.be/wbPSyLjDp1k"],
+      timelapseVids: ["https://youtu.be/godDAPrjYwY"],
     },
   ];
 

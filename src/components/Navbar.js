@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UploadButton = styled(Button)(({ theme }) => ({
+export const UploadButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(yellow[500]),
   backgroundColor: yellow[500],
   fontSize: "large",

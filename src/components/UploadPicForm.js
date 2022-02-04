@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { FormControl, FormHelperText, Button, InputLabel, Select, MenuItem, TextField } from "@mui/material";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { isValid, parseJSON } from "date-fns";
@@ -7,6 +8,7 @@ import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 
 const UploadPic = (props) => {
   const { scLocations, togglePopup, setUploadProgress } = props;
+  const { search } = useLocation();
   // The specified scope will allow	the user to "View and manage Google Drive files and folders that you have opened or created with this app".
   const SCOPE = "https://www.googleapis.com/auth/drive.file";
   // Retrieves the API discovery document for version 3 of the Google Drive API.
@@ -148,7 +150,7 @@ const UploadPic = (props) => {
             mimeType: contentType,
             description: description,
             // parents = IDs of Google Drive folders that you want to save images to.
-            parents: ["1oG_oqE2KM03Zze9nXmwxi8fOU5-50E_U"],
+            parents: [process.env.REACT_APP_GOOGLE_DRIVE_FOLDER_ID],
           };
     
           // 2. Initiate resumable upload session.
@@ -210,14 +212,21 @@ const UploadPic = (props) => {
     }
   };
 
-  // When the form renders, run a script to load the Google API client library
-  // since there's no Google Drive API package that can be imported.
   useEffect(() => {
+    // When the form renders, run a script to load the Google API client library
+    // since there's no Google Drive API package that can be imported.
     const script = document.createElement('script');
     script.onload = handleClientLoad;
     script.src = "https://apis.google.com/js/api.js";
     document.body.appendChild(script);
-  }, []);
+
+    // Preset location if location route parameter exists (for visitors that scanned QR code).
+    const queryParams = new URLSearchParams(search);
+    const qrCodeLocation = queryParams.get("location");
+    if (qrCodeLocation) {
+      setLocation(qrCodeLocation);
+    }
+  }, [search]);
 
   const handleClientLoad = () => {
     // Documentation for gapi's client library: https://github.com/google/google-api-javascript-client/blob/master/docs/reference.md
