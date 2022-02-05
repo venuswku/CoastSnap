@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.e91a04a9.css",
-    "main.js": "/CoastSnap/static/js/main.e8d9c56a.js",
+    "main.css": "/CoastSnap/static/css/main.e6949592.css",
+    "main.js": "/CoastSnap/static/js/main.ae418f70.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
     "static/media/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.jpeg": "/CoastSnap/static/media/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.ffebff9a7b068d63f40c.jpeg",
     "index.html": "/CoastSnap/index.html",
-    "main.e91a04a9.css.map": "/CoastSnap/static/css/main.e91a04a9.css.map",
-    "main.e8d9c56a.js.map": "/CoastSnap/static/js/main.e8d9c56a.js.map",
+    "main.e6949592.css.map": "/CoastSnap/static/css/main.e6949592.css.map",
+    "main.ae418f70.js.map": "/CoastSnap/static/js/main.ae418f70.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e91a04a9.css",
-    "static/js/main.e8d9c56a.js"
+    "static/css/main.e6949592.css",
+    "static/js/main.ae418f70.js"
   ]
 }
