@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Stack } from "@mui/material";
 import { UploadButton } from "./Navbar";
+// Using Google Maps API in React App: https://developers.google.com/maps/documentation/javascript/react-map
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 const LocationInfo = (props) => {
   const { location } = useParams();

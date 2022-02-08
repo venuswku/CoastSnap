@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^2.11.0",
+    "@googlemaps/react-wrapper": "^1.1.23",
     "@mui/icons-material": "^5.2.5",
     "@mui/lab": "^5.0.0-alpha.64",
     "@mui/material": "^5.2.8",
