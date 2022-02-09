@@ -204,8 +204,8 @@ const UploadPic = (props) => {
         }
       };
       accessTokenReq.send(JSON.stringify({
-        "client_id": process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_ID,
-        "client_secret": process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_SECRET,
+        "client_id": process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        "client_secret": process.env.REACT_APP_GOOGLE_CLIENT_SECRET,
         "refresh_token": process.env.REACT_APP_GOOGLE_DRIVE_REFRESH_TOKEN,
         "grant_type": "refresh_token",
       }));
@@ -215,7 +215,7 @@ const UploadPic = (props) => {
   useEffect(() => {
     // When the form renders, run a script to load the Google API client library
     // since there's no Google Drive API package that can be imported.
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.onload = handleClientLoad;
     script.src = "https://apis.google.com/js/api.js";
     document.body.appendChild(script);
@@ -233,8 +233,8 @@ const UploadPic = (props) => {
     window.gapi.load("client:auth2", () => {
       try {
         window.gapi.client.init({
-          "apiKey": process.env.REACT_APP_GOOGLE_DRIVE_API_KEY,
-          "clientId": process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_ID,
+          "apiKey": process.env.REACT_APP_GOOGLE_API_KEY,
+          "clientId": process.env.REACT_APP_GOOGLE_CLIENT_ID,
           "scope": SCOPE,
           "discoveryDocs": [DISCOVERY_DOC]
         });

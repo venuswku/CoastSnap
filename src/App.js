@@ -34,11 +34,15 @@ function App() {
       name: "Natural Bridges Site 1",
       description: "Description for Natural Bridges Site 1...",
       timelapseVids: ["https://youtu.be/akhXr-6nG5g"],
+      latitude: 36.949501,
+      longitude: -122.056702,
     },
     {
       name: "Natural Bridges Site 2",
       description: "Different description for Natural Bridges Site 2...",
       timelapseVids: ["https://youtu.be/godDAPrjYwY"],
+      // latitude: 36.949501,
+      // longitude: -122.056702,
     },
   ];
 

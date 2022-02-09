@@ -3,16 +3,33 @@ import { useParams, Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Stack } from "@mui/material";
 import { UploadButton } from "./Navbar";
-// Using Google Maps API in React App: https://developers.google.com/maps/documentation/javascript/react-map
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+// Using Google Maps API: https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-javascript
 
 const LocationInfo = (props) => {
   const { location } = useParams();
   const { scLocations } = props;
-  const info = scLocations.filter(loc => loc.name === location)[0];
+  let info = scLocations.filter(loc => loc.name === location)[0];
+
+  const initMap = () => {
+    const coordinates = { lat: info.latitude, lng: info.longitude };
+    const map = new window.google.maps.Map(document.getElementById("map"), {
+      center: coordinates,
+      zoom: 16,
+    });
+    new window.google.maps.Marker({
+      position: coordinates,
+      map: map,
+    });
+  };
 
   useEffect(() => {
     window.scrollTo(0,0);
+    // Browser renders page while the API loads & executes initMap() once the Google Maps API finishes loading.
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
+    script.async = true;
+    script.onload = initMap;
+    document.body.appendChild(script);
   }, []);
 
   return (
@@ -34,6 +51,7 @@ const LocationInfo = (props) => {
       </Stack>
       <h2>How We Chose This Location</h2>
       <h2>Map</h2>
+      <div id="map"></div>
     </div>
   );
 };
