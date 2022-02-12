@@ -8,29 +8,22 @@ import { UploadButton } from "./Navbar";
 const LocationInfo = (props) => {
   const { location } = useParams();
   const { scLocations } = props;
-  let info = scLocations.filter(loc => loc.name === location)[0];
-
-  const initMap = () => {
-    const coordinates = { lat: info.latitude, lng: info.longitude };
-    const map = new window.google.maps.Map(document.getElementById("map"), {
-      center: coordinates,
-      zoom: 16,
-    });
-    new window.google.maps.Marker({
-      position: coordinates,
-      map: map,
-    });
-  };
-
+  const info = scLocations.filter(loc => loc.name === location)[0];
+  
   useEffect(() => {
     window.scrollTo(0,0);
-    // Browser renders page while the API loads & executes initMap() once the Google Maps API finishes loading.
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
-    script.async = true;
-    script.onload = initMap;
-    document.body.appendChild(script);
-  }, []);
+    // Load map for location using Leaflet and Mapbox: https://leafletjs.com/examples/quick-start/
+    const map = window.L.map("map").setView([info.latitude, info.longitude], 17);
+    window.L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+      attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
+      maxZoom: 23,
+      id: "mapbox/satellite-streets-v11",
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
+    }).addTo(map);
+    window.L.marker([info.latitude, info.longitude]).addTo(map);
+  }, [info]);
 
   return (
     <div className="centeredContent">
