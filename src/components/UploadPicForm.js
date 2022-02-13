@@ -5,9 +5,11 @@ import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { isValid, parseJSON } from "date-fns";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
+const scLocationInfo = require("../data/locations.json");
+const devicesInfo = require("../data/devices.json");
 
 const UploadPic = (props) => {
-  const { scLocations, togglePopup, setUploadProgress } = props;
+  const { togglePopup, setUploadProgress } = props;
   const { search } = useLocation();
   // The specified scope will allow	the user to "View and manage Google Drive files and folders that you have opened or created with this app".
   const SCOPE = "https://www.googleapis.com/auth/drive.file";
@@ -17,6 +19,7 @@ const UploadPic = (props) => {
   const [image, setImage] = React.useState(null);
   const [imageURL, setImageURL] = React.useState(null);
   const [photoError, setPhotoError] = React.useState(false);
+  const scLocations = scLocationInfo.map(loc => loc.name);
   const [location, setLocation] = React.useState("");
   const [locationError, setLocationError] = React.useState(false);
   const [dateTime, setDateTime] = React.useState(new Date());
@@ -24,9 +27,8 @@ const UploadPic = (props) => {
   const [timeError, setTimeError] = React.useState(false);
   const [name, setName] = React.useState("");
   const [nameError, setNameError] = React.useState(false);
-  // NOTE: Edit/add more devices here!
-  const deviceNotListed = "Not Listed (please enter your device in the following input box)";
-  const devices = ["Apple iPhone 13", "Google Pixel 6", "Apple iPhone 13 Pro", "Apple iPhone 13 Pro Max", "Apple iPhone 13 Mini", "Samsung Galaxy Note 20 Ultra", "Samsung Galaxy Z Flip 3", "Google Pixel 5A", "Samsung Galaxy Z Fold 3", "Samsung Galaxy S20 Ultra", "Galaxy S8", "Samsung Galaxy Note 10 Plus", "Galaxy Note 9", "Galaxy S10 Plus", "Galaxy S7 Edge", "Apple iPad Air", "Apple iPad Mini", deviceNotListed];
+  const allDevices = devicesInfo.devices;
+  const deviceNotListedOption = devicesInfo.deviceNotListed;
   const [device, setDevice] = React.useState("");
   const [unlistedDevice, setUnlistedDevice] = React.useState("");
   const [deviceError, setDeviceError] = React.useState(false);
@@ -108,7 +110,7 @@ const UploadPic = (props) => {
       setNameError(true);
       canSubmit = false;
     }
-    if (device.length === 0 || (device === deviceNotListed && unlistedDevice.length === 0)) {
+    if (device.length === 0 || (device === deviceNotListedOption && unlistedDevice.length === 0)) {
       setDeviceError(true);
       canSubmit = false;
     }
@@ -130,7 +132,7 @@ const UploadPic = (props) => {
           oauthToken = response.access_token;
 
           // Save photo info.
-          const deviceName = (device === deviceNotListed) ? unlistedDevice : device;
+          const deviceName = (device === deviceNotListedOption) ? unlistedDevice : device;
           const contentType = image.type;
           const additionalComments = comments.trim();
           let description = "Last Modified Date: " + image.lastModifiedDate;
@@ -312,9 +314,10 @@ const UploadPic = (props) => {
             onChange={(event) => onSelectChange(event.target.value, "device")}
             style={{ textAlign: "left" }}
           >
-            {devices.map((dev, i) => <MenuItem value={dev} key={i}>{dev}</MenuItem>)}
+            {allDevices.map((dev, i) => <MenuItem value={dev} key={i}>{dev}</MenuItem>)}
+            <MenuItem value={deviceNotListedOption}>{deviceNotListedOption}</MenuItem>
           </Select>
-          {device === deviceNotListed &&
+          {device === deviceNotListedOption &&
             <TextField
               id="device-input"
               label="If your device isn't listed above, please enter the name of your device here:"

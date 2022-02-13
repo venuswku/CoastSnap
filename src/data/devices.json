@@ -1,0 +1,22 @@
+{
+  "devices": [
+    "Apple iPhone 13",
+    "Google Pixel 6",
+    "Apple iPhone 13 Pro",
+    "Apple iPhone 13 Pro Max",
+    "Apple iPhone 13 Mini",
+    "Samsung Galaxy Note 20 Ultra",
+    "Samsung Galaxy Z Flip 3",
+    "Google Pixel 5A",
+    "Samsung Galaxy Z Fold 3",
+    "Samsung Galaxy S20 Ultra",
+    "Galaxy S8",
+    "Samsung Galaxy Note 10 Plus",
+    "Galaxy Note 9",
+    "Galaxy S10 Plus",
+    "Galaxy S7 Edge",
+    "Apple iPad Air",
+    "Apple iPad Mini"
+  ],
+  "deviceNotListed": "Not Listed (please enter your device in the following input box)"
+}

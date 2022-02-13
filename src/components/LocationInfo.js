@@ -3,12 +3,11 @@ import { useParams, Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Stack } from "@mui/material";
 import { UploadButton } from "./Navbar";
-// Using Google Maps API: https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-javascript
+const scLocationInfo = require("../data/locations.json");
 
-const LocationInfo = (props) => {
+const LocationInfo = () => {
   const { location } = useParams();
-  const { scLocations } = props;
-  const info = scLocations.filter(loc => loc.name === location)[0];
+  const info = scLocationInfo.filter(loc => loc.name === location)[0];
   
   useEffect(() => {
     window.scrollTo(0,0);

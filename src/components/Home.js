@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { Button, Stack, Grid } from "@mui/material";
 import BackgroundImg from "../images/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.jpeg";
 import LocationCard from "../components/LocationCard";
+const scLocationInfo = require("../data/locations.json");
 
 const Home = (props) => {
-  const { scLocations, scrollElement } = props;
+  const { scrollElement } = props;
   const aboutRef = React.useRef(null);
   const locationsRef = React.useRef(null);
 
@@ -53,7 +54,7 @@ const Home = (props) => {
         <Stack direction="row">
           <Grid container spacing={4}>
             {/* For smaller viewports, the component fills all 12 available columns. For viewports with a width of 600 or more pixels, the component will fill up 4/12 columns. */}
-            {scLocations.map((loc) => <Grid item xs={12} md={4} key={loc.name}><LocationCard location={loc} /></Grid>)}
+            {scLocationInfo.map((loc) => <Grid item xs={12} md={4} key={loc.name}><LocationCard location={loc} /></Grid>)}
           </Grid>
         </Stack>
         <h1>Team Members</h1>
