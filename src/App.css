@@ -15,6 +15,46 @@
   object-fit: cover;
 }
 
+/* Center slideshow and make content flowing outside the element's box invisible. */
+.slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  height: 85vh;
+}
+.slideImage {
+  width: 100%;
+  /* Height should match height of slideshow class. */
+  height: 85%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+.slideImage.active {
+  opacity: 1;
+}
+.slideshowDots {
+  position: absolute;
+  z-index: 1;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.slideshowDot {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 7px 0px;
+  background-color: #ffffffcc;
+}
+.slideshowDot.active {
+  background-color: #2196f3;
+}
+
 #uploadedImg {
   width: 70%;
   display: block;

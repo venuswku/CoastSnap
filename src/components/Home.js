@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Stack, Grid } from "@mui/material";
-import BackgroundImg from "../images/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.jpeg";
+// import BackgroundImg from "../images/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.jpeg";
+import Slideshow from "../components/Slideshow";
 import LocationCard from "../components/LocationCard";
 const scLocationInfo = require("../data/locations.json");
 
@@ -32,7 +33,8 @@ const Home = (props) => {
 
   return (
     <div>
-      <img className="backgroundImage" src={BackgroundImg} alt={"Natural Bridges Site 1"}/>
+      <Slideshow />
+      {/* <img className="backgroundImage" src={BackgroundImg} alt={"Natural Bridges Site 1"}/> */}
       <div className="leftAlignedContent">
         <p>global citizen science project to capture our changing coastlines</p>
         <Stack direction="row" justifyContent="center" spacing={2}>
