@@ -12,18 +12,7 @@ const LocationInfo = () => {
   
   useEffect(() => {
     window.scrollTo(0,0);
-    // Load map for location using Leaflet and Mapbox: https://leafletjs.com/examples/quick-start/
-    const map = window.L.map("map").setView([info.latitude, info.longitude], 17);
-    window.L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-      attribution: "Map data &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
-      maxZoom: 23,
-      id: "mapbox/satellite-streets-v11",
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
-    }).addTo(map);
-    window.L.marker([info.latitude, info.longitude]).addTo(map);
-  }, [info]);
+  }, []);
 
   return (
     <div className="centeredContent">
@@ -47,7 +36,6 @@ const LocationInfo = () => {
         {info.reasonsForChosingLocation.map((reason, i) => <li key={i}>{reason}</li>)}
       </ul>
       <h2>Map</h2>
-      <div id="map"></div>
       <iframe src={info.mapEmbedLink} width="100%" height="500px" style={{border:0, marginBottom:"10px"}} allowFullScreen="" loading="lazy" title="map"></iframe>
       <a href={info.googleMapsLink} target="_blank" rel="noopener noreferrer" className="button">
         <Button variant="contained">View on Google Maps</Button>
