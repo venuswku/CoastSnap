@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardActionArea, CardMedia, CardContent, Typography } from "@mui/material";
-import LocImg from "../images/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.jpeg";
 
 const LocationCard = (props) => {
   const { location } = props;
+  const image = require(`../images/${location.image}`);
 
   return (
     <Link to={"/" + location.name} key={location.name} style={{textDecoration: "none"}}>
@@ -13,7 +13,7 @@ const LocationCard = (props) => {
           <CardMedia
             component="img"
             height="140"
-            image={LocImg}
+            image={image}
             alt={location.name}
           />
           <CardContent>

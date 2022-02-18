@@ -1,5 +1,6 @@
 import React from "react";
 
+// Import all images from the slideshow directory.
 const importAll = (r) => {
   return r.keys().map(item => r(item));
 };
