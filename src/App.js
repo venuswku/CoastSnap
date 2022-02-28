@@ -31,10 +31,10 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar scrollElement={scrollElement} scrollTo={setScrollElement} />
+      <Navbar scrollTo={setScrollElement} />
       <Routes>
-        <Route path="/" element={<Home scrollElement={scrollElement} />} />
-        <Route path="/CoastSnap" element={<Home scrollElement={scrollElement} />} />
+        <Route path="/" element={<Home scrollElement={scrollElement} setScrollElement={setScrollElement} />} />
+        <Route path="/CoastSnap" element={<Home scrollElement={scrollElement} setScrollElement={setScrollElement} />} />
         <Route path="/upload" element={<UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />} />
         <Route path="/:location" element={<LocationInfo />}></Route>
       </Routes>

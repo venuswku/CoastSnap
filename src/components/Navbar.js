@@ -43,7 +43,7 @@ export const UploadButton = styled(Button)(({ theme }) => ({
 }));
 
 const Navbar = (props) => {
-  const { scrollElement, scrollTo } = props;
+  const { scrollTo } = props;
   const classes = useStyles();
   const location = useLocation();
   const menuPages = ["Upload", "About", "Locations"];
@@ -66,27 +66,7 @@ const Navbar = (props) => {
   };
   // Changes the element that the user scrolls to.
   const changeScrollElement = (ele) => {
-    const currentScrollEle = scrollElement.toLowerCase();
-    if (ele === currentScrollEle) {
-      switch (scrollElement) {
-        case "about":
-          scrollTo("ABOUT");
-          break;
-        case "ABOUT":
-          scrollTo("about");
-          break;
-        case "locations":
-          scrollTo("LOCATIONS");
-          break;
-        case "LOCATIONS":
-          scrollTo("locations");
-          break;
-        default:
-          break;
-      }
-    } else {
-      scrollTo(ele);
-    }
+    scrollTo(ele);
   };
 
   return (
