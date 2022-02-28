@@ -38,7 +38,7 @@
 .slideshowDots {
   position: absolute;
   z-index: 1;
-  top: 80%;
+  top: 78%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -53,6 +53,12 @@
 }
 .slideshowDot.active {
   background-color: #2196f3;
+}
+
+.locationImage {
+  width: 40%;
+  margin: auto auto 20px;
+  display: block;
 }
 
 #uploadedImg {

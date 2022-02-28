@@ -12,7 +12,7 @@ const LocationCard = (props) => {
         <CardActionArea>
           <CardMedia
             component="img"
-            height="140"
+            height="200"
             image={image}
             alt={location.name}
           />
@@ -20,9 +20,9 @@ const LocationCard = (props) => {
             <Typography gutterBottom variant="h5" component="div">
               {location.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            {/* <Typography variant="body2" color="text.secondary">
               {location.description}
-            </Typography>
+            </Typography> */}
           </CardContent>
         </CardActionArea>
       </Card>
