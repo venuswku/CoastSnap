@@ -1,3 +1,16 @@
+* {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.1rem;
+}
+h1 {
+  color: #090D3A;
+  font-size: xx-large;
+}
+h2 {
+  color: #090D3A;
+  font-size: x-large;
+}
+
 .centeredContent {
   text-align: center;
   padding: 0px 5% 5%;
@@ -5,14 +18,6 @@
 .leftAlignedContent {
   text-align: left;
   padding: 0px 5% 5%;
-}
-
-.backgroundImage {
-  /* filter: blur(1px);
-  -webkit-filter: blur(1px); */
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
 }
 
 /* Center slideshow and make content flowing outside the element's box invisible. */
@@ -53,6 +58,17 @@
 }
 .slideshowDot.active {
   background-color: #2196f3;
+}
+
+.coastsnapCatchphrase {
+  position: absolute;
+  z-index: 2;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  font-size: x-large;
 }
 
 .locationImage {

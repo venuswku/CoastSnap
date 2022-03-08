@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   whiteLink: {
     textDecoration: "none",
     color: "white",
+    fontSize: "xx-large",
   },
   link: {
     textDecoration: "none",

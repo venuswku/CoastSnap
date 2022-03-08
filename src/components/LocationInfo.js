@@ -33,14 +33,20 @@ const LocationInfo = () => {
       >
         {info.timelapseVids.map(vid => <ReactPlayer url={vid} width="80%" key={vid} />)}
       </Stack>
-      <h2>How We Chose This Location</h2>
+      <h2>Reasons for Chosing This Location</h2>
       {info.reasonsForChosingLocation.map((reason, i) => <p key={i}>{reason}</p>)}
-      <h2>Map</h2>
       {/* Map embed link is found when you click on "Share" then "Embed a map" on Google Maps. */}
-      <iframe src={info.mapEmbedLink} width="80%" height="500px" style={{border:0, margin:"auto auto 10px", display:"block"}} allowFullScreen="" loading="lazy" title="map"></iframe>
-      <a href={info.googleMapsLink} target="_blank" rel="noopener noreferrer" className="button">
-        <Button variant="contained">View on Google Maps</Button>
-      </a>
+      {info.mapEmbedLink &&
+        <div>
+          <h2>Map</h2>
+          <iframe src={info.mapEmbedLink} width="80%" height="500px" style={{border:0, margin:"auto auto 10px", display:"block"}} allowFullScreen="" loading="lazy" title="map"></iframe>
+          {info.googleMapsLink &&
+            <a href={info.googleMapsLink} target="_blank" rel="noopener noreferrer" className="button">
+              <Button variant="contained">View on Google Maps</Button>
+            </a>
+          }
+        </div>
+      }
     </div>
   );
 };

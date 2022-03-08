@@ -20,6 +20,12 @@ function App() {
       },
     },
     typography: {
+      // Font styling for MUI components.
+      fontFamily: [
+        "Fredoka",
+        "sans-serif",
+      ].join(','),
+      // fontSize: "1.2rem",
       button: {
         textTransform: "none",
       }
@@ -38,7 +44,7 @@ function App() {
         <Route path="/upload" element={<UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />} />
         <Route path="/:location" element={<LocationInfo />}></Route>
       </Routes>
-      {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} />}
+      {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} setUploadProgress={setUploadProgress} scrollTo={setScrollElement} />}
     </ThemeProvider>
   );
 }

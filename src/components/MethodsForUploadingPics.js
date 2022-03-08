@@ -8,8 +8,8 @@ const MethodsForUploadingPics = () => {
     <div>
       <h2 style={{ textAlign: "center" }}>Two Methods to Upload a Photo</h2>
       <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 1, md: 4 }} alignItems="center" justifyContent="center">
-        <Grid xs={12} md={4}>
-          <Card sx={{ textAlign: "center" }}>
+        <Grid item xs={12} md={4}>
+          <Card sx={{ textAlign: "center", backgroundColor: "#c9e9f7" }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Use this Website
@@ -18,14 +18,14 @@ const MethodsForUploadingPics = () => {
                 Fill out our form with your name, device and location, then submit your photo!
               </Typography>
               <Link to="/upload" className="button">
-                <UploadButton variant="contained">Upload</UploadButton>
+                <UploadButton variant="contained">Upload Now!</UploadButton>
               </Link>
             </CardContent>
           </Card>
         </Grid>
         <Typography variant="h7" component="div">OR</Typography>
-        <Grid xs={12} md={4}>
-          <Card sx={{ textAlign: "center" }}>
+        <Grid item xs={12} md={4}>
+          <Card sx={{ textAlign: "center", backgroundColor: "#c9e9f7" }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Download the App
