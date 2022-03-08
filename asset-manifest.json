@@ -1,16 +1,22 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.e6949592.css",
-    "main.js": "/CoastSnap/static/js/main.ae418f70.js",
+    "main.css": "/CoastSnap/static/css/main.d51e6c5b.css",
+    "main.js": "/CoastSnap/static/js/main.4072d119.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
-    "static/media/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.jpeg": "/CoastSnap/static/media/NaturalBridgesSite1_Dec.04.2021_11_39_iphone7.ffebff9a7b068d63f40c.jpeg",
+    "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
+    "static/media/NB2_21_01_27_16_45_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB2_21_01_27_16_45_Iphone11_IB.d5088f7294580bd9242c.jpeg",
+    "static/media/2.jpg": "/CoastSnap/static/media/2.c4a75721aa4d805d25a8.jpg",
+    "static/media/4.jpg": "/CoastSnap/static/media/4.2d873c565b56e1e8da08.jpg",
+    "static/media/1.jpg": "/CoastSnap/static/media/1.c3c1d62f2ef0c20a3f5b.jpg",
+    "static/media/5.jpg": "/CoastSnap/static/media/5.9f8ae4fb8bab22f4b1d3.jpg",
+    "static/media/3.jpg": "/CoastSnap/static/media/3.1b0cc96a2067ed1e3ad4.jpg",
     "index.html": "/CoastSnap/index.html",
-    "main.e6949592.css.map": "/CoastSnap/static/css/main.e6949592.css.map",
-    "main.ae418f70.js.map": "/CoastSnap/static/js/main.ae418f70.js.map",
+    "main.d51e6c5b.css.map": "/CoastSnap/static/css/main.d51e6c5b.css.map",
+    "main.4072d119.js.map": "/CoastSnap/static/js/main.4072d119.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6949592.css",
-    "static/js/main.ae418f70.js"
+    "static/css/main.d51e6c5b.css",
+    "static/js/main.4072d119.js"
   ]
 }
