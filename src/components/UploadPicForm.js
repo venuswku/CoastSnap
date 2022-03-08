@@ -119,51 +119,56 @@ const UploadPic = (props) => {
     if (canSubmit) {
       setDisableSubmitButton(true);
       togglePopup(true);
-
-      // 1. Get OAuth access token: https://developers.google.com/identity/protocols/oauth2/web-server#offline
-      let oauthToken = "";
-      const accessTokenReq = new XMLHttpRequest();
-      accessTokenReq.open("POST", "https://oauth2.googleapis.com/token", true);
-      accessTokenReq.setRequestHeader("Content-Type", "application/json");
-      accessTokenReq.onreadystatechange = () => {
-        if (accessTokenReq.readyState === XMLHttpRequest.DONE && accessTokenReq.status === 200) {
-          const response = JSON.parse(accessTokenReq.response);
-          // console.log(response);
-          oauthToken = response.access_token;
-
-          // Save photo info.
-          const deviceName = (device === deviceNotListedOption) ? unlistedDevice : device;
-          const contentType = image.type;
-          const additionalComments = comments.trim();
-          let description = "Last Modified Date: " + image.lastModifiedDate;
-          if (additionalComments.length > 0) {
-            description += "; Comments: " + additionalComments;
-          }
-          const fileName =
-            location.replaceAll(" ", "") + "_" +
-            dateTime.toDateString().replaceAll(" ", ".") + "_" +
-            dateTime.toTimeString().replaceAll(" ", "").replaceAll(":", ".").replaceAll("-", "") + "_" +
-            deviceName.replaceAll(" ", "") + "_" +
-            name.trim().replaceAll(" ", ".") +
-            image.name.substring(image.name.lastIndexOf("."));
-          // Properties allowed in metadata: https://developers.google.com/drive/api/v3/reference/files/create
-          const metadata = {
-            name: fileName,
-            mimeType: contentType,
-            description: description,
-            // parents = IDs of Google Drive folders that you want to save images to.
-            parents: [process.env.REACT_APP_GOOGLE_DRIVE_FOLDER_ID],
-          };
-    
-          // 2. Initiate resumable upload session.
-          const initResumable = new XMLHttpRequest();
-          initResumable.open("POST", "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable", true);
-          initResumable.setRequestHeader("Authorization", "Bearer " + oauthToken);
-          initResumable.setRequestHeader("Content-Type", "application/json");
-          initResumable.setRequestHeader("X-Upload-Content-Length", image.size);
-          initResumable.setRequestHeader("X-Upload-Content-Type", contentType);
-          initResumable.onreadystatechange = () => {
-            if (initResumable.readyState === XMLHttpRequest.DONE && initResumable.status === 200) {
+      uploadPic();
+    }
+  };
+  
+  const uploadPic = () => {
+    // 1. Get OAuth access token: https://developers.google.com/identity/protocols/oauth2/web-server#offline
+    let oauthToken = "";
+    const accessTokenReq = new XMLHttpRequest();
+    accessTokenReq.open("POST", "https://oauth2.googleapis.com/token", true);
+    accessTokenReq.setRequestHeader("Content-Type", "application/json");
+    accessTokenReq.onreadystatechange = () => {
+      if (accessTokenReq.readyState === XMLHttpRequest.DONE && accessTokenReq.status === 200) {
+        const response = JSON.parse(accessTokenReq.response);
+        // console.log(response);
+        oauthToken = response.access_token;
+  
+        // Save photo info.
+        const deviceName = (device === deviceNotListedOption) ? unlistedDevice : device;
+        const contentType = image.type;
+        const additionalComments = comments.trim();
+        let description = "Last Modified Date: " + image.lastModifiedDate;
+        if (additionalComments.length > 0) {
+          description += "; Comments: " + additionalComments;
+        }
+        const fileName =
+          location.replaceAll(" ", "") + "_" +
+          dateTime.toDateString().replaceAll(" ", ".") + "_" +
+          dateTime.toTimeString().replaceAll(" ", "").replaceAll(":", ".").replaceAll("-", "") + "_" +
+          deviceName.replaceAll(" ", "") + "_" +
+          name.trim().replaceAll(" ", ".") +
+          image.name.substring(image.name.lastIndexOf("."));
+        // Properties allowed in metadata: https://developers.google.com/drive/api/v3/reference/files/create
+        const metadata = {
+          name: fileName,
+          mimeType: contentType,
+          description: description,
+          // parents = IDs of Google Drive folders that you want to save images to.
+          parents: [process.env.REACT_APP_GOOGLE_DRIVE_FOLDER_ID],
+        };
+  
+        // 2. Initiate resumable upload session.
+        const initResumable = new XMLHttpRequest();
+        initResumable.open("POST", "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable", true);
+        initResumable.setRequestHeader("Authorization", "Bearer " + oauthToken);
+        initResumable.setRequestHeader("Content-Type", "application/json");
+        initResumable.setRequestHeader("X-Upload-Content-Length", image.size);
+        initResumable.setRequestHeader("X-Upload-Content-Type", contentType);
+        initResumable.onreadystatechange = () => {
+          if (initResumable.readyState === XMLHttpRequest.DONE) {
+            if (initResumable.status === 200) {
               const locationUrl = initResumable.getResponseHeader("Location");
               const reader = new FileReader();
               reader.readAsArrayBuffer(image);
@@ -179,39 +184,47 @@ const UploadPic = (props) => {
                   setUploadProgress(Math.round((event.loaded / event.total) * 100));
                 };
                 uploadResumable.onreadystatechange = () => {
-                  if (uploadResumable.readyState === XMLHttpRequest.DONE && uploadResumable.status === 200) {
-                    // console.log(uploadResumable.response);
-                    // 4. Clear form.
-                    setImage(null);
-                    setImageURL(null);
-                    setLocation("");
-                    setLocationError(false);
-                    setDateTime(new Date());
-                    setDateError(false);
-                    setTimeError(false);
-                    setName("");
-                    setNameError(false);
-                    setDevice("");
-                    setUnlistedDevice("");
-                    setDeviceError(false);
-                    setComments("");
-                    setDisableSubmitButton(false);
+                  if (uploadResumable.readyState === XMLHttpRequest.DONE) {
+                    if (uploadResumable.status === 200 || uploadResumable.status === 201) {
+                      // console.log(uploadResumable.response);
+                      // 4. Clear form.
+                      setImage(null);
+                      setImageURL(null);
+                      setLocation("");
+                      setLocationError(false);
+                      setDateTime(new Date());
+                      setDateError(false);
+                      setTimeError(false);
+                      setName("");
+                      setNameError(false);
+                      setDevice("");
+                      setUnlistedDevice("");
+                      setDeviceError(false);
+                      setComments("");
+                      setDisableSubmitButton(false);
+                    } else {
+                      // Restart the upload picture for other 3XX, 4XX, or 5XX status codes.
+                      uploadPic();
+                    }
                   }
                 };
                 uploadResumable.send(reader.result);
               };
+            } else {
+              // Tell user to upload using the CoastSnap app if upload request can't be initialized.
+              setUploadProgress(-1);
             }
-          };
-          initResumable.send(JSON.stringify(metadata));
-        }
-      };
-      accessTokenReq.send(JSON.stringify({
-        "client_id": process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        "client_secret": process.env.REACT_APP_GOOGLE_CLIENT_SECRET,
-        "refresh_token": process.env.REACT_APP_GOOGLE_DRIVE_REFRESH_TOKEN,
-        "grant_type": "refresh_token",
-      }));
-    }
+          }
+        };
+        initResumable.send(JSON.stringify(metadata));
+      }
+    };
+    accessTokenReq.send(JSON.stringify({
+      "client_id": process.env.REACT_APP_GOOGLE_CLIENT_ID,
+      "client_secret": process.env.REACT_APP_GOOGLE_CLIENT_SECRET,
+      "refresh_token": process.env.REACT_APP_GOOGLE_DRIVE_REFRESH_TOKEN,
+      "grant_type": "refresh_token",
+    }));
   };
 
   useEffect(() => {
