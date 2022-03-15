@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Stack, Button } from "@mui/material";
 import { UploadButton } from "./Navbar";
+import MapRoundedIcon from "@mui/icons-material/MapRounded";
 
 const scLocationInfo = require("../data/locations.json");
 
@@ -42,7 +43,7 @@ const LocationInfo = () => {
           <iframe src={info.mapEmbedLink} width="80%" height="500px" style={{border:0, margin:"auto auto 10px", display:"block"}} allowFullScreen="" loading="lazy" title="map"></iframe>
           {info.googleMapsLink &&
             <a href={info.googleMapsLink} target="_blank" rel="noopener noreferrer" className="button">
-              <Button variant="contained">View on Google Maps</Button>
+              <Button variant="contained" endIcon={<MapRoundedIcon />}>View on Google Maps</Button>
             </a>
           }
         </div>

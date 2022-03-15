@@ -56,6 +56,9 @@ h2 {
   margin: 15px 7px 0px;
   background-color: #ffffffcc;
 }
+.slideshowDot:hover {
+  background-color: white;
+}
 .slideshowDot.active {
   background-color: #2196f3;
 }
