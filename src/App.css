@@ -99,3 +99,21 @@ h2 {
   color: white;
   text-decoration: none;
 }
+
+.timelapseVideos {
+  display: flex;
+  justify-content: center;
+}
+.timelapseContainer {
+  position: relative;
+  padding-top: 56.25%;  /* 16:9 aspect ratio */
+  overflow: hidden;
+  width: 100%;
+}
+.timelapseContainer iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

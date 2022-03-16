@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import ReactPlayer from "react-player";
-import { Stack, Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { UploadButton } from "./Navbar";
 import MapRoundedIcon from "@mui/icons-material/MapRounded";
+import LocationDirections from "./LocationDirections";
 
 const scLocationInfo = require("../data/locations.json");
 
@@ -26,14 +26,15 @@ const LocationInfo = () => {
         <UploadButton variant="contained">Upload Photo for {location}</UploadButton>
       </Link>
       <h2>Time Lapses</h2>
-      <Stack
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        spacing={1}
-      >
-        {info.timelapseVids.map(vid => <ReactPlayer url={vid} width="80%" key={vid} />)}
-      </Stack>
+      <div className="timelapseVideos">
+        {info.timelapseVids.map((vid, i) =>
+          <Grid item xs={12} md={6} key={vid}>
+            <div className="timelapseContainer">
+              <iframe src={vid} title={"Timelapse Video " + (i+1)} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            </div>
+          </Grid>
+        )}
+      </div>
       <h2>Reasons for Chosing This Location</h2>
       {info.reasonsForChosingLocation.map((reason, i) => <p key={i}>{reason}</p>)}
       {/* Map embed link is found when you click on "Share" then "Embed a map" on Google Maps. */}
@@ -48,6 +49,8 @@ const LocationInfo = () => {
           }
         </div>
       }
+      <h2>Directions</h2>
+      <LocationDirections loc={location} />
     </div>
   );
 };

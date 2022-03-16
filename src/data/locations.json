@@ -3,7 +3,7 @@
     "name": "Natural Bridges Site 1",
     "description": "Description for Natural Bridges Site 1...",
     "image": "NB1_21_01_27_16_48_Iphone11_IB.jpeg",
-    "timelapseVids": ["https://youtu.be/akhXr-6nG5g"],
+    "timelapseVids": ["https://www.youtube.com/embed/akhXr-6nG5g"],
     "reasonsForChosingLocation": [
       "Good exposure",
       "Solid reliable ground points",
@@ -19,7 +19,7 @@
     "name": "Natural Bridges Site 2",
     "description": "Different description for Natural Bridges Site 2...",
     "image": "NB2_21_01_27_16_45_Iphone11_IB.jpeg",
-    "timelapseVids": ["https://youtu.be/godDAPrjYwY"],
+    "timelapseVids": ["https://www.youtube.com/embed/godDAPrjYwY"],
     "reasonsForChosingLocation": [
       "More variability per picture",
       "Often backlight",
