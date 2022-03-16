@@ -11,6 +11,7 @@ const LocationInfo = () => {
   const { location } = useParams();
   const info = scLocationInfo.filter(loc => loc.name === location)[0];
   const image = require(`../images/${info.image}`);
+  const examplePicRef = React.useRef(null);
   
   useEffect(() => {
     window.scrollTo(0,0);
@@ -18,7 +19,7 @@ const LocationInfo = () => {
 
   return (
     <div className="centeredContent">
-      <h1>{location}</h1>
+      <h1 ref={examplePicRef}>{location}</h1>
       <img className="locationImage" src={image} alt={location}/>
       {/* <h2>Description</h2>
       <p>{info.description}</p> */}
@@ -41,16 +42,19 @@ const LocationInfo = () => {
       {info.mapEmbedLink &&
         <div>
           <h2>Map</h2>
-          <iframe src={info.mapEmbedLink} width="80%" height="500px" style={{border:0, margin:"auto auto 10px", display:"block"}} allowFullScreen="" loading="lazy" title="map"></iframe>
+          <Grid item xs={12} md={8} sx={{margin:"auto"}}>
+            <iframe src={info.mapEmbedLink} width="100%" height="500px" style={{border:0, marginBottom:"10px"}} allowFullScreen="" loading="lazy" title="map"></iframe>
+          </Grid>
           {info.googleMapsLink &&
             <a href={info.googleMapsLink} target="_blank" rel="noopener noreferrer" className="button">
-              <Button variant="contained" endIcon={<MapRoundedIcon />}>View on Google Maps</Button>
+              <Button variant="contained" endIcon={<MapRoundedIcon />}>View in Google Maps</Button>
             </a>
           }
         </div>
       }
       <h2>Directions</h2>
       <LocationDirections loc={location} />
+      <Button variant="contained" onClick={() => window.scrollTo(0,0)}>See Example Image</Button>
     </div>
   );
 };

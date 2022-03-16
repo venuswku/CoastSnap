@@ -117,3 +117,8 @@ h2 {
   top: 0;
   left: 0;
 }
+
+.directionImage {
+  max-height: 400px;
+  overflow: hidden;
+}
