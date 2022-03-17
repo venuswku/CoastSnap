@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Button, Grid } from "@mui/material";
+import { useTheme, useMediaQuery, Button, Grid } from "@mui/material";
 import { UploadButton } from "./Navbar";
 import MapRoundedIcon from "@mui/icons-material/MapRounded";
 import LocationDirections from "./LocationDirections";
+import EnlargeImagePopup from "./EnlargeImagePopup";
 
 const scLocationInfo = require("../data/locations.json");
 
@@ -11,16 +12,30 @@ const LocationInfo = () => {
   const { location } = useParams();
   const info = scLocationInfo.filter(loc => loc.name === location)[0];
   const image = require(`../images/${info.image}`);
-  const examplePicRef = React.useRef(null);
+  const theme = useTheme();
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [enlargedImg, setEnlargedImg] = React.useState(null);
+  const [enlargedImgDescription, setEnlargedImgDescription] = React.useState(null);
   
   useEffect(() => {
     window.scrollTo(0,0);
   }, []);
 
+  // Opens popup that displays the enlarged image.
+  const handleEnlarge = (img, desc) => {
+    setEnlargedImg(img);
+    setEnlargedImgDescription(desc)
+  };
+  // Closes popup that displays the enlarged image.
+  const handleClose = () => {
+    setEnlargedImg(null);
+    setEnlargedImgDescription(null);
+  };
+
   return (
     <div className="centeredContent">
-      <h1 ref={examplePicRef}>{location}</h1>
-      <img className="locationImage" src={image} alt={location}/>
+      <h1>{location}</h1>
+      <img className="locationImage" src={image} alt={location} width={mobile ? "100%" : "40%"} onClick={() => handleEnlarge(image, location)} />
       {/* <h2>Description</h2>
       <p>{info.description}</p> */}
       <Link to={"/upload?location=" + location} className="button">
@@ -53,8 +68,10 @@ const LocationInfo = () => {
         </div>
       }
       <h2>Directions</h2>
-      <LocationDirections loc={location} />
-      <Button variant="contained" onClick={() => window.scrollTo(0,0)}>See Example Image</Button>
+      <LocationDirections loc={location} enlarge={handleEnlarge} />
+      <Button variant="contained" onClick={() => handleEnlarge(image, location + " Example Image")}>See Example Image</Button>
+      {/* Popup for displaying enlarged images. */}
+      {enlargedImg && <EnlargeImagePopup img={enlargedImg} description={enlargedImgDescription} close={handleClose} />}
     </div>
   );
 };

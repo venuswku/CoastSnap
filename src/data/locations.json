@@ -7,7 +7,7 @@
     "reasonsForChosingLocation": [
       "Good exposure",
       "Solid reliable ground points",
-      "Interesting to look at on a reel",
+      "Interesting to look at on an image reel / time lapse",
       "Very car accessible"
     ],
     "googleMapsLink": "https://goo.gl/maps/rzwiDPqygU3G2vQz8",
@@ -22,8 +22,8 @@
     "timelapseVids": ["https://www.youtube.com/embed/godDAPrjYwY"],
     "reasonsForChosingLocation": [
       "More variability per picture",
-      "Often backlight",
-      "More accessible to wheelchair users + those with difficulties walking",
+      "Frequent backlight",
+      "More accessible to wheelchair users and those with difficulties walking",
       "Probably less vulnerable to weather conditions or potential landslides"
     ]
   }

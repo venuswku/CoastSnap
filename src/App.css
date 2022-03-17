@@ -11,6 +11,11 @@ h2 {
   font-size: x-large;
 }
 
+.darkBlueBackground {
+  background-color: #212957;
+  color: white;
+}
+
 .centeredContent {
   text-align: center;
   padding: 0px 5% 5%;
@@ -66,7 +71,7 @@ h2 {
 .coastsnapCatchphrase {
   position: absolute;
   z-index: 2;
-  top: 10%;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -75,9 +80,9 @@ h2 {
 }
 
 .locationImage {
-  width: 40%;
   margin: auto auto 20px;
   display: block;
+  cursor: pointer;
 }
 
 #uploadedImg {
@@ -121,4 +126,5 @@ h2 {
 .directionImage {
   max-height: 400px;
   overflow: hidden;
+  cursor: pointer;
 }

@@ -26,12 +26,13 @@ const UploadConfirmationPopup = (props) => {
           open={open}
           onClose={() => handleClose("upload")}
           aria-labelledby="confirmation-dialog"
+          aria-describedby="confirmation-dialog-description"
         >
           <DialogTitle id="confirmation-dialog">
             Upload Unsuccessful
           </DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText id="confirmation-dialog-description">
               {"Sorry for the inconvenience, our website currently can't process your upload. Please upload your photo through the CoastSnap app instead. Thank you for understanding!"}
             </DialogContentText>
           </DialogContent>
@@ -50,12 +51,13 @@ const UploadConfirmationPopup = (props) => {
             open={open}
             onClose={() => handleClose("upload")}
             aria-labelledby="confirmation-dialog"
+            aria-describedby="confirmation-dialog-description"
           >
             <DialogTitle id="confirmation-dialog">
               Upload Successful
             </DialogTitle>
             <DialogContent>
-              <DialogContentText>
+              <DialogContentText id="confirmation-dialog-description">
                 {"Your photo has been successfully uploaded! Thank you for participating in CoastSnap's mission to capture changing coastlines."}
               </DialogContentText>
             </DialogContent>
@@ -72,11 +74,12 @@ const UploadConfirmationPopup = (props) => {
             fullScreen={mobile}
             open={open}
             aria-labelledby="confirmation-dialog"
+            aria-describedby="confirmation-dialog-description"
           >
             <DialogTitle id="confirmation-dialog">
               Uploading Photo...
             </DialogTitle>
-            <DialogContent className="centeredContent">
+            <DialogContent className="centeredContent" id="confirmation-dialog-description">
               <CircularProgress variant="determinate" value={progress} />
               <DialogContentText>{progress}% Complete</DialogContentText>
             </DialogContent>
