@@ -169,6 +169,26 @@ export default ComponentName;
     - Make sure to import any used images at the top of `LocationDirection.js`.
       - Example: `import NB1Lookout1 from "../images/NB1Pic1.jpg";`
 
+## Get a Local Copy of Repository to Modify Website
+1. Open a terminal and navigate to a place where you want to store the CoastSnap repository.
+2. Run in the terminal: `git clone https://github.com/venuswku/CoastSnap.git`.
+3. Email vwku@ucsc.edu or venuswku@gmail.com to get the `.env` file, which contains the environment variables needed to access the Google Drive API. Save the `.env` file at the root of the repository (i.e. same level as the `App.js` and `package.json` files).
+4. Install all package dependencies to run the website locally: `npm install`.
+5. Run the website in development mode with `npm start`. Use `ctrl + C` or `cmd + C` to stop it from running.
+
+Once the repository is copied to your local device, you just need to repeat step 5 to see your changes.
+
+## Save Your Website Changes
+1. Run `git add .` to stage or mark the files that you want to save changes for.
+  - Note: `.` stages all files that you have made a change on. You can also just replace `.` with a list of file names, separated with a space, to stage specific files (e.g. `git add Home.js LocationInfo.js`).
+2. Run `git commit -m "Commit message"` and replace `Commit message` with a brief summary of the changes you made.
+3. Run `git push` to push your changes for everyone to see on [GitHub](https://github.com/venuswku/CoastSnap).
+
+## Publish Your Website Changes
+You need to deploy the website so that anyone who visits our [CoastSnap website](https://venuswku.github.io/CoastSnap/) would see your changes.
+1. Build a production version of the website with `npm run build`.
+2. Deploy.
+
 ## Learn More
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).\
