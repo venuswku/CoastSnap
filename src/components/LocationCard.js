@@ -4,7 +4,7 @@ import { Card, CardActionArea, CardMedia, CardContent, Typography } from "@mui/m
 
 const LocationCard = (props) => {
   const { location } = props;
-  const image = require(`../images/${location.image}`);
+  const image = require(`../images/${location.name}/${location.image}`);
 
   return (
     <Link to={"/" + location.name} key={location.name} style={{textDecoration: "none"}}>

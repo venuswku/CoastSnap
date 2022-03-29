@@ -99,18 +99,24 @@ The following files make up the main content of the website:
     - `description`
     - `image`
     - `timelapseVids`: list of Youtube links to completed timelapse reels.
+      - Share > Embed > Copy the provided link in the snippet of code
+      - Example: copy the `src` value from the following code
+        ```html
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/akhXr-6nG5g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        ```
     - `reasonsForChosingLocation`
     - `googleMapsLink`: link that navigates user directly to Google Maps.
       - Share > Send a link > Copy link
       - Example: https://goo.gl/maps/wgnan6X8yECkpb4C8
     - `mapEmbedLink`: link provided by Google Maps to embed an interactive map of the location.
-      - Navigate to googleMapsLink > Share > Embed a map > Copy the provided link in the snippet of code
-      - Example: copy the `src` link from the code
+      - Share > Embed a map > Copy the provided link in the snippet of code
+      - Example: copy the `src` value from the following code
         ```html
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.525689468934!2d-122.05888308470588!3d36.94949997991806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2zMzbCsDU2JzU4LjIiTiAxMjLCsDAzJzI0LjEiVw!5e0!3m2!1sen!2sus!4v1648071468616!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         ```
 - `src/images` files: images used in the website.
   - `slideshow`: folder containing images shown in the homepage's slideshow.
+  - Make sure the name of location folders match the location's `name` property in `locations.json`.
 - `App.css`: all CSS styling used for the website.
   - `className` value of any element would be customly styled if it matched a [selector](https://www.w3schools.com/cssref/css_selectors.asp) in this file
   - examples:
@@ -136,7 +142,7 @@ export default ComponentName;
 ```
 
 ## Add New Locations
-1. Add the required location information in `locations.js`.
+1. Add the required location information in `locations.json`.
     - Example:
       ```json
       {
@@ -155,7 +161,7 @@ export default ComponentName;
       }
       ```
     - Use a comma to separate information about each location.
-2. Place images of the new location in `src/images`.
+2. Create a new folder in `src/images` and name it with the location's `name` value from `locations.json`. Then place all images for this new location in the folder.
 3. Add directions for the newly added location in `LocationDirection.js`:
     - Add the following into `LocationDirection.js`:
       ```html
@@ -167,7 +173,7 @@ export default ComponentName;
       ```
     - Replace `Location Name` with the name of the new location (must match the name in `location.json`).
     - Make sure to import any used images at the top of `LocationDirection.js`.
-      - Example: `import NB1Lookout1 from "../images/NB1Pic1.jpg";`
+      - Example: `import NB1Lookout1 from "../images/Natural Bridges Site 1/NB1Pic1.jpg";`
 
 ## Get a Local Copy of Repository to Modify Website
 1. Open a terminal and navigate to a place where you want to store the CoastSnap repository.

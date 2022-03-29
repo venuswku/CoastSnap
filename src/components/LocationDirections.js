@@ -1,15 +1,15 @@
 import React from "react";
 import { Stack } from "@mui/material";
-import NB1Lookout1 from "../images/NB1Pic1.jpg";
-import NB1Lookout2 from "../images/NB1Pic2.jpg";
-import NB1DangerSign1 from "../images/NB1Pic3.jpg";
-import NB1DangerSign2 from "../images/NB1Pic4.jpg";
-import NB1Railing1 from "../images/NB1Pic5.jpg";
-import NB1Railing2 from "../images/NB1Pic6.jpg";
-import NB2Pier from "../images/NB2Pic1.jpg";
-import NB2PierCornerSpot from "../images/NB2Pic2.jpg";
-import NB2Sharpie from "../images/NB2Pic3.jpg";
-import NB2DevicePlacement from "../images/NB2Pic4.jpg";
+import NB1Lookout1 from "../images/Natural Bridges Site 1/NB1Pic1.jpg";
+import NB1Lookout2 from "../images/Natural Bridges Site 1/NB1Pic2.jpg";
+import NB1DangerSign1 from "../images/Natural Bridges Site 1/NB1Pic3.jpg";
+import NB1DangerSign2 from "../images/Natural Bridges Site 1/NB1Pic4.jpg";
+import NB1Railing1 from "../images/Natural Bridges Site 1/NB1Pic5.jpg";
+import NB1Railing2 from "../images/Natural Bridges Site 1/NB1Pic6.jpg";
+import NB2Pier from "../images/Natural Bridges Site 2/NB2Pic1.jpg";
+import NB2PierCornerSpot from "../images/Natural Bridges Site 2/NB2Pic2.jpg";
+import NB2Sharpie from "../images/Natural Bridges Site 2/NB2Pic3.jpg";
+import NB2DevicePlacement from "../images/Natural Bridges Site 2/NB2Pic4.jpg";
 
 const LocationDirections = (props) => {
   const { loc, enlarge } = props;
