@@ -10,32 +10,41 @@ h2 {
   color: #090D3A;
   font-size: x-large;
 }
-
+a {
+  color: inherit;
+}
 .darkBlueBackground {
   background-color: #212957;
-  color: white;
+  color: #F2F4FA;
+}
+h1.darkBlueBackgroundHeading {
+  color: #F2F4FA;
+}
+.blueText {
+  color: #2196f3;
+  font-weight: bold;
 }
 
 .centeredContent {
   text-align: center;
   padding: 0px 5% 5%;
 }
-.leftAlignedContent {
-  text-align: left;
-  padding: 0px 5% 5%;
+.defaultPadding {
+  padding: 2% 5% 4%;
 }
 
 /* Center slideshow and make content flowing outside the element's box invisible. */
 .slideshow {
   margin: 0 auto;
   overflow: hidden;
-  height: 85vh;
+  height: 100vh;
 }
 .slideImage {
   width: 100%;
   /* Height should match height of slideshow class. */
-  height: 85%;
+  height: 100%;
   object-fit: cover;
+  /* Have slideshow pictures appear on top of one another, not in a column. */
   position: absolute;
   top: 0;
   left: 0;
@@ -47,8 +56,7 @@ h2 {
 }
 .slideshowDots {
   position: absolute;
-  z-index: 1;
-  top: 78%;
+  bottom: 3%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -78,6 +86,36 @@ h2 {
   color: white;
   font-size: x-large;
 }
+
+.introSection {
+  padding: 2% 5% 3%;
+}
+.introPic {
+  width: 100%;
+}
+.stickySection {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 15%; /* Where illustrations stack up on website. */
+}
+.placeholder {
+  opacity: 0;
+}
+.rightPadding {
+  padding-right: 5%;
+}
+/* .rightPadding img:nth-child(1) {
+  margin-top: -20%;
+} */
+/* .introPicsWrapper img:nth-child(2) {
+  margin-top: 10%;
+}
+.introPicsWrapper img:nth-child(3) {
+  margin-top: 105%;
+}
+.introPicsWrapper img:nth-child(4) {
+  margin-top: 201%;
+} */
 
 .locationImage {
   margin: auto auto 20px;

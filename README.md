@@ -1,4 +1,5 @@
 # Guide for Modifiying CoastSnap Website
+Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions! I'm always happy to talk with people who are interested/working on bringing CoastSnap to Santa Cruz. 😊
 ## Repository Structure
 The following files make up the main content of the website:
 - `src/components` files: reusable components of the website.
