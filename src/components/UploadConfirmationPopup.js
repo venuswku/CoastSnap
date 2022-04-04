@@ -37,7 +37,7 @@ const UploadConfirmationPopup = (props) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => {scrollTo("uploadMethods"); handleClose("");}} autoFocus>
+            <Button onClick={() => {scrollTo("upload"); handleClose("");}} autoFocus>
               Download App
             </Button>
             <Button onClick={() => handleClose("")} autoFocus>
