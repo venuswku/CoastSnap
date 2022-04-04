@@ -13,7 +13,7 @@ const LocationInfo = () => {
   const info = scLocationInfo.filter(loc => loc.name === location)[0];
   const image = require(`../images/${location}/${info.image}`);
   const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const mobile = useMediaQuery(theme.breakpoints.down("md"));
   const [enlargedImg, setEnlargedImg] = React.useState(null);
   const [enlargedImgDescription, setEnlargedImgDescription] = React.useState(null);
   

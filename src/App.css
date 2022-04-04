@@ -105,6 +105,13 @@ a {
   align-items: center;
   padding: 2% 5% 3%;
 }
+.mobileIntroSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5% 5% 3%;
+}
 .introPic {
   width: 100%;
 }

@@ -6,7 +6,7 @@ const UploadConfirmationPopup = (props) => {
   const { open, togglePopup, progress, setUploadProgress, scrollTo } = props;
   const navigate = useNavigate();
   const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const mobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleClose = (nextPath) => {
     togglePopup(false);

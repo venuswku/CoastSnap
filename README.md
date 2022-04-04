@@ -1,8 +1,27 @@
 # Guide for Modifiying CoastSnap Website
+Please document anything that you contributed here! It helps current and future contributors of this website. 
 Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions! I'm always happy to talk with people who are interested/working on bringing CoastSnap to Santa Cruz. 😊
+
+## Table of Contents
+[Repository Structure](https://github.com/venuswku/CoastSnap#repository-structure)\
+[Create New Components](https://github.com/venuswku/CoastSnap#create-new-components)\
+[Add New Locations](https://github.com/venuswku/CoastSnap#add-new-locations)\
+[Get a Local Copy of Repository to Modify Website](https://github.com/venuswku/CoastSnap#get-a-local-copy-of-repository-to-modify-website)\
+[Save Your Website Changes to GitHub](https://github.com/venuswku/CoastSnap#save-your-website-changes-to-github)\
+[Publish Your Website Changes](https://github.com/venuswku/CoastSnap#publish-your-website-changes)\
+[Learn More](https://github.com/venuswku/CoastSnap#learn-more)
+
 ## Repository Structure
 The following files make up the main content of the website:
 - `src/components` files: reusable components of the website.
+  - `CoastSnapInSantaCruz.js`: introduction section of homepage, which explains why we are bringing CoastSnap to Santa Cruz.
+      - If you want to edit the text for a subsection, make sure to edit the text in 2 places!
+        - necessary for the illustrations to stack correctly while horizontally aligning them with their corresponding subsections
+      - No required properties
+      - Example from `Home.js`:
+        ```html
+        <CoastSnapInSantaCruz />
+        ```
   - `EnlargeImagePopup.js`: enlarges a clicked image to fill up the full width of the user's device.
     - Required properties:
       - `img`: source of image to display.
@@ -116,8 +135,9 @@ The following files make up the main content of the website:
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.525689468934!2d-122.05888308470588!3d36.94949997991806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2zMzbCsDU2JzU4LjIiTiAxMjLCsDAzJzI0LjEiVw!5e0!3m2!1sen!2sus!4v1648071468616!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         ```
 - `src/images` files: images used in the website.
+  - Make sure the name of the location folders match the location's `name` property in `locations.json`.
   - `slideshow`: folder containing images shown in the homepage's slideshow.
-  - Make sure the name of location folders match the location's `name` property in `locations.json`.
+  - `CoastSnap in Santa Cruz`: folder containing illustrations for each subsection in the `CoastSnapInSantaCruz` component.
 - `App.css`: all CSS styling used for the website.
   - `className` value of any element would be customly styled if it matched a [selector](https://www.w3schools.com/cssref/css_selectors.asp) in this file
   - examples:
@@ -141,6 +161,7 @@ const ComponentName = () => {
 
 export default ComponentName;
 ```
+Replace `ComponentName` in the filename and code with a name that reflects the new component that you want to create.
 
 ## Add New Locations
 1. Add the required location information in `locations.json`.
@@ -181,11 +202,11 @@ export default ComponentName;
 2. Run in the terminal: `git clone https://github.com/venuswku/CoastSnap.git`.
 3. Email vwku@ucsc.edu or venuswku@gmail.com to get the `.env` file, which contains the environment variables needed to access the Google Drive API. Save the `.env` file at the root of the repository (i.e. same level as the `App.js` and `package.json` files).
 4. Install all package dependencies to run the website locally: `npm install`.
-5. Run the website in development mode with `npm start`. Use `ctrl + C` or `cmd + C` to stop it from running.
+5. Run the website in development mode with **`npm start`**. Use `ctrl + C` or `cmd + C` to stop it from running.
 
 Once the repository is copied to your local device, you just need to repeat step 5 to see your changes.
 
-## Save Your Website Changes
+## Save Your Website Changes to GitHub
 1. Run `git add .` to stage or mark the files that you want to save changes for.
   - Note: `.` stages all files that you have made a change on. You can also just replace `.` with a list of file names, separated with a space, to stage specific files (e.g. `git add Home.js LocationInfo.js`).
 2. Run `git commit -m "Commit message"` and replace `Commit message` with a brief summary of the changes you made.
