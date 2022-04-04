@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.dd8ae2bb.css",
-    "main.js": "/CoastSnap/static/js/main.a9bd53ab.js",
+    "main.css": "/CoastSnap/static/css/main.e936ca5d.css",
+    "main.js": "/CoastSnap/static/js/main.4d253eb8.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
     "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
     "static/media/3.jpg": "/CoastSnap/static/media/3.fc0a885cde59b528266e.jpg",
@@ -20,13 +20,21 @@
     "static/media/NB2Pic1.jpg": "/CoastSnap/static/media/NB2Pic1.1435dac71d112c067963.jpg",
     "static/media/NB1Pic1.jpg": "/CoastSnap/static/media/NB1Pic1.3aec782c14dac7146834.jpg",
     "static/media/NB1Pic6.jpg": "/CoastSnap/static/media/NB1Pic6.fc7d1dfd0d9c5fba053c.jpg",
+    "static/media/Mobile_FourthSection.svg": "/CoastSnap/static/media/Mobile_FourthSection.a5a90eb4d90c568b586e9215c4b1094d.svg",
+    "static/media/CitizenScienceEffortswithLastingImpact.svg": "/CoastSnap/static/media/CitizenScienceEffortswithLastingImpact.7c0f86e793abdd18f19cfb1deda2e7fe.svg",
+    "static/media/Mobile_ThirdSection.svg": "/CoastSnap/static/media/Mobile_ThirdSection.c33a77d2559f9aa5d1b526974db9aad4.svg",
+    "static/media/Mobile_SecondSection.svg": "/CoastSnap/static/media/Mobile_SecondSection.6d88995577fcf9d34c5273388b2bdc87.svg",
+    "static/media/VulnerableCoastalCommunitiesandMarineEcosystems.svg": "/CoastSnap/static/media/VulnerableCoastalCommunitiesandMarineEcosystems.d3e88b97754d45d640d72cbb56efb3ff.svg",
+    "static/media/Mobile_FirstSection.svg": "/CoastSnap/static/media/Mobile_FirstSection.64054f9a123f76516694410ad08b413e.svg",
+    "static/media/SantaCruz.svg": "/CoastSnap/static/media/SantaCruz.cbabe8d03c87e089fab7adc7e8e0df35.svg",
+    "static/media/BringingCoastSnaptoSantaCruz.svg": "/CoastSnap/static/media/BringingCoastSnaptoSantaCruz.2b91489016fc53342e9ed008553eaf08.svg",
     "index.html": "/CoastSnap/index.html",
-    "main.dd8ae2bb.css.map": "/CoastSnap/static/css/main.dd8ae2bb.css.map",
-    "main.a9bd53ab.js.map": "/CoastSnap/static/js/main.a9bd53ab.js.map",
+    "main.e936ca5d.css.map": "/CoastSnap/static/css/main.e936ca5d.css.map",
+    "main.4d253eb8.js.map": "/CoastSnap/static/js/main.4d253eb8.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd8ae2bb.css",
-    "static/js/main.a9bd53ab.js"
+    "static/css/main.e936ca5d.css",
+    "static/js/main.4d253eb8.js"
   ]
 }
