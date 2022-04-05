@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.e936ca5d.css",
-    "main.js": "/CoastSnap/static/js/main.4d253eb8.js",
+    "main.css": "/CoastSnap/static/css/main.c6d2270d.css",
+    "main.js": "/CoastSnap/static/js/main.28d00c6a.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
     "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
     "static/media/3.jpg": "/CoastSnap/static/media/3.fc0a885cde59b528266e.jpg",
@@ -29,12 +29,12 @@
     "static/media/SantaCruz.svg": "/CoastSnap/static/media/SantaCruz.cbabe8d03c87e089fab7adc7e8e0df35.svg",
     "static/media/BringingCoastSnaptoSantaCruz.svg": "/CoastSnap/static/media/BringingCoastSnaptoSantaCruz.2b91489016fc53342e9ed008553eaf08.svg",
     "index.html": "/CoastSnap/index.html",
-    "main.e936ca5d.css.map": "/CoastSnap/static/css/main.e936ca5d.css.map",
-    "main.4d253eb8.js.map": "/CoastSnap/static/js/main.4d253eb8.js.map",
+    "main.c6d2270d.css.map": "/CoastSnap/static/css/main.c6d2270d.css.map",
+    "main.28d00c6a.js.map": "/CoastSnap/static/js/main.28d00c6a.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e936ca5d.css",
-    "static/js/main.4d253eb8.js"
+    "static/css/main.c6d2270d.css",
+    "static/js/main.28d00c6a.js"
   ]
 }
