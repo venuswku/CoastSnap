@@ -21,11 +21,16 @@ function App() {
     },
     typography: {
       // Font styling for MUI components.
+      body1: {
+        fontFamily: [
+          "Lato",
+          "sans-serif",
+        ].join(",")
+      },
       fontFamily: [
         "Fredoka",
         "sans-serif",
-      ].join(','),
-      // fontSize: "1.2rem",
+      ].join(","),
       button: {
         textTransform: "none",
       }

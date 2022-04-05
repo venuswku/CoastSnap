@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Grid, Box } from "@mui/material";
+import { useTheme, useMediaQuery, Button, Grid } from "@mui/material";
 import Slideshow from "../components/Slideshow";
 import { UploadButton } from "./Navbar";
 import CoastSnapInSantaCruz from "./CoastSnapInSantaCruz";
@@ -9,6 +9,8 @@ const scLocationInfo = require("../data/locations.json");
 
 const Home = (props) => {
   const { scrollElement, setScrollElement } = props;
+  const theme = useTheme();
+  const mobile = useMediaQuery(theme.breakpoints.down("md"));
   const aboutRef = React.useRef(null);
   const uploadRef = React.useRef(null);
   const locationsRef = React.useRef(null);
@@ -39,15 +41,18 @@ const Home = (props) => {
   return (
     <div>
       <Slideshow />
-      <div className="coastsnapCatchphrase">
-        <h1 style={{marginBottom: 0}}>Capture Our Changing Coastlines</h1>
-        <Box sx={{ display: { xs: "flex", md: "none" }, justifyContent: "center" }}>
-          <UploadButton variant="contained" onClick={() => scrollTo(uploadRef)}>Get Involved</UploadButton>
-        </Box>
-        <Box sx={{ display: { xs: "none", md: "flex" }, flexDirection: "column", justifyContent: "center" }}>
-          <p><span className="blueText">CoastSnap</span> is a global citizen science project that aims to <span className="blueText">measure coastline change</span> while engaging people on coastal issues and impacts that climate change can have on local communities. Our mission is to assist in the development and implementation of <span className="blueText">CoastSnap in the city of Santa Cruz</span> to help monitor coastal change.</p>
-          <Button variant="contained" onClick={() => scrollTo(aboutRef)} sx={{width: "fit-content", margin: "auto"}}>Learn More</Button>
-        </Box>
+      <div className="coastsnapCatchphrase" style={mobile ? {width:"70%"}: {width:"50%"}}>
+        <h1 className="catchphraseHeading">Capture Our Changing Coastlines</h1>
+        {mobile ?
+          <div className="flexColumnCenter">
+            <p>Join us on our mission to <span className="blueText">bring CoastSnap</span>, a global citizen science project aiming to <span className="blueText">monitor coastline change</span>, to the city of <span className="blueText">Santa Cruz</span>.</p>
+            <UploadButton variant="contained" onClick={() => scrollTo(uploadRef)}>Get Involved</UploadButton>
+          </div> :
+          <div className="flexColumnCenter">
+            <p><span className="blueText">CoastSnap</span> is a global citizen science project aiming to <span className="blueText">monitor coastline change</span> while engaging people on coastal issues and the impacts of climate change. Our mission is to assist in the development and implementation of <span className="blueText">CoastSnap in the city of Santa Cruz</span>.</p>
+            <Button variant="contained" onClick={() => scrollTo(aboutRef)} sx={{width: "fit-content", margin: "auto"}}>Learn More</Button>
+          </div>
+        }
       </div>
       <div ref={aboutRef}><CoastSnapInSantaCruz /></div>
       <div ref={uploadRef} className="defaultPadding">

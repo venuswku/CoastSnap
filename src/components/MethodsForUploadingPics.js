@@ -25,7 +25,7 @@ const MethodsForUploadingPics = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Typography variant="h7" component="div">OR</Typography>
+        <Typography variant="h6" component="div">OR</Typography>
         <Grid item xs={12} md={4}>
           <Card sx={{ textAlign: "center", backgroundColor: "#c9e9f7" }}>
             <CardContent>

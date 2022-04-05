@@ -14,11 +14,13 @@ const useStyles = makeStyles((theme) => ({
   whiteLink: {
     textDecoration: "none",
     color: "white",
+    fontFamily: "Fredoka, sans-serif",
     fontSize: "xx-large",
   },
   link: {
     textDecoration: "none",
     color: "rgba(255, 255, 255, 0.8)",
+    fontFamily: "Fredoka, sans-serif",
     fontSize: "20px",
     marginLeft: theme.spacing(5),
     "&:hover": {
@@ -78,7 +80,6 @@ const Navbar = (props) => {
           <Link to="/" className={classes.whiteLink}>CoastSnap</Link>
         </Typography>
         <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
-          {/* <Link to="/upload" className={classes.link + " " + (atPath("/upload") ? classes.active : "")}>Upload</Link> */}
           <Link to="/upload" className="button">
             <UploadButton variant="contained">Upload Your Photo</UploadButton>
           </Link>
