@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.c6d2270d.css",
-    "main.js": "/CoastSnap/static/js/main.28d00c6a.js",
+    "main.css": "/CoastSnap/static/css/main.28ec59ef.css",
+    "main.js": "/CoastSnap/static/js/main.3737499c.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
     "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
     "static/media/3.jpg": "/CoastSnap/static/media/3.fc0a885cde59b528266e.jpg",
@@ -27,14 +27,18 @@
     "static/media/VulnerableCoastalCommunitiesandMarineEcosystems.svg": "/CoastSnap/static/media/VulnerableCoastalCommunitiesandMarineEcosystems.d3e88b97754d45d640d72cbb56efb3ff.svg",
     "static/media/Mobile_FirstSection.svg": "/CoastSnap/static/media/Mobile_FirstSection.64054f9a123f76516694410ad08b413e.svg",
     "static/media/SantaCruz.svg": "/CoastSnap/static/media/SantaCruz.cbabe8d03c87e089fab7adc7e8e0df35.svg",
+    "static/media/FlipFlops.svg": "/CoastSnap/static/media/FlipFlops.e94c15fb9974cef896d3fa8ec9058a03.svg",
+    "static/media/Lifebuoy.svg": "/CoastSnap/static/media/Lifebuoy.5b5eaf7a5e41d2fbbe2683f1613c563d.svg",
     "static/media/BringingCoastSnaptoSantaCruz.svg": "/CoastSnap/static/media/BringingCoastSnaptoSantaCruz.2b91489016fc53342e9ed008553eaf08.svg",
     "index.html": "/CoastSnap/index.html",
-    "main.c6d2270d.css.map": "/CoastSnap/static/css/main.c6d2270d.css.map",
-    "main.28d00c6a.js.map": "/CoastSnap/static/js/main.28d00c6a.js.map",
+    "static/media/TransparentWave.svg": "/CoastSnap/static/media/TransparentWave.c94616ead3ca005def5c541526cd100d.svg",
+    "static/media/Wave.svg": "/CoastSnap/static/media/Wave.658847f98fc3fd341b922ce05c5f696d.svg",
+    "main.28ec59ef.css.map": "/CoastSnap/static/css/main.28ec59ef.css.map",
+    "main.3737499c.js.map": "/CoastSnap/static/js/main.3737499c.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c6d2270d.css",
-    "static/js/main.28d00c6a.js"
+    "static/css/main.28ec59ef.css",
+    "static/js/main.3737499c.js"
   ]
 }
