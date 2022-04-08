@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontFamily: "Fredoka, sans-serif",
     fontSize: "xx-large",
+    fontWeight: "bold",
   },
   link: {
     textDecoration: "none",
@@ -36,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const UploadButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(yellow[500]),
-  backgroundColor: yellow[500],
+  color: theme.palette.getContrastText("#FED32F"),
+  backgroundColor: "#FED32F",
   fontSize: "large",
   borderRadius: "20px",
   "&:hover": {
@@ -49,7 +50,7 @@ const Navbar = (props) => {
   const { scrollTo } = props;
   const classes = useStyles();
   const location = useLocation();
-  const menuPages = ["Upload", "About", "Locations"];
+  const menuLinks = ["Upload", "About", "Locations"];
   // Initialize anchor and handlers for opening and closing mobile navigation menu.
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenMobileNavMenu = (event) => {
@@ -73,18 +74,21 @@ const Navbar = (props) => {
   };
 
   return (
-    <AppBar position={atPath("/") ? "absolute" : "static"} color={atPath("/") ? "transparent": "primary"} elevation={0}>
+    <AppBar position={atPath("/upload") ? "static" : "absolute"} color={atPath("/upload") ? "primary" : "transparent"} elevation={0}>
       <CssBaseline />
       <Toolbar>
         <Typography variant="h4" className={classes.logo} onClick={() => changeScrollElement("")}>
           <Link to="/" className={classes.whiteLink}>CoastSnap</Link>
         </Typography>
         <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
-          <Link to="/upload" className="button">
-            <UploadButton variant="contained">Upload Your Photo</UploadButton>
-          </Link>
-          <Link to="/" className={classes.link} onClick={() => changeScrollElement("about")}>About</Link>
-          <Link to="/" className={classes.link} onClick={() => changeScrollElement("locations")}>Locations</Link>
+          {menuLinks.map((link) => (
+            <Link className={classes.link} key={link}
+              to={"/" + (link === "Upload" ? "upload" : "")}
+              onClick={() => changeScrollElement(link.toLowerCase())}
+            >
+              {link}
+            </Link>
+          ))}
         </Box>
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <IconButton
@@ -115,14 +119,14 @@ const Navbar = (props) => {
               display: { xs: "block", md: "none" },
             }}
           >
-            {menuPages.map((page) => (
+            {menuLinks.map((link) => (
               <Link
-                to={"/" + (page === "Upload" ? "upload" : "")}
-                onClick={() => changeScrollElement(page.toLowerCase())}
-                key={page} style={{ textDecoration: "none", color: "black" }}
+                to={"/" + (link === "Upload" ? "upload" : "")}
+                onClick={() => changeScrollElement(link.toLowerCase())}
+                key={link} style={{ textDecoration: "none", color: "black" }}
               >
                 <MenuItem onClick={handleCloseMobileNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">{link}</Typography>
                 </MenuItem>
               </Link>
             ))}

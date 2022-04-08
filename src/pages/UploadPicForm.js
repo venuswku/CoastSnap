@@ -159,7 +159,7 @@ const UploadPic = (props) => {
           parents: [process.env.REACT_APP_GOOGLE_DRIVE_FOLDER_ID],
         };
   
-        // 2. Initiate resumable upload session.
+        // 2. Initiate resumable upload session (https://developers.google.com/drive/api/guides/manage-uploads#resumable).
         const initResumable = new XMLHttpRequest();
         initResumable.open("POST", "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable", true);
         initResumable.setRequestHeader("Authorization", "Bearer " + oauthToken);

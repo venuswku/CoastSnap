@@ -13,7 +13,34 @@ Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions
 
 ## Repository Structure
 The following files make up the main content of the website:
-- `src/components` files: reusable components of the website.
+- `src/pages` folder: pages of the website.
+  - `Home.js`: homepage of website, which is the first page that any user sees when visiting the website.
+    - Many examples of placing components in the homepage are found here.
+    - Required properties:
+      - `scrollElement`: element to scroll to when the homepage is loaded.
+      - `setScrollElement`: sets the new element to scroll to.
+    - Example from `App.js`:
+      ```html
+      <Home scrollElement={scrollElement} setScrollElement={setScrollElement} />
+      ```
+  - `LocationInfo.js`: page with more information about each Santa Cruz photo location.
+    - No required properties
+      - Uses the URL parameter to figure out which location to display information about
+    - Gets location information from `locations.json`
+    - Example from `App.js`:
+      ```html
+      <LocationInfo />
+      ```
+  - `UploadPicForm.js`: form that user fills out to upload their pictures through this website.
+    - User must provide an image and fill out the Location, Name, and Device fields.
+    - Required properties:
+      - `togglePopup`: function used to open and close the popup for confirming an image upload.
+      - `setUploadProgress`: function used to set the upload progress.
+    - Example from `App.js`:
+      ```html
+      <UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />
+      ```
+- `src/components` folder: reusable components of the website.
   - `CoastSnapInSantaCruz.js`: introduction section of homepage, which explains why we are bringing CoastSnap to Santa Cruz.
       - If you want to edit the text for a subsection, make sure to edit the text in 2 places!
         - necessary for the illustrations to stack correctly while horizontally aligning them with their corresponding subsections
@@ -31,15 +58,6 @@ The following files make up the main content of the website:
       ```html
       <EnlargeImagePopup img={enlargedImg} description={enlargedImgDescription} close={handleClose} />
       ```
-  - `Home.js`: homepage of website, which is the first page that any user sees when visiting the website.
-    - Many examples of placing components in the homepage are found here.
-    - Required properties:
-      - `scrollElement`: element to scroll to when the homepage is loaded.
-      - `setScrollElement`: sets the new element to scroll to.
-    - Example from `App.js`:
-      ```html
-      <Home scrollElement={scrollElement} setScrollElement={setScrollElement} />
-      ```
   - `LocationCard.js`: "card" in homepage for each location.
     - Navigates user to location's own page when clicked.
     - Required property:
@@ -55,14 +73,6 @@ The following files make up the main content of the website:
     - Example from `LocationInfo.js`:
       ```html
       <LocationDirections loc={location} enlarge={handleEnlarge} />
-      ```
-  - `LocationInfo.js`: page with more information about each Santa Cruz photo location.
-    - No required properties
-      - Uses the URL parameter to figure out which location to display information about
-    - Gets location information from `locations.json`
-    - Example from `App.js`:
-      ```html
-      <LocationInfo />
       ```
   - `MethodsForUploadingPics.js`: details the different ways to upload coastline pictures (through the CoastSnap app or this website).
     - No required properties
@@ -101,22 +111,13 @@ The following files make up the main content of the website:
       ```html
       <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} setUploadProgress={setUploadProgress} scrollTo={setScrollElement} />
       ```
-  - `UploadPicForm.js`: form that user fills out to upload their pictures through this website.
-    - User must provide an image and fill out the Location, Name, and Device fields.
-    - Required properties:
-      - `togglePopup`: function used to open and close the popup for confirming an image upload.
-      - `setUploadProgress`: function used to set the upload progress.
-    - Example from `App.js`:
-      ```html
-      <UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />
-      ```
-- `src/data` files: text used as content in the website.
+- `src/data` folder: text used as content in the website.
   - `devices.json`: options provided for the Devices field in the Upload Form.
     - `devices`: list of devices that the user might have used to take a picture of the coastline.
     - `deviceNotListed`: last option with the message to input the name of the user's device if it was not listed.
   - `locations.json`: information about each Santa Cruz location, which is displayed in their respective pages.
     - `name`
-    - `description`
+    - `description`: what makes the location special (i.e. reasons for chosing this location as a photo station).
     - `image`
     - `timelapseVids`: list of Youtube links to completed timelapse reels.
       - Share > Embed > Copy the provided link in the snippet of code
@@ -124,7 +125,6 @@ The following files make up the main content of the website:
         ```html
         <iframe width="560" height="315" src="https://www.youtube.com/embed/akhXr-6nG5g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         ```
-    - `reasonsForChosingLocation`
     - `googleMapsLink`: link that navigates user directly to Google Maps.
       - Share > Send a link > Copy link
       - Example: https://goo.gl/maps/wgnan6X8yECkpb4C8
@@ -134,10 +134,11 @@ The following files make up the main content of the website:
         ```html
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.525689468934!2d-122.05888308470588!3d36.94949997991806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2zMzbCsDU2JzU4LjIiTiAxMjLCsDAzJzI0LjEiVw!5e0!3m2!1sen!2sus!4v1648071468616!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         ```
-- `src/images` files: images used in the website.
+- `src/images` folder: images used in the website.
   - Make sure the name of the location folders match the location's `name` property in `locations.json`.
-  - `slideshow`: folder containing images shown in the homepage's slideshow.
+  - `Homepage Slideshow`: folder containing images shown in the homepage's slideshow.
   - `CoastSnap in Santa Cruz`: folder containing illustrations for each subsection in the `CoastSnapInSantaCruz` component.
+  - `Location Info`: folder containing illustrations for the `LocationInfo` pages.
 - `App.css`: all CSS styling used for the website.
   - `className` value of any element would be customly styled if it matched a [selector](https://www.w3schools.com/cssref/css_selectors.asp) in this file
   - examples:
@@ -169,15 +170,9 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
       ```json
       {
         "name": "Natural Bridges Site 1",
-        "description": "Description for Natural Bridges Site 1...",
+        "description": "This station has good exposure, solid reliable ground points, is interesting to look at on an image reel / time lapse, and very car accessible.",
         "image": "NB1_21_01_27_16_48_Iphone11_IB.jpeg",
         "timelapseVids": ["https://www.youtube.com/embed/akhXr-6nG5g"],
-        "reasonsForChosingLocation": [
-          "Good exposure",
-          "Solid reliable ground points",
-          "Interesting to look at on an image reel / time lapse",
-          "Very car accessible"
-        ],
         "googleMapsLink": "https://goo.gl/maps/rzwiDPqygU3G2vQz8",
         "mapEmbedLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.5256476102936!2d-122.05889068470603!3d36.94950097991815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2zMzbCsDU2JzU4LjIiTiAxMjLCsDAzJzI0LjEiVw!5e0!3m2!1sen!2sus!4v1645167139815!5m2!1sen!2sus"
       }

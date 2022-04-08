@@ -27,7 +27,7 @@ const CoastSnapInSantaCruz = () => {
         <div className="stickySection introSection">
           <Grid item md={6} className="placeholder">
             <h1>Santa Cruz</h1>
-            <p>Widely known for its beautiful scenery, historic landmarks, and surf culture, Santa Cruz is one of the most popular tourist attractions in California.</p>
+            <p>Widely known for its beautiful scenery, historic landmarks, and surf culture, Santa Cruz is <span className="blueText">one of the most popular tourist attractions</span> in California. Some well-known places include the Santa Cruz Beach Boardwalk, West Cliff Drive, and the Santa Cruz Wharf.</p>
           </Grid>
           <Grid item md={6} className="rightPadding">
             <img src={SantaCruz} alt="Santa Cruz Beach" className="introPic" />
@@ -75,7 +75,7 @@ const CoastSnapInSantaCruz = () => {
           {mobile && <img src={MobileFirstSection} alt="Santa Cruz Beach" className="introPic" />}
           <Grid item xs={12} md={6}>
             <h1>Santa Cruz</h1>
-            <p>Widely known for its beautiful scenery, historic landmarks, and surf culture, Santa Cruz is one of the most popular tourist attractions in California.</p>
+            <p>Widely known for its beautiful scenery, historic landmarks, and surf culture, Santa Cruz is <span className="blueText">one of the most popular tourist attractions</span> in California. Some well-known places include the Santa Cruz Beach Boardwalk, West Cliff Drive, and the Santa Cruz Wharf.</p>
           </Grid>
           {!mobile &&
             <Grid item md={6} className="placeholder rightPadding">

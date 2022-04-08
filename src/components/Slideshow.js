@@ -4,7 +4,7 @@ import React from "react";
 const importAll = (r) => {
   return r.keys().map(item => r(item));
 };
-const slideshowImages = importAll(require.context("../images/slideshow", false, /\.jpg/));
+const slideshowImages = importAll(require.context("../images/Homepage Slideshow", false, /\.jpg/));
 const delay = 5000;
 
 const Slideshow = () => {

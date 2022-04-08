@@ -11,7 +11,7 @@ const MethodsForUploadingPics = () => {
       <h2 style={{ textAlign: "center" }}>Two Methods to Upload a Photo</h2>
       <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 1, md: 4 }} alignItems="center" justifyContent="center">
         <Grid item xs={12} md={4}>
-          <Card sx={{ textAlign: "center", backgroundColor: "#c9e9f7" }}>
+          <Card sx={{ textAlign: "center", backgroundColor: "#BFDBF7" }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Use this Website
@@ -27,7 +27,7 @@ const MethodsForUploadingPics = () => {
         </Grid>
         <Typography variant="h6" component="div">OR</Typography>
         <Grid item xs={12} md={4}>
-          <Card sx={{ textAlign: "center", backgroundColor: "#c9e9f7" }}>
+          <Card sx={{ textAlign: "center", backgroundColor: "#BFDBF7" }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Download the App

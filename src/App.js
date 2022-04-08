@@ -4,10 +4,10 @@ import { Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blue, lightBlue } from "@mui/material/colors";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import UploadPicForm from "./components/UploadPicForm";
+import Home from "./pages/Home";
+import UploadPicForm from "./pages/UploadPicForm";
+import LocationInfo from "./pages/LocationInfo";
 import UploadConfirmationPopup from "./components/UploadConfirmationPopup";
-import LocationInfo from "./components/LocationInfo";
 
 function App() {
   const theme = createTheme({
@@ -21,6 +21,9 @@ function App() {
     },
     typography: {
       // Font styling for MUI components.
+      h6: {
+        color: "#090D3A",
+      },
       body1: {
         fontFamily: [
           "Lato",
@@ -34,6 +37,15 @@ function App() {
       button: {
         textTransform: "none",
       }
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: 20,
+          },
+        }, 
+      }, 
     },
   });
   const [confirmUpload, setConfirmUpload] = React.useState(false);

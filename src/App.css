@@ -1,3 +1,4 @@
+/* ---------- General Styles ---------- */
 * {
   font-family: "Lato", sans-serif;
   font-size: 1.1rem;
@@ -27,7 +28,13 @@ a {
   color: #2196f3;
   font-weight: bold;
 }
-
+.grayText {
+  color: #707070;
+  margin-top: 0;
+}
+.centerText {
+  text-align: center;
+}
 .centeredContent {
   text-align: center;
   padding: 0px 5% 5%;
@@ -39,8 +46,25 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+}
+.noBottomMargin {
+  margin-bottom: 0;
+}
+h2.noBottomMargin {
+  margin-top: 15%;
+}
+.topLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.button {
+  color: white;
+  text-decoration: none;
 }
 
+/* ---------- Homepage Styles ---------- */
 /* Center slideshow and make content flowing outside the element's box invisible. */
 .slideshow {
   margin: 0 auto;
@@ -94,7 +118,7 @@ a {
   text-align: center;
   color: #090D3A;
   font-size: x-large;
-  background-color: #ffffff94;
+  background-color: #ffffffe6;
   padding: 1% 2% 2%;
   border-radius: 20px;
   box-shadow: 0px 2px 1px #0000004f;
@@ -139,12 +163,90 @@ a {
   padding-right: 5%;
 }
 
+/* ---------- Location Page Styles ---------- */
+.locationBackground {
+  background: linear-gradient(180deg, rgba(238, 216, 191, 0.2) 15.41%, rgba(237, 154, 59, 0.2) 100%), #EED8BF;
+  background-color: #EED8BF;
+  z-index: -3;
+  overflow-x: hidden;
+}
+.wave {
+  z-index: -1;
+  width: 100%;
+}
+.locationContent {
+  z-index: 0;
+  padding: 70px 5% 5%;
+}
 .locationImage {
   margin: auto auto 20px;
   display: block;
   cursor: pointer;
+  border-radius: 20px;
+  border: 20px solid #212957;
 }
 
+.timelapseVideos {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.flipFlops {
+  width: 30%;
+  position: absolute;
+  top: 45%;
+  right: -6%;
+  z-index: -2;
+}
+.timelapseContainer {
+  position: relative;
+  padding-top: 56.25%;  /* 16:9 aspect ratio */
+  overflow: hidden;
+  width: 100%;
+  border-radius: 20px;
+}
+.timelapseContainer iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mapContentWrapper {
+  position: relative;
+}
+.mapWrapper {
+  display: flex;
+  justify-content: center;
+}
+.map {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 0;
+  border: 20px solid #212957;
+}
+.lifebuoy {
+  width: 45%;
+  position: absolute;
+  top: 80%;
+  left: -6%;
+  z-index: -2;
+}
+
+.directionImage {
+  max-height: 200px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.margin15 {
+  margin-bottom: 15px;
+}
+
+/* ---------- Upload Form Styles ---------- */
 #uploadedImg {
   width: 70%;
   display: block;
@@ -158,33 +260,4 @@ a {
 }
 #form > *:first-child {
   margin-top: 0px;
-}
-
-.button {
-  color: white;
-  text-decoration: none;
-}
-
-.timelapseVideos {
-  display: flex;
-  justify-content: center;
-}
-.timelapseContainer {
-  position: relative;
-  padding-top: 56.25%;  /* 16:9 aspect ratio */
-  overflow: hidden;
-  width: 100%;
-}
-.timelapseContainer iframe {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.directionImage {
-  max-height: 400px;
-  overflow: hidden;
-  cursor: pointer;
 }
