@@ -23,11 +23,13 @@ const useStyles = makeStyles((theme) => ({
     color: "rgba(255, 255, 255, 0.8)",
     fontFamily: "Fredoka, sans-serif",
     fontSize: "20px",
-    marginLeft: theme.spacing(5),
     "&:hover": {
       color: "white",
       borderBottom: "1px solid white",
     },
+  },
+  linkMargin: {
+    marginLeft: theme.spacing(5),
   },
   active: {
     color: "white",
@@ -50,7 +52,7 @@ const Navbar = (props) => {
   const { scrollTo } = props;
   const classes = useStyles();
   const location = useLocation();
-  const menuLinks = ["Upload", "About", "Locations"];
+  const menuLinks = ["About", "Locations", "Upload"];
   // Initialize anchor and handlers for opening and closing mobile navigation menu.
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenMobileNavMenu = (event) => {
@@ -82,8 +84,12 @@ const Navbar = (props) => {
         </Typography>
         <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
           {menuLinks.map((link) => (
-            <Link className={classes.link} key={link}
-              to={"/" + (link === "Upload" ? "upload" : "")}
+            link === "Upload" ?
+            <Link to="/upload" className={"button " + classes.linkMargin} key={link}>
+              <UploadButton variant="contained">Upload</UploadButton>
+            </Link>
+            :
+            <Link to="/" className={classes.link + " " + classes.linkMargin} key={link}
               onClick={() => changeScrollElement(link.toLowerCase())}
             >
               {link}

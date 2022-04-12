@@ -45,7 +45,21 @@ function App() {
             borderRadius: 20,
           },
         }, 
-      }, 
+      },
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            fill: "#ffffff",
+          },
+        },
+      },
+      MuiCard: {
+        styleOverrides: {
+          root: {
+            borderRadius: "20px",
+          },
+        },
+      },
     },
   });
   const [confirmUpload, setConfirmUpload] = React.useState(false);

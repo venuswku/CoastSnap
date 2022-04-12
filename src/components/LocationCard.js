@@ -20,9 +20,6 @@ const LocationCard = (props) => {
             <Typography gutterBottom variant="h5" component="div">
               {location.name}
             </Typography>
-            {/* <Typography variant="body2" color="text.secondary">
-              {location.description}
-            </Typography> */}
           </CardContent>
         </CardActionArea>
       </Card>

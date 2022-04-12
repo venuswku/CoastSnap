@@ -1,31 +1,39 @@
 /* ---------- General Styles ---------- */
 * {
   font-family: "Lato", sans-serif;
+  color: #090D3A;
   font-size: 1.1rem;
 }
 h1, h2 {
   font-family: "Fredoka", sans-serif;
 }
 h1 {
-  color: #090D3A;
   font-size: xx-large;
 }
 h2 {
-  color: #090D3A;
   font-size: x-large;
 }
 a {
   color: inherit;
 }
+.lightBlueBackground {
+  background-color: #BFDBF7;
+}
 .darkBlueBackground {
   background-color: #212957;
-  color: #F2F4FA;
 }
-.darkBlueBackgroundHeading {
-  color: #F2F4FA;
+.darkBlueBackground * {
+  color: #ffffff;
 }
-.blueText {
+.sandBackground {
+  background-color: #EDD4B9;
+}
+span, .blueText {
   color: #2196f3;
+  font-weight: bold;
+}
+.yellowText {
+  color: #FFBC42;
   font-weight: bold;
 }
 .grayText {
@@ -116,7 +124,7 @@ h2.noBottomMargin {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #090D3A;
+  color: #212957;
   font-size: x-large;
   background-color: #ffffffe6;
   padding: 1% 2% 2%;
@@ -168,7 +176,7 @@ h2.noBottomMargin {
   background: linear-gradient(180deg, rgba(238, 216, 191, 0.2) 15.41%, rgba(237, 154, 59, 0.2) 100%), #EED8BF;
   background-color: #EED8BF;
   z-index: -3;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .wave {
   z-index: -1;
@@ -183,7 +191,7 @@ h2.noBottomMargin {
   display: block;
   cursor: pointer;
   border-radius: 20px;
-  border: 20px solid #212957;
+  border: 20px solid #ffffffe6;
 }
 
 .timelapseVideos {

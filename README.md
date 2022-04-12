@@ -112,6 +112,14 @@ The following files make up the main content of the website:
       <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} setUploadProgress={setUploadProgress} scrollTo={setScrollElement} />
       ```
 - `src/data` folder: text used as content in the website.
+  - `coastsnapInSantaCruz.json`: information for each section in the `CoastSnapInSantaCruz` component.
+    - `title`: topic of section.
+    - `text`: more information related to the topic.
+    - `button`: optional property that can be added if you have a link that leads to even more information about the topic.
+      - link will appear as a button underneath the `text`
+      - first item in list is the link
+      - second item is the text that appears on the button
+    - `image`: alternate text for the section's image in case it can't be displayed.
   - `devices.json`: options provided for the Devices field in the Upload Form.
     - `devices`: list of devices that the user might have used to take a picture of the coastline.
     - `deviceNotListed`: last option with the message to input the name of the user's device if it was not listed.
@@ -138,6 +146,10 @@ The following files make up the main content of the website:
   - Make sure the name of the location folders match the location's `name` property in `locations.json`.
   - `Homepage Slideshow`: folder containing images shown in the homepage's slideshow.
   - `CoastSnap in Santa Cruz`: folder containing illustrations for each subsection in the `CoastSnapInSantaCruz` component.
+    - Name illustrations in the numerical order that they should be displayed.
+      - Example: `1.svg` is used for the first section of the component.
+    - `mobile`: folder containing mobile versions of the illustrations.
+      - File name should correspond to the desktop version's name.
   - `Location Info`: folder containing illustrations for the `LocationInfo` pages.
 - `App.css`: all CSS styling used for the website.
   - `className` value of any element would be customly styled if it matched a [selector](https://www.w3schools.com/cssref/css_selectors.asp) in this file
