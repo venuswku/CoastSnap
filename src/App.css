@@ -3,6 +3,8 @@
   font-family: "Lato", sans-serif;
   color: #090D3A;
   font-size: 1.1rem;
+  margin: 0;
+  padding: 0;
 }
 h1, h2 {
   font-family: "Fredoka", sans-serif;
@@ -15,6 +17,9 @@ h2 {
 }
 a {
   color: inherit;
+}
+p {
+  margin: 0px 0px 15px;
 }
 .lightBlueBackground {
   background-color: #BFDBF7;
@@ -38,7 +43,15 @@ span, .blueText {
 }
 .grayText {
   color: #707070;
-  margin-top: 0;
+}
+.whiteText * {
+  color: white;
+}
+.italic {
+  font-style: italic;
+}
+.rightAlignedText {
+  text-align: right;
 }
 .centerText {
   text-align: center;
@@ -47,29 +60,55 @@ span, .blueText {
   text-align: center;
   padding: 0px 5% 5%;
 }
+.paddedContent {
+  padding: 0px 5% 5%;
+}
 .defaultPadding {
-  padding: 2% 5% 4%;
+  padding: 5% 5% 6%;
+}
+.defaultTopBottomPadding {
+  padding: 5% 0px 6%;
+}
+.defaultRightPadding {
+  padding-right: 5%;
+}
+.marginBottom10 {
+  margin-bottom: 10px;
 }
 .flexColumnCenter {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
-.noBottomMargin {
-  margin-bottom: 0;
-}
-h2.noBottomMargin {
-  margin-top: 15%;
+.flexRowCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .topLeft {
   position: absolute;
   top: 0;
   left: 0;
 }
+.middleRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
 .button {
   color: white;
   text-decoration: none;
+}
+.fullWidth {
+  width: 100%;
+}
+.relativePosition {
+  position: relative;
 }
 
 /* ---------- Homepage Styles ---------- */
@@ -78,10 +117,10 @@ h2.noBottomMargin {
   margin: 0 auto;
   overflow: hidden;
   height: 100vh;
+  position: relative;
 }
 .slideImage {
   width: 100%;
-  /* Height should match height of slideshow class. */
   height: 100%;
   object-fit: cover;
   /* Have slideshow pictures appear on top of one another, not in a column. */
@@ -127,13 +166,24 @@ h2.noBottomMargin {
   color: #212957;
   font-size: x-large;
   background-color: #ffffffe6;
-  padding: 1% 2% 2%;
+  padding: 2%;
   border-radius: 20px;
   box-shadow: 0px 2px 1px #0000004f;
 }
 .catchphraseHeading {
-  margin-bottom: 0;
   font-size: larger;
+}
+
+.featuresMargin {
+  margin-bottom: 2%;
+}
+
+.aboutImgBackground {
+  background-image: url("./images/Homepage/AboutCoastSnap.jpg");
+  background-position: right;
+}
+.aboutText {
+  margin: 2% 0px;
 }
 
 .introSectionsWrapper {
@@ -156,9 +206,6 @@ h2.noBottomMargin {
   align-items: center;
   padding: 5% 5% 3%;
 }
-.introPic {
-  width: 100%;
-}
 .stickySection {
   position: -webkit-sticky; /* Safari */
   position: sticky;
@@ -166,9 +213,6 @@ h2.noBottomMargin {
 }
 .placeholder {
   opacity: 0;
-}
-.rightPadding {
-  padding-right: 5%;
 }
 
 /* ---------- Location Page Styles ---------- */
@@ -249,9 +293,6 @@ h2.noBottomMargin {
   overflow: hidden;
   cursor: pointer;
   border-radius: 20px;
-}
-.margin15 {
-  margin-bottom: 15px;
 }
 
 /* ---------- Upload Form Styles ---------- */

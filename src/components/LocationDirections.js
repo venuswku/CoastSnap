@@ -23,7 +23,7 @@ const LocationDirections = (props) => {
     <div>
       {loc === "Natural Bridges Site 1" &&
         <div>
-          <Stack className="margin15" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
+          <Stack className="marginBottom10" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12} md={6}>
               <p>1. Walk down the lookout point towards the ocean.</p>
             </Grid>
@@ -34,7 +34,7 @@ const LocationDirections = (props) => {
               </Stack>
             </Grid>
           </Stack>
-          <Stack className="margin15" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
+          <Stack className="marginBottom10" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12} md={6}>
               <p>2. Approach the following Danger sign.</p>
             </Grid>
@@ -45,7 +45,7 @@ const LocationDirections = (props) => {
               </Stack>
             </Grid>
           </Stack>
-          <Stack className="margin15" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
+          <Stack className="marginBottom10" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12} md={6}>
               <p>3. Find the subtle Sharpie markings over the sign (should be in the shape of a rectangle).</p>
               <p>{"Notice the X mark over the nail, that's the side your device's camera should be facing!"}</p>
@@ -54,7 +54,7 @@ const LocationDirections = (props) => {
               <img src={NB1Railing1} alt="Railing 1" className="directionImage" onClick={handleClick}/>
             </Grid>
           </Stack>
-          <Stack className="margin15" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
+          <Stack className="marginBottom10" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12} md={6}>
               <p>4. Then place your device on the railing, line up the top of your device with the railing crack, and face the camera towards the beach like the following.</p>
             </Grid>
@@ -66,7 +66,7 @@ const LocationDirections = (props) => {
       }
       {loc === "Natural Bridges Site 2" &&
         <div>
-          <Stack className="margin15" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
+          <Stack className="marginBottom10" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12} md={6}>
               <p>1. Head towards the pier as shown.</p>
             </Grid>
@@ -74,7 +74,7 @@ const LocationDirections = (props) => {
               <img src={NB2Pier} alt="Pier" className="directionImage" onClick={handleClick}/>
             </Grid>
           </Stack>
-          <Stack className="margin15" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
+          <Stack className="marginBottom10" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12} md={6}>
               <p>2. Walk up to the left corner, as shown by our handy assistant.</p>
             </Grid>
@@ -82,7 +82,7 @@ const LocationDirections = (props) => {
               <img src={NB2PierCornerSpot} alt="Pier Corner Spot" className="directionImage" onClick={handleClick}/>
             </Grid>
           </Stack>
-          <Stack className="margin15" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
+          <Stack className="marginBottom10" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12} md={6}>
               <p>3. Find the subtle Sharpie markings. The X displayed is the side your camera should be facing.</p>
             </Grid>
@@ -90,7 +90,7 @@ const LocationDirections = (props) => {
               <img src={NB2Sharpie} alt="Sharpie Markings" className="directionImage" onClick={handleClick}/>
             </Grid>
           </Stack>
-          <Stack className="margin15" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
+          <Stack className="marginBottom10" direction={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" spacing={2}>
             <Grid item xs={12} md={6}>
               <p>4. Place your device as displayed and take your shot.</p>
             </Grid>

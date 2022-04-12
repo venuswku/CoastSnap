@@ -33,8 +33,8 @@ const CoastSnapInSantaCruz = () => {
                 </a>
               }
             </Grid>
-            <Grid item md={5} className="rightPadding">
-              <img src={images[i]} alt={section.image} className="introPic" />
+            <Grid item md={5} className="defaultRightPadding">
+              <img src={images[i]} alt={section.image} className="fullWidth" />
             </Grid>
           </div>
         ))}
@@ -46,7 +46,7 @@ const CoastSnapInSantaCruz = () => {
       <Box className="introSectionsWrapper" sx={{ display: { xs: "flex", md: "grid" } }}>
       {sections.map((section, i) => (
         <div className={mobile ? "mobileIntroSection" : "introSection"} key={i}>
-          {mobile && <img src={mobileImages[i]} alt={section.image} className="introPic" />}
+          {mobile && <img src={mobileImages[i]} alt={section.image} className="fullWidth" />}
           <Grid item xs={12} md={6}>
             <h1>{section.title}</h1>
             <p dangerouslySetInnerHTML={{ __html: section.text }}></p>
@@ -57,8 +57,8 @@ const CoastSnapInSantaCruz = () => {
             }
           </Grid>
           {!mobile &&
-            <Grid item md={5} className="placeholder rightPadding">
-              <img src={images[i]} alt={section.image} className="introPic" />
+            <Grid item md={5} className="placeholder defaultRightPadding">
+              <img src={images[i]} alt={section.image} className="fullWidth" />
             </Grid>
           }
         </div>

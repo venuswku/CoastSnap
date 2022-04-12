@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useTheme, useMediaQuery, Button, Grid } from "@mui/material";
 import { UploadButton } from "../components/Navbar";
@@ -20,10 +20,6 @@ const LocationInfo = () => {
   const mobile = useMediaQuery(theme.breakpoints.down("md"));
   const [enlargedImg, setEnlargedImg] = React.useState(null);
   const [enlargedImgDescription, setEnlargedImgDescription] = React.useState(null);
-  
-  useEffect(() => {
-    window.scrollTo(0,0);
-  }, []);
 
   // Opens popup that displays the enlarged image.
   const handleEnlarge = (img, desc) => {
@@ -43,29 +39,31 @@ const LocationInfo = () => {
       <div className="locationContent">
         <div className="flexColumnCenter">
           <img className="locationImage" src={image} alt={location} width={mobile ? "100%" : "55%"} onClick={() => handleEnlarge(image, location)} />
-          <h1 className="noBottomMargin" style={{marginTop:0}}>{location}</h1>
+          <h1>{location}</h1>
           <p className="grayText">{info.description}</p>
           <Link to={"/upload?location=" + location} className="button">
             <UploadButton variant="contained">Upload Photo</UploadButton>
           </Link>
         </div>
-        <h2 className="noBottomMargin">Timelapses</h2>
-        <p className="grayText">The following videos have been compiled from the photos that our team has collected over several months.</p>
-        <div className="timelapseVideos">
-          {info.timelapseVids.map((vid, i) =>
-            <Grid item xs={12} md={7} key={vid}>
-              <div className="timelapseContainer">
-                <iframe src={vid} title={"Timelapse Video " + (i+1)} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-              </div>
-            </Grid>
-          )}
-          <img className="flipFlops" src={FlipFlops} alt="Flip Flops" />
+        <div className="defaultTopBottomPadding">
+          <h2>Timelapses</h2>
+          <p className="grayText">The following videos have been compiled from the photos that our team has collected over several months.</p>
+          <div className="timelapseVideos">
+            {info.timelapseVids.map((vid, i) =>
+              <Grid item xs={12} md={7} key={vid}>
+                <div className="timelapseContainer">
+                  <iframe src={vid} title={"Timelapse Video " + (i+1)} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                </div>
+              </Grid>
+            )}
+            <img className="flipFlops" src={FlipFlops} alt="Flip Flops" />
+          </div>
         </div>
         {/* Map embed link is found when you click on "Share" then "Embed a map" on Google Maps. */}
         {info.mapEmbedLink &&
-          <div className="mapContentWrapper">
-            <h2 className="noBottomMargin">Map</h2>
-            <p className="grayText">To find the exact location of this photo station, use the following map or directly view it in Google Maps.</p>
+          <div className="mapContentWrapper defaultTopBottomPadding">
+            <h2>Map</h2>
+            <p className="grayText italic">To find the exact location of this photo station, use the following map or directly view it in Google Maps.</p>
             <div className="flexColumnCenter">
               <div className="mapWrapper">
                 <Grid item xs={12} md={8}>
@@ -81,10 +79,12 @@ const LocationInfo = () => {
             <img className="lifebuoy" src={Lifebuoy} alt="Lifebuoy" />
           </div>
         }
-        <h2 className="noBottomMargin">Directions</h2>
-        <p className="grayText">Click on an image to enlarge it.</p>
-        <LocationDirections loc={location} enlarge={handleEnlarge} />
-        <div className="centerText"><Button variant="contained" onClick={() => handleEnlarge(image, location + " Example Image")}>See Example Image</Button></div>
+        <div className="defaultTopBottomPadding">
+          <h2>Directions</h2>
+          <p className="grayText italic">Click on an image to enlarge it.</p>
+          <LocationDirections loc={location} enlarge={handleEnlarge} />
+          <div className="centerText"><Button variant="contained" onClick={() => handleEnlarge(image, location + " Example Image")}>See Example Image</Button></div>
+        </div>
         {/* Popup for displaying enlarged images. */}
         {enlargedImg && <EnlargeImagePopup img={enlargedImg} description={enlargedImgDescription} close={handleClose} />}
       </div>

@@ -53,6 +53,7 @@ const Navbar = (props) => {
   const classes = useStyles();
   const location = useLocation();
   const menuLinks = ["About", "Locations", "Upload"];
+  const pathsWithBlueNavbar = ["/about", "/upload"];
   // Initialize anchor and handlers for opening and closing mobile navigation menu.
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenMobileNavMenu = (event) => {
@@ -70,13 +71,23 @@ const Navbar = (props) => {
       return false;
     }
   };
+  // Checks if user is currently at a path that requires a blue navbar.
+  const blueNavbar = () => {
+    let result = false;
+    pathsWithBlueNavbar.forEach((p) => {
+      if (atPath(p)) {
+        result = true;
+      }
+    });
+    return result;
+  };
   // Changes the element that the user scrolls to.
   const changeScrollElement = (ele) => {
     scrollTo(ele);
   };
 
   return (
-    <AppBar position={atPath("/upload") ? "static" : "absolute"} color={atPath("/upload") ? "primary" : "transparent"} elevation={0}>
+    <AppBar position={blueNavbar() ? "static" : "absolute"} color={blueNavbar() ? "primary" : "transparent"} elevation={0}>
       <CssBaseline />
       <Toolbar>
         <Typography variant="h4" className={classes.logo} onClick={() => changeScrollElement("")}>

@@ -23,9 +23,11 @@ The following files make up the main content of the website:
       ```html
       <Home scrollElement={scrollElement} setScrollElement={setScrollElement} />
       ```
+  - `About.js`: page that tells user more about the implementation of CoastSnap in Santa Cruz.
+    - No required properties.
   - `LocationInfo.js`: page with more information about each Santa Cruz photo location.
-    - No required properties
-      - Uses the URL parameter to figure out which location to display information about
+    - No required properties.
+      - Uses the URL parameter to figure out which location to display information about.
     - Gets location information from `locations.json`
     - Example from `App.js`:
       ```html
@@ -41,14 +43,20 @@ The following files make up the main content of the website:
       <UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />
       ```
 - `src/components` folder: reusable components of the website.
-  - `CoastSnapInSantaCruz.js`: introduction section of homepage, which explains why we are bringing CoastSnap to Santa Cruz.
-      - If you want to edit the text for a subsection, make sure to edit the text in 2 places!
-        - necessary for the illustrations to stack correctly while horizontally aligning them with their corresponding subsections
-      - No required properties
-      - Example from `Home.js`:
-        ```html
-        <CoastSnapInSantaCruz />
-        ```
+  - `CoastSnapFeatures.js`: list three main features of CoastSnap on the homepage.
+    - No required properties.
+    - Example from `Home.js`:
+      ```html
+      <CoastSnapFeatures />
+      ```
+  - `CoastSnapInSantaCruz.js`: sections that explain why we are bringing CoastSnap to Santa Cruz.
+    - If you want to edit the text for a subsection, make sure to edit the text in 2 places!
+      - Necessary for the illustrations to stack correctly while horizontally aligning them with their corresponding subsections.
+    - No required properties.
+    - Example from `About.js`:
+      ```html
+      <CoastSnapInSantaCruz />
+      ```
   - `EnlargeImagePopup.js`: enlarges a clicked image to fill up the full width of the user's device.
     - Required properties:
       - `img`: source of image to display.
@@ -75,7 +83,7 @@ The following files make up the main content of the website:
       <LocationDirections loc={location} enlarge={handleEnlarge} />
       ```
   - `MethodsForUploadingPics.js`: details the different ways to upload coastline pictures (through the CoastSnap app or this website).
-    - No required properties
+    - No required properties.
     - Example from `Home.js`:
       ```html
       <MethodsForUploadingPics />
@@ -144,7 +152,9 @@ The following files make up the main content of the website:
         ```
 - `src/images` folder: images used in the website.
   - Make sure the name of the location folders match the location's `name` property in `locations.json`.
+  - `Homepage`: folder containing images shown on the homepage.
   - `Homepage Slideshow`: folder containing images shown in the homepage's slideshow.
+    - Images will appear in the order that you named each image.
   - `CoastSnap in Santa Cruz`: folder containing illustrations for each subsection in the `CoastSnapInSantaCruz` component.
     - Name illustrations in the numerical order that they should be displayed.
       - Example: `1.svg` is used for the first section of the component.
