@@ -6,7 +6,7 @@ const UploadConfirmationPopup = (props) => {
   const { open, togglePopup, progress, setUploadProgress, scrollTo } = props;
   const navigate = useNavigate();
   const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("md"));
+  const tablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleClose = (nextPath) => {
     togglePopup(false);
@@ -22,7 +22,7 @@ const UploadConfirmationPopup = (props) => {
     <div>
       {progress === -1 ?
         <Dialog
-          fullScreen={mobile}
+          fullScreen={tablet}
           open={open}
           onClose={() => handleClose("upload")}
           aria-labelledby="confirmation-dialog"
@@ -47,7 +47,7 @@ const UploadConfirmationPopup = (props) => {
         </Dialog> :
         progress === 100 ?
           <Dialog
-            fullScreen={mobile}
+            fullScreen={tablet}
             open={open}
             onClose={() => handleClose("upload")}
             aria-labelledby="confirmation-dialog"
@@ -71,7 +71,7 @@ const UploadConfirmationPopup = (props) => {
             </DialogActions>
           </Dialog> :
           <Dialog
-            fullScreen={mobile}
+            fullScreen={tablet}
             open={open}
             aria-labelledby="confirmation-dialog"
             aria-describedby="confirmation-dialog-description"

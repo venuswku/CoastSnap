@@ -69,6 +69,9 @@ span, .blueText {
 .defaultTopBottomPadding {
   padding: 5% 0px 6%;
 }
+.defaultLeftPadding {
+  padding-left: 5%;
+}
 .defaultRightPadding {
   padding-right: 5%;
 }
@@ -92,6 +95,12 @@ span, .blueText {
 .topLeft {
   position: absolute;
   top: 0;
+  left: 0;
+}
+.middleLeft {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
 }
 .middleRight {
@@ -186,6 +195,7 @@ span, .blueText {
   margin: 2% 0px;
 }
 
+/* ---------- About Page Styles ---------- */
 .introSectionsWrapper {
   /* Make all intro sections have the height of the tallest section so that illustrations stack correctly. */
   display: grid;
@@ -204,7 +214,11 @@ span, .blueText {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5% 5% 3%;
+  padding: 5% 5% 0px;
+  background-color: white;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 5%;
 }
 .stickySection {
   position: -webkit-sticky; /* Safari */
@@ -271,6 +285,7 @@ span, .blueText {
 .mapWrapper {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 .map {
   width: 100%;

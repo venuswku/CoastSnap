@@ -17,7 +17,7 @@ const LocationInfo = () => {
   const info = scLocationInfo.filter(loc => loc.name === location)[0];
   const image = require(`../images/${location}/${info.image}`);
   const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("md"));
+  const tablet = useMediaQuery(theme.breakpoints.down("md"));
   const [enlargedImg, setEnlargedImg] = React.useState(null);
   const [enlargedImgDescription, setEnlargedImgDescription] = React.useState(null);
 
@@ -38,7 +38,7 @@ const LocationInfo = () => {
       <img className="wave topLeft" src={Wave} alt="Wave" />
       <div className="locationContent">
         <div className="flexColumnCenter">
-          <img className="locationImage" src={image} alt={location} width={mobile ? "100%" : "55%"} onClick={() => handleEnlarge(image, location)} />
+          <img className="locationImage" src={image} alt={location} width={tablet ? "100%" : "55%"} onClick={() => handleEnlarge(image, location)} />
           <h1>{location}</h1>
           <p className="grayText">{info.description}</p>
           <Link to={"/upload?location=" + location} className="button">

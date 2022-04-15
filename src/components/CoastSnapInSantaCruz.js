@@ -13,7 +13,7 @@ const mobileImages = importAll(require.context("../images/CoastSnap In Santa Cru
 // IMPORTANT: If you want to edit the text for a section, make sure to edit the text in src/data/coastsnapInSantaCruz.json!
 const CoastSnapInSantaCruz = () => {
   const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("md"));
+  const tablet = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <div>
@@ -43,10 +43,10 @@ const CoastSnapInSantaCruz = () => {
         The following text is actually displayed on the website.
         Instead, pictures in these sections are invisible and act as placeholders. 
       */}
-      <Box className="introSectionsWrapper" sx={{ display: { xs: "flex", md: "grid" } }}>
+      <Box className="introSectionsWrapper">
       {sections.map((section, i) => (
-        <div className={mobile ? "mobileIntroSection" : "introSection"} key={i}>
-          {mobile && <img src={mobileImages[i]} alt={section.image} className="fullWidth" />}
+        <div className={tablet ? "mobileIntroSection centerText" : "introSection"} key={i}>
+          {tablet && <img src={mobileImages[i]} alt={section.image} className="fullWidth" />}
           <Grid item xs={12} md={6}>
             <h1>{section.title}</h1>
             <p dangerouslySetInnerHTML={{ __html: section.text }}></p>
@@ -56,7 +56,7 @@ const CoastSnapInSantaCruz = () => {
               </a>
             }
           </Grid>
-          {!mobile &&
+          {!tablet &&
             <Grid item md={5} className="placeholder defaultRightPadding">
               <img src={images[i]} alt={section.image} className="fullWidth" />
             </Grid>

@@ -72,7 +72,7 @@ const Home = (props) => {
 
       <div ref={locationsRef} className="defaultPadding">
         <h1>Santa Cruz Locations</h1>
-        <p className="grayText italic">Click on a location to view timelapses, directions, and more!</p>
+        <p className="grayText italic">Click on a location to view timelapses, directions and more!</p>
         <p>To meet our main objective of bringing CoastSnap to Santa Cruz, we are first focusing on testing data collection with <span className="blueText">DIY (do it yourself) photo stations</span> along the Santa Cruz coastline. These photo stations will be replaced with camera mounts available for public usage in the future. The camera mounts will ensure consistent photographs from a variety of device models that CoastSnap will compile together as demonstrated in the timelapse videos for the photo stations below.</p>
         <Grid container spacing={4}>
           {/* For smaller viewports, the component fills all 12 available columns. For viewports with a width of 600 or more pixels, the component will fill up 4/12 columns. */}
@@ -80,15 +80,15 @@ const Home = (props) => {
         </Grid>
       </div>
       
-      <div ref={uploadRef} className="darkBlueBackground defaultPadding">
+      <div ref={uploadRef}>
         <MethodsForUploadingPics />
       </div>
       
       <div className="defaultPadding">
         <h1>UC Santa Cruz Team</h1>
-        <p>The current UCSC team working on the project consists of Dr. Stella Hein and a variety of students with a passion for sustainability. These students come from all sorts of backgrounds and specialities that come together with Dr. Hein, to create a strong diverse team. The students include Venus Ku, Andy Surin, Litzia Galvan, Sarita Parikh, Iris Borius, Ella Thompson, and Emily Nguyen.</p>
+        <p>The current UCSC team working on the project consists of Dr. Stella Hein and a variety of students with a passion for sustainability. These students come from all sorts of backgrounds and specialities that come together with Dr. Hein, to create a strong diverse team. The students include Venus Ku, Andy Surin, Litzia Galvan, Sarita Parikh, Iris Borius, Ella Thompson and Emily Nguyen.</p>
         {/* <h1>Project Partners</h1>
-        <p>We are extremely grateful to be collaborating with the United States Geological Survey (USGS), City of Santa Cruz, and many other supportive local organizations to bring CoastSnap to our local communities.</p> */}
+        <p>We are extremely grateful to be collaborating with the United States Geological Survey (USGS), City of Santa Cruz and many other supportive local organizations to bring CoastSnap to our local communities.</p> */}
       </div>
     </div>
   );

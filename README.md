@@ -34,7 +34,7 @@ The following files make up the main content of the website:
       <LocationInfo />
       ```
   - `UploadPicForm.js`: form that user fills out to upload their pictures through this website.
-    - User must provide an image and fill out the Location, Name, and Device fields.
+    - User must provide an image and fill out the Location, Name and Device fields.
     - Required properties:
       - `togglePopup`: function used to open and close the popup for confirming an image upload.
       - `setUploadProgress`: function used to set the upload progress.
@@ -152,6 +152,7 @@ The following files make up the main content of the website:
         ```
 - `src/images` folder: images used in the website.
   - Make sure the name of the location folders match the location's `name` property in `locations.json`.
+  - `About`: folder containing images shown on the about page.
   - `Homepage`: folder containing images shown on the homepage.
   - `Homepage Slideshow`: folder containing images shown in the homepage's slideshow.
     - Images will appear in the order that you named each image.
@@ -192,7 +193,7 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
       ```json
       {
         "name": "Natural Bridges Site 1",
-        "description": "This station has good exposure, solid reliable ground points, is interesting to look at on an image reel / time lapse, and very car accessible.",
+        "description": "This station has good exposure, solid reliable ground points, is interesting to look at on an image reel / time lapse and very car accessible.",
         "image": "NB1_21_01_27_16_48_Iphone11_IB.jpeg",
         "timelapseVids": ["https://www.youtube.com/embed/akhXr-6nG5g"],
         "googleMapsLink": "https://goo.gl/maps/rzwiDPqygU3G2vQz8",
@@ -259,7 +260,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**\
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.\
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.\
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ### Code Splitting
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)

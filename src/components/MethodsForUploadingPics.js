@@ -9,7 +9,7 @@ import ShopRoundedIcon from "@mui/icons-material/ShopRounded";
 
 const MethodsForUploadingPics = () => {
   return (
-    <div className="centerText">
+    <div className="darkBlueBackground centerText defaultPadding">
       <h1>Support Our Coast</h1>
       <p>The submission of coastline photographs by locals and tourists is crucial to create a large, diverse collection of data on Santa Cruz beaches. As long as you have a <span className="blueText">smartphone connected to WiFi or data</span>, you are ready to contribute! After taking a photo at one of the CoastSnap stations, <span className="blueText">upload your photo</span> through this website or the CoastSnap app. This collection of photographs will enable data collection on climate patterns in Santa Cruz coastlines and enable public interactions with climate issues from local citizens and passerby.</p>
       <Grid container direction={{ xs: "column", sm: "row" }} spacing={{ xs: 1, sm: 4 }} alignItems="center" justifyContent="center">

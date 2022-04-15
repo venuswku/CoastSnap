@@ -52,8 +52,13 @@ const Navbar = (props) => {
   const { scrollTo } = props;
   const classes = useStyles();
   const location = useLocation();
-  const menuLinks = ["About", "Locations", "Upload"];
-  const pathsWithBlueNavbar = ["/about", "/upload"];
+  const menuLinks = {
+    "About": "/about",
+    "Locations": "/",
+    "Upload": "/upload",
+  };
+  const pathsWithBlueNavbar = ["/upload"];
+  
   // Initialize anchor and handlers for opening and closing mobile navigation menu.
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenMobileNavMenu = (event) => {
@@ -94,16 +99,16 @@ const Navbar = (props) => {
           <Link to="/" className={classes.whiteLink}>CoastSnap</Link>
         </Typography>
         <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
-          {menuLinks.map((link) => (
-            link === "Upload" ?
-            <Link to="/upload" className={"button " + classes.linkMargin} key={link}>
+          {Object.entries(menuLinks).map(([page, link]) => (
+            page === "Upload" ?
+            <Link to="/upload" className={"button " + classes.linkMargin} key="Upload">
               <UploadButton variant="contained">Upload</UploadButton>
             </Link>
             :
-            <Link to="/" className={classes.link + " " + classes.linkMargin} key={link}
-              onClick={() => changeScrollElement(link.toLowerCase())}
+            <Link to={link} className={classes.link + " " + classes.linkMargin} key={page}
+              onClick={() => changeScrollElement(page.toLowerCase())}
             >
-              {link}
+              {page}
             </Link>
           ))}
         </Box>
@@ -136,14 +141,14 @@ const Navbar = (props) => {
               display: { xs: "block", md: "none" },
             }}
           >
-            {menuLinks.map((link) => (
+            {Object.entries(menuLinks).map(([page, link]) => (
               <Link
-                to={"/" + (link === "Upload" ? "upload" : "")}
-                onClick={() => changeScrollElement(link.toLowerCase())}
-                key={link} style={{ textDecoration: "none", color: "black" }}
+                to={link}
+                onClick={() => changeScrollElement(page.toLowerCase())}
+                key={page} style={{ textDecoration: "none", color: "black" }}
               >
                 <MenuItem onClick={handleCloseMobileNavMenu}>
-                  <Typography textAlign="center">{link}</Typography>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               </Link>
             ))}

@@ -6,12 +6,12 @@ import Educates from "../images/Homepage/EducatesAboutClimateChange.svg";
 
 const CoastSnapFeatures = () => {
   const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("md"));
+  const tablet = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <div className="flexColumnCenter defaultPadding">
       <h1 className="featuresMargin">Building Resilience to Climate Change</h1>
-      {mobile ?
+      {tablet ?
         <Grid container direction="row" justifyContent="center" alignItems="flex-end" spacing={{ xs: 2, md: 6 }} className="featuresMargin">
           <Grid item xs={12}>
             <img src={Monitors} alt="Observing Coastal Data Trends" style={{width: "20%"}} />

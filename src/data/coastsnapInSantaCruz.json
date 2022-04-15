@@ -1,24 +1,24 @@
 [
   {
     "title": "Santa Cruz",
-    "text": "Widely known for its beautiful scenery, historic landmarks, and surf culture, Santa Cruz is <span className=\"blueText\">one of the most popular tourist attractions</span> in California. Some well-known places include the Santa Cruz Beach Boardwalk, West Cliff Drive, and the Santa Cruz Wharf.",
+    "text": "Widely known for its beautiful scenery, historic landmarks and surf culture, Santa Cruz is <span className=\"blueText\">one of the most popular tourist attractions</span> in California. Some well-known places include the Santa Cruz Beach Boardwalk, West Cliff Drive and the Santa Cruz Wharf.",
     "image": "Santa Cruz Beach"
   },
   {
     "title": "Vulnerable Coastal Communities and Marine Ecosystems",
-    "text": "According to an <a href=\"https://www.climate.gov/news-features/understanding-climate/climate-change-ocean-heat-content\" target=\"_blank\" rel=\"noopener noreferrer\">article</a> from the National Oceanic and Atmospheric Administration (NOAA), <span className=\"blueText\">climate change</span> is causing coastline changes, which could have dramatic and lasting consequences for coastal communities, such as more intense and more frequent storms, higher sea levels, and higher rates of erosion. Moreover, <span className=\"blueText\">global warming</span> leads to ocean acidification, which could endanger marine life and other organisms living in the ocean.",
+    "text": "According to an <a href=\"https://www.climate.gov/news-features/understanding-climate/climate-change-ocean-heat-content\" target=\"_blank\" rel=\"noopener noreferrer\">article</a> from the National Oceanic and Atmospheric Administration (NOAA), <span className=\"blueText\">climate change</span> is causing coastline changes, which could have dramatic and lasting consequences for coastal communities, such as more intense and more frequent storms, higher sea levels and higher rates of erosion. Moreover, <span className=\"blueText\">global warming</span> leads to ocean acidification, which could endanger marine life and other organisms living in the ocean.",
     "button": ["https://arcg.is/18CKDv", "Learn More about Santa Cruz's Projected Coastal Vulnerabilities"],
     "image": "Rising Waves"
   },
   {
     "title": "Bringing CoastSnap to Santa Cruz",
-    "text": "CoastSnap is a global project with the goal of monitoring coastline change through community participation in data collection. It <span className=\"blueText\">crowdsources images uploaded by the local community</span>, which is a cost-effective method for monitoring shoreline changes since anyone with a smartphone can contribute. Numerous CoastSnap stations have already been <span className=\"blueText\">successfully implemented in different countries</span> such as Australia, France, the United Kingdom, Spain, and Canada. Along with our project partners, we hope to assist in the development and implementation of CoastSnap in Santa Cruz.",
+    "text": "CoastSnap is a global project with the goal of monitoring coastline change through community participation in data collection. It <span className=\"blueText\">crowdsources images uploaded by the local community</span>, which is a low-cost method for monitoring shoreline changes since anyone with a smartphone can contribute. Numerous CoastSnap stations have already been <span className=\"blueText\">successfully implemented in different countries</span> such as Australia, France, the United Kingdom, Spain and Canada.Along with our project partners, we hope to assist in the development and implementation of CoastSnap in Santa Cruz.",
     "button": ["https://www.coastsnap.com/", "Visit the Official CoastSnap Website"],
     "image": "Device for Taking Photos of Coastline"
   },
   {
     "title": "Lasting Impact of Citizen Science Efforts",
     "text": "CoastSnap has the potential to <span className=\"blueText\">increase public awareness</span> on various coastal processes from coastal erosion to sea-level changes in the long-term. Additionally, <span className=\"blueText\">scientists will be better informed</span> about recent changes in the Pacific Coast as well as how climate change affects Santa Cruz's coastal behaviors. Collecting more of this data will help city officials <span className=\"blueText\">make more effective decisions</span> when improving coastal management and climate adaptation plans.",
-    "image": "Scientific Data Trends, City's Climate Adaptation Plans, and the Citizens of Santa Cruz Participating in CoastSnap"
+    "image": "Scientific Data Trends, City's Climate Adaptation Plans and the Citizens of Santa Cruz Participating in CoastSnap"
   }
 ]
