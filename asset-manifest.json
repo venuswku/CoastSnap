@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.a7c32ab5.css",
-    "main.js": "/CoastSnap/static/js/main.146090fa.js",
+    "main.css": "/CoastSnap/static/css/main.c399f59c.css",
+    "main.js": "/CoastSnap/static/js/main.5de4e9fa.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
     "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
     "static/media/3.jpg": "/CoastSnap/static/media/3.fc0a885cde59b528266e.jpg",
@@ -11,6 +11,7 @@
     "static/media/2.jpg": "/CoastSnap/static/media/2.0aa5bf429aede507a74d.jpg",
     "static/media/5.jpg": "/CoastSnap/static/media/5.b087c29121e611fbff63.jpg",
     "static/media/AboutCoastSnap.jpg": "/CoastSnap/static/media/AboutCoastSnap.9cacd80b254704dc4b06.jpg",
+    "static/media/SantaCruzLighthouse.jpg": "/CoastSnap/static/media/SantaCruzLighthouse.5582d82e24b569cbee6d.jpg",
     "static/media/NB1Pic5.jpg": "/CoastSnap/static/media/NB1Pic5.1619b3bebe129dddc6e9.jpg",
     "static/media/NB1Pic4.jpg": "/CoastSnap/static/media/NB1Pic4.9eb7f9eaa8189107d773.jpg",
     "static/media/NB1Pic3.jpg": "/CoastSnap/static/media/NB1Pic3.2cfcfe7772da3f2bb9ce.jpg",
@@ -35,12 +36,12 @@
     "index.html": "/CoastSnap/index.html",
     "static/media/TransparentWave.svg": "/CoastSnap/static/media/TransparentWave.c94616ead3ca005def5c541526cd100d.svg",
     "static/media/Wave.svg": "/CoastSnap/static/media/Wave.658847f98fc3fd341b922ce05c5f696d.svg",
-    "main.a7c32ab5.css.map": "/CoastSnap/static/css/main.a7c32ab5.css.map",
-    "main.146090fa.js.map": "/CoastSnap/static/js/main.146090fa.js.map",
+    "main.c399f59c.css.map": "/CoastSnap/static/css/main.c399f59c.css.map",
+    "main.5de4e9fa.js.map": "/CoastSnap/static/js/main.5de4e9fa.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a7c32ab5.css",
-    "static/js/main.146090fa.js"
+    "static/css/main.c399f59c.css",
+    "static/js/main.5de4e9fa.js"
   ]
 }
