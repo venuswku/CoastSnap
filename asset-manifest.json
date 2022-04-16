@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.c399f59c.css",
-    "main.js": "/CoastSnap/static/js/main.5de4e9fa.js",
+    "main.css": "/CoastSnap/static/css/main.0019a54f.css",
+    "main.js": "/CoastSnap/static/js/main.79ac6816.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
     "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
     "static/media/3.jpg": "/CoastSnap/static/media/3.fc0a885cde59b528266e.jpg",
@@ -36,12 +36,12 @@
     "index.html": "/CoastSnap/index.html",
     "static/media/TransparentWave.svg": "/CoastSnap/static/media/TransparentWave.c94616ead3ca005def5c541526cd100d.svg",
     "static/media/Wave.svg": "/CoastSnap/static/media/Wave.658847f98fc3fd341b922ce05c5f696d.svg",
-    "main.c399f59c.css.map": "/CoastSnap/static/css/main.c399f59c.css.map",
-    "main.5de4e9fa.js.map": "/CoastSnap/static/js/main.5de4e9fa.js.map",
+    "main.0019a54f.css.map": "/CoastSnap/static/css/main.0019a54f.css.map",
+    "main.79ac6816.js.map": "/CoastSnap/static/js/main.79ac6816.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c399f59c.css",
-    "static/js/main.5de4e9fa.js"
+    "static/css/main.0019a54f.css",
+    "static/js/main.79ac6816.js"
   ]
 }
