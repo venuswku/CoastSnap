@@ -16,7 +16,7 @@ const EnlargeImagePopup = (props) => {
       <DialogTitle id="enlarge-image-dialog">
         {description}
         <IconButton aria-label="close" onClick={handleClose} sx={{ position: "absolute", top: 12, right: 10 }}>
-          <CloseIcon htmlColor="#090D3A" />
+          <CloseIcon sx={{fill: "#090D3A"}} />
         </IconButton>
       </DialogTitle>
       <DialogContent><img src={img} alt={description} width="100%"/></DialogContent>

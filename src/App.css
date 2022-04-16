@@ -218,7 +218,7 @@ span, .blueText {
   background-color: white;
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  top: 5%;
+  top: 0;
 }
 .stickySection {
   position: -webkit-sticky; /* Safari */
