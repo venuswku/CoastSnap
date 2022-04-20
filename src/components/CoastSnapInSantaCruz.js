@@ -43,7 +43,7 @@ const CoastSnapInSantaCruz = () => {
         The following text is actually displayed on the website.
         Instead, pictures in these sections are invisible and act as placeholders. 
       */}
-      <Box className="introSectionsWrapper">
+      <Box className="introSectionsWrapper" sx={{ display: { xs: "flex", md: "grid" }}}>
       {sections.map((section, i) => (
         <div className={tablet ? "mobileIntroSection centerText" : "introSection"} key={i}>
           {tablet && <img src={mobileImages[i]} alt={section.image} className="fullWidth" />}

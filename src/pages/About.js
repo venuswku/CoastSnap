@@ -12,9 +12,11 @@ const About = () => {
     <div>
       <div className="relativePosition">
         <img src={HeaderBackground} alt="Santa Cruz Breakwater (Walton) Lighthouse" className="fullWidth" />
-        {!tablet && <h1 className="middleLeft defaultLeftPadding defaultRightPadding">About CoastSnap in Santa Cruz</h1>}
+        <div className={(tablet ? "centerText" : "middleLeft") + " defaultLeftPadding defaultRightPadding fullWidth"}>
+          <h1>About CoastSnap in Santa Cruz</h1>
+          <p style={tablet ? {width: "100%"} : {width: "50%"}}>CoastSnap provides an informative and low-cost way to monitor and encourage interest in learning about coastal change.</p>
+        </div>
       </div>
-      {tablet && <h1 className="centerText defaultLeftPadding defaultRightPadding">About CoastSnap in Santa Cruz</h1>}
       <CoastSnapInSantaCruz />
       <MethodsForUploadingPics />
     </div>

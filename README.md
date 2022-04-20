@@ -162,6 +162,7 @@ The following files make up the main content of the website:
     - `mobile`: folder containing mobile versions of the illustrations.
       - File name should correspond to the desktop version's name.
   - `Location Info`: folder containing illustrations for the `LocationInfo` pages.
+  - `Upload`: folder containing illustrations for the `UploadPicForm` page.
 - `App.css`: all CSS styling used for the website.
   - `className` value of any element would be customly styled if it matched a [selector](https://www.w3schools.com/cssref/css_selectors.asp) in this file
   - examples:

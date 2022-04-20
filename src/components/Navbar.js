@@ -57,7 +57,7 @@ const Navbar = (props) => {
     "Locations": "/",
     "Upload": "/upload",
   };
-  const pathsWithBlueNavbar = ["/upload"];
+  const pathsWithBlueNavbar = [];
   
   // Initialize anchor and handlers for opening and closing mobile navigation menu.
   const [anchorElNav, setAnchorElNav] = React.useState(null);

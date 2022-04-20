@@ -216,9 +216,6 @@ span, .blueText {
   align-items: center;
   padding: 5% 5% 0px;
   background-color: white;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
 }
 .stickySection {
   position: -webkit-sticky; /* Safari */
@@ -243,6 +240,7 @@ span, .blueText {
 .locationContent {
   z-index: 0;
   padding: 70px 5% 5%;
+  text-align: center;
 }
 .locationImage {
   margin: auto auto 20px;
@@ -311,6 +309,23 @@ span, .blueText {
 }
 
 /* ---------- Upload Form Styles ---------- */
+.uploadBackground {
+  background: linear-gradient(360deg, rgba(237, 154, 59, 0.2) 0%, rgba(238, 216, 191, 0) 100%), #EED7BD;
+  padding-top: 70px;
+  min-height: 100vh;
+}
+
+.seashell {
+  position: absolute;
+  left: 0px;
+  top: 2%;
+}
+.starfish {
+  position: absolute;
+  right: 0px;
+  bottom: 5%;
+}
+
 #uploadedImg {
   width: 70%;
   display: block;

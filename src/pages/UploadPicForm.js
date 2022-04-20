@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { FormControl, FormHelperText, Button, InputLabel, Select, MenuItem, TextField } from "@mui/material";
+import Seashell from "../images/Upload/Seashell.svg";
+import Starfish from "../images/Upload/Starfish.svg";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { isValid, parseJSON } from "date-fns";
 import DateAdapter from "@mui/lab/AdapterDateFns";
@@ -260,10 +262,12 @@ const UploadPic = (props) => {
   }
 
   return (
-    <div className="centeredContent">
-      <h1>Upload Your Photo</h1>
-      <FormControl error={photoError ? true : false} style={{marginBottom: "10px"}}>
-        <Button variant="contained" onClick={() => imageUploader.current.click()} endIcon={<InsertPhotoIcon />} style={{margin: "0px 5px"}}>
+    <div className="centeredContent sandBackground uploadBackground">
+      <img src={Seashell} alt="Seashell" className="seashell" />
+      <img src={Starfish} alt="Starfish" className="starfish" />
+      <FormControl error={photoError ? true : false} style={{marginBottom: "10px"}} className="flexColumnCenter">
+        <h1>Upload Your Photo</h1>
+        <Button variant="contained" onClick={() => imageUploader.current.click()} endIcon={<InsertPhotoIcon />} style={{width: "fit-content", margin: "0px 5px"}}>
           Choose Photo
           <input type="file" required accept="image/*" onChange={onImageChange} ref={imageUploader} style={{display: "none"}} />
         </Button>
