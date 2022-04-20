@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.0019a54f.css",
-    "main.js": "/CoastSnap/static/js/main.79ac6816.js",
+    "main.css": "/CoastSnap/static/css/main.90649c34.css",
+    "main.js": "/CoastSnap/static/js/main.aa05da5d.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
     "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
     "static/media/3.jpg": "/CoastSnap/static/media/3.fc0a885cde59b528266e.jpg",
@@ -32,16 +32,18 @@
     "static/media/1.svg": "/CoastSnap/static/media/1.cbabe8d03c87e089fab7.svg",
     "static/media/FlipFlops.svg": "/CoastSnap/static/media/FlipFlops.e94c15fb9974cef896d3fa8ec9058a03.svg",
     "static/media/Lifebuoy.svg": "/CoastSnap/static/media/Lifebuoy.5b5eaf7a5e41d2fbbe2683f1613c563d.svg",
+    "static/media/Starfish.svg": "/CoastSnap/static/media/Starfish.dc50d7b1535f238e24e5e0aa61927eb0.svg",
     "static/media/MonitorsCoastalChange.svg": "/CoastSnap/static/media/MonitorsCoastalChange.dd899ab01820d5e6b2ddbd6253168d72.svg",
+    "static/media/Seashell.svg": "/CoastSnap/static/media/Seashell.8b6b66f8e86b7ea9c6069e1e46f070c0.svg",
     "index.html": "/CoastSnap/index.html",
     "static/media/TransparentWave.svg": "/CoastSnap/static/media/TransparentWave.c94616ead3ca005def5c541526cd100d.svg",
     "static/media/Wave.svg": "/CoastSnap/static/media/Wave.658847f98fc3fd341b922ce05c5f696d.svg",
-    "main.0019a54f.css.map": "/CoastSnap/static/css/main.0019a54f.css.map",
-    "main.79ac6816.js.map": "/CoastSnap/static/js/main.79ac6816.js.map",
+    "main.90649c34.css.map": "/CoastSnap/static/css/main.90649c34.css.map",
+    "main.aa05da5d.js.map": "/CoastSnap/static/js/main.aa05da5d.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0019a54f.css",
-    "static/js/main.79ac6816.js"
+    "static/css/main.90649c34.css",
+    "static/js/main.aa05da5d.js"
   ]
 }
