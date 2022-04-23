@@ -145,6 +145,7 @@ The following files make up the main content of the website:
       - Share > Send a link > Copy link
       - Example: https://goo.gl/maps/wgnan6X8yECkpb4C8
     - `mapEmbedLink`: link provided by Google Maps to embed an interactive map of the location.
+      - Click on Satellite view of the location
       - Share > Embed a map > Copy the provided link in the snippet of code
       - Example: copy the `src` value from the following code
         ```html
@@ -198,7 +199,7 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
         "image": "NB1_21_01_27_16_48_Iphone11_IB.jpeg",
         "timelapseVids": ["https://www.youtube.com/embed/akhXr-6nG5g"],
         "googleMapsLink": "https://goo.gl/maps/rzwiDPqygU3G2vQz8",
-        "mapEmbedLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.5256476102936!2d-122.05889068470603!3d36.94950097991815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2zMzbCsDU2JzU4LjIiTiAxMjLCsDAzJzI0LjEiVw!5e0!3m2!1sen!2sus!4v1645167139815!5m2!1sen!2sus"
+        "mapEmbedLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1005.7556443852632!2d-122.05724697064817!3d36.949501299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7bfc93095caca331!2zMzbCsDU2JzU4LjIiTiAxMjLCsDAzJzI0LjEiVw!5e1!3m2!1sen!2sus!4v1650736198124!5m2!1sen!2sus"
       }
       ```
     - Use a comma to separate information about each location.
