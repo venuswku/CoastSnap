@@ -86,7 +86,7 @@ const Home = (props) => {
       
       <div className="defaultPadding">
         <h1>UC Santa Cruz Team</h1>
-        <p>The current UCSC team working on this project consists of Dr. Stella Hein and a variety of students with a passion for ocean sustainability. These students are involved with the UCSC sustainability program <i>Impact Designs: Engineering and Sustainability through Student Service</i> (IDEASS) and come from all sorts of backgrounds and specialities to create a strong, diverse team. They include Andy Surin, Ella Thompson, Emily Nguyen, Iris Borius, Litzia Galvan, Sarita Parikh and Venus Ku.</p>
+        <p>The current UCSC team working on this project consists of Dr. Stella Hein and a variety of students with a passion for ocean sustainability. These students are involved with the UCSC sustainability program <i>Impact Designs: Engineering and Sustainability through Student Service</i> (IDEASS) and come from all sorts of backgrounds and specialities to create a strong, diverse team. They include Alfonso De Eguia Gutierrez, Andy Surin, Ella Thompson, Emily Nguyen, Iris Borius, Litzia Galvan, Sarita Parikh and Venus Ku.</p>
         {/* <h1>Project Partners</h1>
         <p>We are extremely grateful to be collaborating with the United States Geological Survey (USGS), City of Santa Cruz and many other supportive local organizations to bring CoastSnap to our local communities.</p> */}
       </div>
