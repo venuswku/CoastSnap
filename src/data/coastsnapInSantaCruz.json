@@ -1,7 +1,7 @@
 [
   {
     "title": "Beach Town of Santa Cruz",
-    "text": "Widely known for its beautiful scenery, historic landmarks and surf culture, Santa Cruz is <span className=\"blueText\">one of the most popular tourist attractions</span> in California. Some well-known places include the Santa Cruz Beach Boardwalk, West Cliff Drive and the Santa Cruz Wharf. In efforts to preserve these places, the City of Santa Cruz and its partners have done over a <span className=\"blueText\">decade of coastal climate adaptation work</span>.",
+    "text": "Widely known for its beautiful scenery, historic landmarks and surf culture, Santa Cruz is <span className=\"blueText\">one of the most popular tourist attractions</span> in California. Some well-known places include the Santa Cruz Beach Boardwalk, West Cliff Drive and the Santa Cruz Wharf. In efforts to preserve these places, the City of Santa Cruz and its partners have done <span className=\"blueText\">over a decade of coastal climate adaptation work</span>.",
     "image": "Santa Cruz Beach",
     "button": ["https://www.cityofsantacruz.com/government/city-departments/city-manager/climate-action-program/climate-educational-resources", "Learn More about Santa Cruz's Climate Action Plans"]
   },

@@ -227,15 +227,25 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
 Once the repository is copied to your local device, you just need to repeat step 5 to see your changes.
 
 ## Save Your Website Changes to GitHub
-1. Run `git add .` to stage or mark the files that you want to save changes for.
+1. Open a terminal and navigate to the CoastSnap repository.
+2. Run `git add .` to stage or mark the files that you want to save changes for.
   - Note: `.` stages all files that you have made a change on. You can also just replace `.` with a list of file names, separated with a space, to stage specific files (e.g. `git add Home.js LocationInfo.js`).
-2. Run `git commit -m "Commit message"` and replace `Commit message` with a brief summary of the changes you made.
-3. Run `git push` to push your changes for everyone to see on [GitHub](https://github.com/venuswku/CoastSnap).
+3. Run `git commit -m "Commit message"` and replace `Commit message` with a brief summary of the changes you made.
+4. Run `git push` to push your changes for everyone to see on [GitHub](https://github.com/venuswku/CoastSnap).
 
 ## Publish Your Website Changes
-You need to deploy the website so that anyone who visits our [CoastSnap website](https://venuswku.github.io/CoastSnap/) would see your changes.
+You need to deploy the website so that anyone who visits our [CoastSnap website](http://www2.ucsc.edu/coastsnap) would see your changes.
 1. Build a production version of the website with `npm run build`.
-2. Deploy.
+    - New production files should be saved into a `build` folder.
+2. Deploy through UCSC's server by following [IT's instructions](https://its.ucsc.edu/web/hosting/hosted-pages-tutorial.html).
+    - Connect to the UCSC server with the SFTP software of your choice (e.g. FileZilla, WinSCP):
+      - Hostname: sftp.ic.ucsc.edu
+      - Username: UCSC ID (use your UCSC cruzid)
+      - Port Number: 22
+      - Authentication Method: Password (use your blue password)
+    - Open the directory where we'll store the website files: `/afs/cats.ucsc.edu/www/coastsnap/prod/public_html`.
+    - Copy website files from this directory's `build` folder into the directory that we recently navigated to.
+3. View deployed changes at http://www2.ucsc.edu/coastsnap.
 
 ## Learn More
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
