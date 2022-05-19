@@ -1,6 +1,5 @@
 {
   "homepage": "http://venuswku.github.io/CoastSnap",
-  "title": "CoastSnap",
   "name": "coastsnap",
   "version": "0.1.0",
   "private": true,
@@ -21,11 +20,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-mac": "PUBLIC_URL=/ react-scripts build",
+    "build-windows": "set PUBLIC_URL=/&&react-scripts build",
+    "build-github-pages": "react-scripts build",
+    "predeploy": "npm run build-github-pages",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
