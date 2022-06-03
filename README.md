@@ -1,4 +1,4 @@
-# Guide for Modifiying CoastSnap Website
+# Guide for Modifiying CoastSnap in Santa Cruz Website
 Please document anything that you contributed here! It helps current and future contributors of this website. 
 Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions! I'm always happy to talk with people who are interested/working on bringing CoastSnap to Santa Cruz. 😊
 
@@ -221,7 +221,7 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
 1. Open a terminal and navigate to a place where you want to store the CoastSnap repository.
 2. Run in the terminal: `git clone https://github.com/venuswku/CoastSnap.git`.
 3. Email vwku@ucsc.edu or venuswku@gmail.com to get the `.env` file, which contains the environment variables needed to access the Google Drive API. Save the `.env` file at the root of the repository (i.e. same level as the `App.js` and `package.json` files).
-4. Install all package dependencies to run the website locally: `npm install`.
+4. Run `npm ci` to locally install all package dependencies found in `package-lock.json`.
 5. Run the website in development mode with **`npm start`**. Use `ctrl + C` or `cmd + C` to stop it from running.
 
 Once the repository is copied to your local device, you just need to repeat step 5 to see your changes.
@@ -241,11 +241,11 @@ You need to deploy the website so that anyone who visits our [CoastSnap website]
     - If you have a Mac operating system, execute `npm run build-mac` in the terminal.
     - New production files should be saved into a `build` folder.
 2. Deploy through UCSC's server by following [IT's instructions](https://its.ucsc.edu/web/hosting/hosted-pages-tutorial.html).
-    - Connect to the UCSC server with the SFTP software of your choice (e.g. FileZilla, WinSCP):
+    - Connect to the UCSC server with the SFTP software of your choice (e.g. FileZilla, WinSCP).
       - Hostname: sftp.ic.ucsc.edu
-      - Username: UCSC ID (use your UCSC CruzId)
+      - Username: Your UCSC Cruz ID
       - Port Number: 22
-      - Authentication Method: Password (use your blue password)
+      - Authentication Method: Your UCSC Blue Password
     - Open the directory where we'll store the website files: `/afs/cats.ucsc.edu/www/coastsnap/prod/public_html`.
     - Copy website files from this directory's `build` folder into the directory that we recently navigated to.
       - Overwrite previous files if they exist.
