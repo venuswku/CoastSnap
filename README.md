@@ -6,6 +6,7 @@ Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions
 [Repository Structure](https://github.com/venuswku/CoastSnap#repository-structure)\
 [Create New Components](https://github.com/venuswku/CoastSnap#create-new-components)\
 [Add New Locations](https://github.com/venuswku/CoastSnap#add-new-locations)\
+[Add New Section/Link to Footer](https://github.com/venuswku/CoastSnap#add-new-sectionlink-to-footer)\
 [Get a Local Copy of Repository to Modify Website](https://github.com/venuswku/CoastSnap#get-a-local-copy-of-repository-to-modify-website)\
 [Save Your Website Changes to GitHub](https://github.com/venuswku/CoastSnap#save-your-website-changes-to-github)\
 [Publish Your Website Changes on UCSC Server](https://github.com/venuswku/CoastSnap#publish-your-website-changes-on-ucsc-server)\
