@@ -66,6 +66,13 @@ The following files make up the main content of the website:
       ```html
       <EnlargeImagePopup img={enlargedImg} description={enlargedImgDescription} close={handleClose} />
       ```
+  - `Footer.js`: footer containing links to resources provided by the City of Santa Cruz and CoastSnap.
+    - No required properties.
+    - Example from `App.js`:
+      ```html
+      <Footer className="footer" />
+      ```
+      - Make sure to add `footer` class to place the footer at bottom of website.
   - `LocationCard.js`: "card" in homepage for each location.
     - Navigates user to location's own page when clicked.
     - Required property:
@@ -102,7 +109,7 @@ The following files make up the main content of the website:
   - `Slideshow.js`: slideshow of images displayed on the homepage.
     - Images are from `src/images/slideshow`.
       - Can change images in slideshow by simply changing the images in the `slideshow` folder.
-    - No required properties
+    - No required properties.
     - Example from `Home.js`:
       ```html
       <Slideshow />
@@ -131,6 +138,19 @@ The following files make up the main content of the website:
   - `devices.json`: options provided for the Devices field in the Upload Form.
     - `devices`: list of devices that the user might have used to take a picture of the coastline.
     - `deviceNotListed`: last option with the message to input the name of the user's device if it was not listed.
+  - `footer.json`: links to resources from the City of Santa Cruz and CoastSnap.
+    - Example:
+      ```json
+      {
+        "Learn More": {
+          "About Us": "#/about",
+          "Resilient Coast Santa Cruz": "https://www.cityofsantacruz.com/government/city-departments/city-manager/climate-action-program/resilient-coast-santa-cruz",
+          "Climate Educational Resources": "https://www.cityofsantacruz.com/government/city-departments/city-manager/climate-action-program/climate-educational-resources"
+        }
+      }
+      ```
+        - Footer Section Name: Learn More
+        - Footer Link Names Under "Learn More" : About Us, Resilient Coast Santa Cruz, Climate Educational Resources
   - `locations.json`: information about each Santa Cruz location, which is displayed in their respective pages.
     - `name`
     - `description`: what makes the location special (i.e. reasons for chosing this location as a photo station).
@@ -164,6 +184,7 @@ The following files make up the main content of the website:
       - File name should correspond to the desktop version's name.
   - `Location Info`: folder containing illustrations for the `LocationInfo` pages.
   - `Upload`: folder containing illustrations for the `UploadPicForm` page.
+  - `Footer`: folder containing illustrations used for the `Footer` component.
 - `App.css`: all CSS styling used for the website.
   - `className` value of any element would be customly styled if it matched a [selector](https://www.w3schools.com/cssref/css_selectors.asp) in this file
   - examples:
@@ -216,6 +237,26 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
     - Replace `Location Name` with the name of the new location (must match the name in `location.json`).
     - Make sure to import any used images at the top of `LocationDirection.js`.
       - Example: `import NB1Lookout1 from "../images/Natural Bridges Site 1/NB1Pic1.jpg";`
+
+## Add New Section/Link to Footer
+- To add a new section to the footer, copy the following and add it to the object in `data/footer.json`:
+  ```json
+  "New Section Name": {
+    <!-- Place section links here. -->
+  }
+  ```
+- To add a new link under a section, choose a section to add the link to and paste the following underneath the section:
+  ```json
+  "Link Name": "https://www.link.com"
+  ```
+  - Replace the above with actual link values.
+- Example (to create a new section and add two new links under it):
+  ```json
+  "New Section Name": {
+    "Link Name 1": "https://www.link1.com",
+    "Link Name 2": "https://www.link2.com"
+  }
+  ```
 
 ## Get a Local Copy of Repository to Modify Website
 1. Open a terminal and navigate to a place where you want to store the CoastSnap repository.

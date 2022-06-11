@@ -78,6 +78,12 @@ span, .blueText {
 .marginBottom10 {
   margin-bottom: 10px;
 }
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .flexColumnCenter {
   display: flex;
   flex-direction: column;
@@ -91,6 +97,12 @@ span, .blueText {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.flexRowAlignStart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 .topLeft {
   position: absolute;
@@ -118,6 +130,51 @@ span, .blueText {
 }
 .relativePosition {
   position: relative;
+}
+
+/* ---------- Footer Styles ---------- */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.footerTop {
+  margin-bottom: -3%;
+}
+/* Set background color of footer to match the last element in About Page to avoid white section with no text above footer. */
+#about + #footer {
+  background-color: #212957;
+}
+/* Remove HTML element with id `footer`in Location page because
+  the page has some absolute position styling that places footer too high on page. */
+.locationBackground + #footer {
+  display: none;
+}
+/* Set background color of footer in Upload Form
+  (aka HTML element with id `footer` after element with class `sandBackground`)
+  to sand color. */
+.sandBackground + #footer {
+  background-color: #EECBA3;
+}
+.footerContent {
+  background-color: #212957;
+  padding: 0px 5% 6%;
+}
+.footerLogo {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.smallerFooterLogo {
+  width: 20%;
+}
+.footerLinksWrapper {
+  list-style-type: none;
+}
+.footerLinksMargin {
+  margin-left: 20px;
+}
+.footerLinksWrapper > li {
+  margin: 5px;
 }
 
 /* ---------- Homepage Styles ---------- */

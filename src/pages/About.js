@@ -9,7 +9,7 @@ const About = () => {
   const tablet = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <div>
+    <div id="about">
       <div className="relativePosition">
         <img src={HeaderBackground} alt="Santa Cruz Breakwater (Walton) Lighthouse" className="fullWidth" />
         <div className={(tablet ? "centerText" : "middleLeft") + " defaultLeftPadding defaultRightPadding fullWidth"}>

@@ -9,6 +9,7 @@ import About from "./pages/About";
 import UploadPicForm from "./pages/UploadPicForm";
 import LocationInfo from "./pages/LocationInfo";
 import UploadConfirmationPopup from "./components/UploadConfirmationPopup";
+import Footer from "./components/Footer";
 
 function App() {
   const theme = createTheme({
@@ -87,6 +88,7 @@ function App() {
         <Route path="/:location" element={<LocationInfo />}></Route>
       </Routes>
       {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} setUploadProgress={setUploadProgress} scrollTo={setScrollElement} />}
+      <Footer className="footer" />
     </ThemeProvider>
   );
 }

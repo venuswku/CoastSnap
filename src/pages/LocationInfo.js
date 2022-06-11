@@ -9,6 +9,7 @@ import Lifebuoy from "../images/Location Info/Lifebuoy.svg";
 import MapRoundedIcon from "@mui/icons-material/MapRounded";
 import LocationDirections from "../components/LocationDirections";
 import EnlargeImagePopup from "../components/EnlargeImagePopup";
+import Footer from "../components/Footer";
 
 const scLocationInfo = require("../data/locations.json");
 
@@ -88,6 +89,7 @@ const LocationInfo = () => {
         {/* Popup for displaying enlarged images. */}
         {enlargedImg && <EnlargeImagePopup img={enlargedImg} description={enlargedImgDescription} close={handleClose} />}
       </div>
+      <Footer className="footer" />
     </div>
   );
 };
