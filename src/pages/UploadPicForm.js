@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { WebsiteContext } from "../App";
 import { useLocation } from "react-router-dom";
 import { FormControl, FormHelperText, Button, InputLabel, Select, MenuItem, TextField } from "@mui/material";
 import Seashell from "../images/Upload/Seashell.svg";
@@ -10,8 +11,8 @@ import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
 const scLocationInfo = require("../data/locations.json");
 const devicesInfo = require("../data/devices.json");
 
-const UploadPic = (props) => {
-  const { togglePopup, setUploadProgress } = props;
+const UploadPic = () => {
+  const { setConfirmUpload, setUploadProgress } = useContext(WebsiteContext);
   const { search } = useLocation();
   // The specified scope will allow	the user to "View and manage Google Drive files and folders that you have opened or created with this app".
   const SCOPE = "https://www.googleapis.com/auth/drive.file";
@@ -98,29 +99,40 @@ const UploadPic = (props) => {
     if (image === null || imageURL === null) {
       setPhotoError(true);
       canSubmit = false;
+    } else {
+      setPhotoError(false);
     }
     if (location.length === 0) {
       setLocationError(true);
       canSubmit = false;
+    } else {
+      setLocationError(false);
     }
     if (!isValid(parseJSON(dateTime))) {
       setDateError(true);
       setTimeError(true);
       canSubmit = false;
+    } else {
+      setDateError(false);
+      setTimeError(false);
     }
     if (name.trim().length === 0) {
       setNameError(true);
       canSubmit = false;
+    } else {
+      setNameError(false);
     }
     if (device.length === 0 || (device === deviceNotListedOption && unlistedDevice.length === 0)) {
       setDeviceError(true);
       canSubmit = false;
+    } else {
+      setDeviceError(false);
     }
 
     // On success, show confirmation popup & clear out old form input.
     if (canSubmit) {
       setDisableSubmitButton(true);
-      togglePopup(true);
+      setConfirmUpload(true);
       uploadPic();
     }
   };

@@ -142,18 +142,18 @@ span, .blueText {
   margin-bottom: -3%;
 }
 /* Set background color of footer to match the last element in About Page to avoid white section with no text above footer. */
-#about + #footer {
+#about ~ #footer {
   background-color: #212957;
 }
 /* Remove HTML element with id `footer`in Location page because
   the page has some absolute position styling that places footer too high on page. */
-.locationBackground + #footer {
+.locationBackground ~ #footer {
   display: none;
 }
 /* Set background color of footer in Upload Form
   (aka HTML element with id `footer` after element with class `sandBackground`)
   to sand color. */
-.sandBackground + #footer {
+.sandBackground ~ #footer {
   background-color: #EECBA3;
 }
 .footerContent {
@@ -388,6 +388,9 @@ span, .blueText {
   display: block;
   margin: auto;
   margin-bottom: 10px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Add top margin to each form field (children of parent/form element), except for the first one. */
@@ -396,4 +399,8 @@ span, .blueText {
 }
 #form > *:first-child {
   margin-top: 0px;
+}
+
+.MuiCircularProgress-circle {
+  color: #2196f3;
 }

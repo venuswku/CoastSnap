@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { WebsiteContext } from "../App";
 import { Link, useLocation } from "react-router-dom";
 import { AppBar, Toolbar, CssBaseline, Typography, Box, IconButton, Menu, MenuItem, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -48,8 +49,8 @@ export const UploadButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const Navbar = (props) => {
-  const { scrollTo } = props;
+const Navbar = () => {
+  const { setScrollElement } = useContext(WebsiteContext);
   const classes = useStyles();
   const location = useLocation();
   const menuLinks = {
@@ -88,7 +89,7 @@ const Navbar = (props) => {
   };
   // Changes the element that the user scrolls to.
   const changeScrollElement = (ele) => {
-    scrollTo(ele);
+    setScrollElement(ele);
   };
 
   return (

@@ -1,15 +1,16 @@
-import * as React from "react";
+import React, { useContext } from "react";
+import { WebsiteContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, useTheme, useMediaQuery, CircularProgress } from "@mui/material";
 
-const UploadConfirmationPopup = (props) => {
-  const { open, togglePopup, progress, setUploadProgress, scrollTo } = props;
+const UploadConfirmationPopup = () => {
+  const { confirmUpload, setConfirmUpload, uploadProgress, setUploadProgress, setScrollElement } = useContext(WebsiteContext);
   const navigate = useNavigate();
   const theme = useTheme();
   const tablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleClose = (nextPath) => {
-    togglePopup(false);
+    setConfirmUpload(false);
     if (nextPath === "upload") {
       window.location.reload(false);
     } else if (nextPath === "") {
@@ -20,10 +21,10 @@ const UploadConfirmationPopup = (props) => {
 
   return (
     <div>
-      {progress === -1 ?
+      {uploadProgress === -1 ?
         <Dialog
           fullScreen={tablet}
-          open={open}
+          open={confirmUpload}
           onClose={() => handleClose("upload")}
           aria-labelledby="confirmation-dialog"
           aria-describedby="confirmation-dialog-description"
@@ -37,7 +38,7 @@ const UploadConfirmationPopup = (props) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => {scrollTo("upload"); handleClose("");}} autoFocus>
+            <Button onClick={() => {setScrollElement("upload"); handleClose("");}} autoFocus>
               Download App
             </Button>
             <Button onClick={() => handleClose("")} autoFocus>
@@ -45,10 +46,10 @@ const UploadConfirmationPopup = (props) => {
             </Button>
           </DialogActions>
         </Dialog> :
-        progress === 100 ?
+        uploadProgress === 100 ?
           <Dialog
             fullScreen={tablet}
-            open={open}
+            open={confirmUpload}
             onClose={() => handleClose("upload")}
             aria-labelledby="confirmation-dialog"
             aria-describedby="confirmation-dialog-description"
@@ -72,7 +73,7 @@ const UploadConfirmationPopup = (props) => {
           </Dialog> :
           <Dialog
             fullScreen={tablet}
-            open={open}
+            open={confirmUpload}
             aria-labelledby="confirmation-dialog"
             aria-describedby="confirmation-dialog-description"
           >
@@ -80,8 +81,8 @@ const UploadConfirmationPopup = (props) => {
               Uploading Photo...
             </DialogTitle>
             <DialogContent className="centeredContent" id="confirmation-dialog-description">
-              <CircularProgress variant="determinate" value={progress} />
-              <DialogContentText>{progress}% Complete</DialogContentText>
+              <CircularProgress variant="determinate" value={uploadProgress} />
+              <DialogContentText>{uploadProgress}% Complete</DialogContentText>
             </DialogContent>
           </Dialog>
       }

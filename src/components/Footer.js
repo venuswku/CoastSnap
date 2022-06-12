@@ -19,11 +19,11 @@ const Footer = () => {
         </div>
         <div className={tablet ? "flexColumn" : "flexRowAlignStart"}>
           {Object.keys(links).map((section) => (
-            <div className={tablet ? "flexColumnCenter" : "flexRowAlignStart"}>
+            <div className={tablet ? "flexColumnCenter" : "flexRowAlignStart"} key={section}>
               <h2>{section}</h2>
               <ul className={"footerLinksWrapper marginBottom10" + (tablet ? "" : " footerLinksMargin")}>
               {Object.entries(links[section]).map(([linkName, url]) => (
-                <li>
+                <li key={url}>
                   <a href={url} target="_blank" rel="noopener noreferrer">
                     {linkName}
                   </a>

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from "react";
+import React, { useEffect, createContext } from "react";
 import { useLocation, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blue, lightBlue } from "@mui/material/colors";
@@ -10,6 +10,8 @@ import UploadPicForm from "./pages/UploadPicForm";
 import LocationInfo from "./pages/LocationInfo";
 import UploadConfirmationPopup from "./components/UploadConfirmationPopup";
 import Footer from "./components/Footer";
+
+export const WebsiteContext = createContext();
 
 function App() {
   const theme = createTheme({
@@ -79,16 +81,18 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar scrollTo={setScrollElement} />
-      <Routes>
-        <Route path="/" element={<Home scrollElement={scrollElement} setScrollElement={setScrollElement} />} />
-        <Route path="/CoastSnap" element={<Home scrollElement={scrollElement} setScrollElement={setScrollElement} />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/upload" element={<UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />} />
-        <Route path="/:location" element={<LocationInfo />}></Route>
-      </Routes>
-      {confirmUpload && <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} setUploadProgress={setUploadProgress} scrollTo={setScrollElement} />}
-      <Footer className="footer" />
+      <WebsiteContext.Provider value={{ confirmUpload, setConfirmUpload, uploadProgress, setUploadProgress, scrollElement, setScrollElement }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/CoastSnap" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/upload" element={<UploadPicForm />} />
+          <Route path="/:location" element={<LocationInfo />}></Route>
+        </Routes>
+        {confirmUpload && <UploadConfirmationPopup />}
+        <Footer className="footer" />
+      </WebsiteContext.Provider>
     </ThemeProvider>
   );
 }

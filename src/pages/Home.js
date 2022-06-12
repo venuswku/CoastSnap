@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { WebsiteContext } from "../App";
 import { Link } from "react-router-dom";
 import { useTheme, useMediaQuery, Grid, Button } from "@mui/material";
 import Slideshow from "../components/Slideshow";
@@ -9,8 +10,8 @@ import MethodsForUploadingPics from "../components/MethodsForUploadingPics";
 import LocationCard from "../components/LocationCard";
 const scLocationInfo = require("../data/locations.json");
 
-const Home = (props) => {
-  const { scrollElement, setScrollElement } = props;
+const Home = () => {
+  const { scrollElement, setScrollElement } = useContext(WebsiteContext);
   const theme = useTheme();
   const tablet = useMediaQuery(theme.breakpoints.down("md"));
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
