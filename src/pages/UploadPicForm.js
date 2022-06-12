@@ -242,12 +242,15 @@ const UploadPic = () => {
   };
 
   useEffect(() => {
-    // When the form renders, run a script to load the Google API client library
-    // since there's no Google Drive API package that can be imported.
-    const script = document.createElement("script");
-    script.onload = handleClientLoad;
-    script.src = "https://apis.google.com/js/api.js";
-    document.body.appendChild(script);
+    // When the form renders, run scripts to load the Google API JavaScript client library and Google Identity Services library
+    // in order to use the Google Drive API for uploading images and their information.
+    const script1 = document.createElement("script");
+    script1.src = "https://apis.google.com/js/api.js";
+    document.body.appendChild(script1);
+    const script2 = document.createElement("script");
+    script2.onload = handleClientLoad;
+    script2.src = "https://accounts.google.com/gsi/client";
+    document.body.appendChild(script2);
 
     // Preset location if location route parameter exists (for visitors that scanned QR code).
     const queryParams = new URLSearchParams(search);
@@ -257,18 +260,34 @@ const UploadPic = () => {
     }
   }, [search]);
 
+  // Documentation for migrating from deprecated Google Sign-In JavaScript Platform library
+  // to Google Identity Services library: https://developers.google.com/identity/oauth2/web/guides/migration-to-gis#implicit_flow_examples
   const handleClientLoad = () => {
-    // Documentation for gapi's client library: https://github.com/google/google-api-javascript-client/blob/master/docs/reference.md
-    window.gapi.load("client:auth2", () => {
+    // 1) Load gapi.client.
+    window.gapi.load("client", () => {
       try {
-        window.gapi.client.init({
-          "apiKey": process.env.REACT_APP_GOOGLE_API_KEY,
-          "clientId": process.env.REACT_APP_GOOGLE_CLIENT_ID,
-          "scope": SCOPE,
-          "discoveryDocs": [DISCOVERY_DOC]
+        // 2) Initialize gapi.client.
+        window.gapi.client.init({}).then(() => {
+          try {
+            // 3) Load the GIS client.
+            window.google.accounts.oauth2.initTokenClient({
+              client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+              scope: SCOPE,
+              callback: (tokenResponse) => {
+                if (tokenResponse && tokenResponse.access_token) {
+                  // 4) Set key to allow our client to access the Google Drive API.
+                  window.gapi.client.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+                  // 5) Load the Google Drive API discovery document.
+                  window.gapi.client.load(DISCOVERY_DOC);
+                }
+              },
+            });
+          } catch(error) {
+            console.log("Error initializing the Google API client:" + error);
+          }
         });
       } catch(error) {
-        console.log(error);
+        console.log("Error loading the Google API client:" + error);
       }
     });
   }
