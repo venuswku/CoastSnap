@@ -1,6 +1,7 @@
 # Guide for Modifiying CoastSnap in Santa Cruz Website
-Please document anything that you contributed here! It helps current and future contributors of this website. 
-Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions! I'm always happy to talk with people who are interested/working on bringing CoastSnap to Santa Cruz. 😊
+Please document anything that you contributed here! It helps current and future contributors of this website.\
+Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions! I'm always happy to talk with people who are interested/working on bringing CoastSnap to Santa Cruz. 😊\
+View what the UCSC team did so far for the pilot CoastSnap program in our [progress report]().
 
 ## Table of Contents
 [Repository Structure](https://github.com/venuswku/CoastSnap#repository-structure)\
