@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.90649c34.css",
-    "main.js": "/CoastSnap/static/js/main.e6cc319f.js",
+    "main.css": "/CoastSnap/static/css/main.e6836f0d.css",
+    "main.js": "/CoastSnap/static/js/main.ffc21973.js",
     "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
     "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
     "static/media/3.jpg": "/CoastSnap/static/media/3.fc0a885cde59b528266e.jpg",
@@ -25,6 +25,7 @@
     "static/media/NB1Pic6.jpg": "/CoastSnap/static/media/NB1Pic6.fc7d1dfd0d9c5fba053c.jpg",
     "static/media/4.svg": "/CoastSnap/static/media/4.7c0f86e793abdd18f19c.svg",
     "static/media/3.svg": "/CoastSnap/static/media/3.2b91489016fc53342e9e.svg",
+    "static/media/CoastSnapLogo.svg": "/CoastSnap/static/media/CoastSnapLogo.6a877a3e7642898558f71b1b03d20732.svg",
     "static/media/2.svg": "/CoastSnap/static/media/2.d3e88b97754d45d640d7.svg",
     "static/media/WebsiteLogo.svg": "/CoastSnap/static/media/WebsiteLogo.4fd0d5378cf73c527cb1d592900093b7.svg",
     "static/media/EncouragesCommunityParticipation.svg": "/CoastSnap/static/media/EncouragesCommunityParticipation.73864d9340069e4cc1be8660ef4ffc07.svg",
@@ -37,13 +38,14 @@
     "static/media/Seashell.svg": "/CoastSnap/static/media/Seashell.8b6b66f8e86b7ea9c6069e1e46f070c0.svg",
     "index.html": "/CoastSnap/index.html",
     "static/media/TransparentWave.svg": "/CoastSnap/static/media/TransparentWave.c94616ead3ca005def5c541526cd100d.svg",
+    "static/media/Footer.svg": "/CoastSnap/static/media/Footer.d2e3d2019fb2ef9731a26ce2cea39f65.svg",
     "static/media/Wave.svg": "/CoastSnap/static/media/Wave.658847f98fc3fd341b922ce05c5f696d.svg",
-    "main.90649c34.css.map": "/CoastSnap/static/css/main.90649c34.css.map",
-    "main.e6cc319f.js.map": "/CoastSnap/static/js/main.e6cc319f.js.map",
+    "main.e6836f0d.css.map": "/CoastSnap/static/css/main.e6836f0d.css.map",
+    "main.ffc21973.js.map": "/CoastSnap/static/js/main.ffc21973.js.map",
     "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.90649c34.css",
-    "static/js/main.e6cc319f.js"
+    "static/css/main.e6836f0d.css",
+    "static/js/main.ffc21973.js"
   ]
 }
