@@ -3,7 +3,7 @@ Please document anything that you contributed here! It helps current and future 
 Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions! I'm always happy to talk with people who are interested/working on bringing CoastSnap to Santa Cruz. 😊\
 View what the UCSC team did so far for the pilot CoastSnap program in our [progress report](https://github.com/venuswku/CoastSnap/blob/main/CoastSnap_Progress_Report_10June2022.pdf).
 
-![CoastSnap in Santa Cruz](src\images\README\CoastSnapInSantaCruz.gif)
+![CoastSnap in Santa Cruz](https://media.githubusercontent.com/media/venuswku/CoastSnap/main/src/images/README/CoastSnapInSantaCruz.gif)
 
 ## Table of Contents
 [Repository Structure](https://github.com/venuswku/CoastSnap#repository-structure)\
@@ -286,7 +286,7 @@ You need to deploy the website so that anyone who visits our [CoastSnap website]
     - If you have a Windows operating system, execute `npm run build-windows` in the terminal.
     - If you have a Mac operating system, execute `npm run build-mac` in the terminal.
     - New production files should be saved into a `build` folder.\
-  ![Production Build](src\images\README\ProductionBuild.png)
+  ![Production Build](https://raw.githubusercontent.com/venuswku/CoastSnap/main/src/images/README/ProductionBuild.PNG)
 2. Deploy through UCSC's server by following [IT's instructions](https://its.ucsc.edu/web/hosting/hosted-pages-tutorial.html).
     - Connect to the UCSC server with the SFTP software of your choice (e.g. FileZilla, WinSCP).
       - Hostname: sftp.ic.ucsc.edu
@@ -296,7 +296,7 @@ You need to deploy the website so that anyone who visits our [CoastSnap website]
     - Open the directory where we'll store the website files: `/afs/cats.ucsc.edu/www/coastsnap/prod/public_html`.
     - Copy website files from this directory's `build` folder into the directory that we recently navigated to.
       - Overwrite previous files if they exist.\
-  ![Transfer Production Build to UCSC Server](src\images\README\TransferBuildToUCSCServer.gif)
+  ![Transfer Production Build to UCSC Server](https://raw.githubusercontent.com/venuswku/CoastSnap/main/src/images/README/TransferBuildToUCSCServer.gif)
 3. View deployed changes at https://coastsnap.ucsc.edu/.
 
 ## Learn More
