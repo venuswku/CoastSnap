@@ -3,6 +3,8 @@ Please document anything that you contributed here! It helps current and future 
 Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions! I'm always happy to talk with people who are interested/working on bringing CoastSnap to Santa Cruz. 😊\
 View what the UCSC team did so far for the pilot CoastSnap program in our [progress report](https://github.com/venuswku/CoastSnap/blob/main/CoastSnap_Progress_Report_10June2022.pdf).
 
+![CoastSnap in Santa Cruz](src\images\README\CoastSnapInSantaCruz.gif)
+
 ## Table of Contents
 [Repository Structure](https://github.com/venuswku/CoastSnap#repository-structure)\
 [Create New Components](https://github.com/venuswku/CoastSnap#create-new-components)\
@@ -187,6 +189,7 @@ The following files make up the main content of the website:
   - `Location Info`: folder containing illustrations for the `LocationInfo` pages.
   - `Upload`: folder containing illustrations for the `UploadPicForm` page.
   - `Footer`: folder containing illustrations used for the `Footer` component.
+  - `README`: folder containing images and gifs used in `README.md`.
 - `App.css`: all CSS styling used for the website.
   - `className` value of any element would be customly styled if it matched a [selector](https://www.w3schools.com/cssref/css_selectors.asp) in this file
   - examples:
@@ -282,7 +285,8 @@ You need to deploy the website so that anyone who visits our [CoastSnap website]
     - Open a terminal and navigate to the CoastSnap repository (e.g. `cd coastsnap`).
     - If you have a Windows operating system, execute `npm run build-windows` in the terminal.
     - If you have a Mac operating system, execute `npm run build-mac` in the terminal.
-    - New production files should be saved into a `build` folder.
+    - New production files should be saved into a `build` folder.\
+  ![Production Build](src\images\README\ProductionBuild.png)
 2. Deploy through UCSC's server by following [IT's instructions](https://its.ucsc.edu/web/hosting/hosted-pages-tutorial.html).
     - Connect to the UCSC server with the SFTP software of your choice (e.g. FileZilla, WinSCP).
       - Hostname: sftp.ic.ucsc.edu
@@ -291,7 +295,8 @@ You need to deploy the website so that anyone who visits our [CoastSnap website]
       - Authentication Method: Your UCSC Blue Password
     - Open the directory where we'll store the website files: `/afs/cats.ucsc.edu/www/coastsnap/prod/public_html`.
     - Copy website files from this directory's `build` folder into the directory that we recently navigated to.
-      - Overwrite previous files if they exist.
+      - Overwrite previous files if they exist.\
+  ![Transfer Production Build to UCSC Server](src\images\README\TransferBuildToUCSCServer.gif)
 3. View deployed changes at https://coastsnap.ucsc.edu/.
 
 ## Learn More
@@ -309,12 +314,6 @@ You may also see any lint errors in the console.
 ### `npm test`
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-### `npm run build`
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.\
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!\
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 ### `npm run eject`
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**\
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.\
@@ -335,6 +334,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 ### Deployment
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
