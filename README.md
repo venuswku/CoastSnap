@@ -14,7 +14,7 @@ View what the UCSC team did so far for the pilot CoastSnap program in our [progr
 [Publish Your Website Changes on UCSC Server](https://github.com/venuswku/CoastSnap#publish-your-website-changes-on-ucsc-server)\
 [Learn More](https://github.com/venuswku/CoastSnap#learn-more)
 
-![Homepage](src\images\README\Homepage.gif)
+![Homepage](https://raw.githubusercontent.com/venuswku/CoastSnap/main/src/images/README/Homepage.gif)
 
 ## Repository Structure
 The following files make up the main content of the website:
@@ -217,7 +217,7 @@ export default ComponentName;
 Replace `ComponentName` in the filename and code with a name that reflects the new component that you want to create.
 
 ## Add New Locations
-![CoastSnap Locations](src\images\README\LocationAndUploadPages.gif)
+![CoastSnap Locations](https://raw.githubusercontent.com/venuswku/CoastSnap/main/src/images/README/LocationAndUploadPages.gif)
 1. Add the required location information in `locations.json`.
     - Example:
       ```json
@@ -246,7 +246,7 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
       - Example: `import NB1Lookout1 from "../images/Natural Bridges Site 1/NB1Pic1.jpg";`
 
 ## Add New Section to About Page
-![About Page](src\images\README\AboutPage.gif)
+![About Page](https://raw.githubusercontent.com/venuswku/CoastSnap/main/src/images/README/AboutPage.gif)
 1. Each section requires an illustration/image. Rename the new section's illustration/image file with a number.
     - This number will be used to determine where the new illustration/image will be placed relative to other existing illustrations/images.
 2. Place the renamed illustration file in the `src/images/CoastSnap in Santa Cruz` folder.
