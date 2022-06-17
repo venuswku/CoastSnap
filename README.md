@@ -3,17 +3,18 @@ Please document anything that you contributed here! It helps current and future 
 Feel free to email vwku@ucsc.edu or venuswku@gmail.com if you have any questions! I'm always happy to talk with people who are interested/working on bringing CoastSnap to Santa Cruz. 😊\
 View what the UCSC team did so far for the pilot CoastSnap program in our [progress report](https://github.com/venuswku/CoastSnap/blob/main/CoastSnap_Progress_Report_10June2022.pdf).
 
-![CoastSnap in Santa Cruz](https://media.githubusercontent.com/media/venuswku/CoastSnap/main/src/images/README/CoastSnapInSantaCruz.gif)
-
 ## Table of Contents
 [Repository Structure](https://github.com/venuswku/CoastSnap#repository-structure)\
 [Create New Components](https://github.com/venuswku/CoastSnap#create-new-components)\
 [Add New Locations](https://github.com/venuswku/CoastSnap#add-new-locations)\
+[Add New Section to About Page](https://github.com/venuswku/CoastSnap#add-new-section-to-about-page)\
 [Add New Section/Link to Footer](https://github.com/venuswku/CoastSnap#add-new-sectionlink-to-footer)\
 [Get a Local Copy of Repository to Modify Website](https://github.com/venuswku/CoastSnap#get-a-local-copy-of-repository-to-modify-website)\
 [Save Your Website Changes to GitHub](https://github.com/venuswku/CoastSnap#save-your-website-changes-to-github)\
 [Publish Your Website Changes on UCSC Server](https://github.com/venuswku/CoastSnap#publish-your-website-changes-on-ucsc-server)\
 [Learn More](https://github.com/venuswku/CoastSnap#learn-more)
+
+![Homepage](src\images\README\Homepage.gif)
 
 ## Repository Structure
 The following files make up the main content of the website:
@@ -54,8 +55,8 @@ The following files make up the main content of the website:
       <CoastSnapFeatures />
       ```
   - `CoastSnapInSantaCruz.js`: sections that explain why we are bringing CoastSnap to Santa Cruz.
-    - If you want to edit the text for a subsection, make sure to edit the text in 2 places!
-      - Necessary for the illustrations to stack correctly while horizontally aligning them with their corresponding subsections.
+    - If you want to modify or add a section, make sure to edit `coastsnapInSantaCruz.json` in the `src/data` folder.
+      - View detailed instructions [here](https://github.com/venuswku/CoastSnap#add-new-section-to-about-page).
     - No required properties.
     - Example from `About.js`:
       ```html
@@ -130,7 +131,7 @@ The following files make up the main content of the website:
       ```html
       <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} setUploadProgress={setUploadProgress} scrollTo={setScrollElement} />
       ```
-- `src/data` folder: text used as content in the website.
+- `src/data` folder: text used as content in the website (open the JSON files in this folder to see more examples).
   - `coastsnapInSantaCruz.json`: information for each section in the `CoastSnapInSantaCruz` component.
     - `title`: topic of section.
     - `text`: more information related to the topic.
@@ -216,6 +217,7 @@ export default ComponentName;
 Replace `ComponentName` in the filename and code with a name that reflects the new component that you want to create.
 
 ## Add New Locations
+![CoastSnap Locations](src\images\README\LocationAndUploadPages.gif)
 1. Add the required location information in `locations.json`.
     - Example:
       ```json
@@ -242,6 +244,26 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
     - Replace `Location Name` with the name of the new location (must match the name in `location.json`).
     - Make sure to import any used images at the top of `LocationDirection.js`.
       - Example: `import NB1Lookout1 from "../images/Natural Bridges Site 1/NB1Pic1.jpg";`
+
+## Add New Section to About Page
+![About Page](src\images\README\AboutPage.gif)
+1. Each section requires an illustration/image. Rename the new section's illustration/image file with a number.
+    - This number will be used to determine where the new illustration/image will be placed relative to other existing illustrations/images.
+2. Place the renamed illustration file in the `src/images/CoastSnap in Santa Cruz` folder.
+3. The mobile layout of the About page is different than the desktop layout. If you have a specific illustration/image for the mobile layout, then repeat step 1 by renaming that illustration/image with the same number and placing it into the `src/images/CoastSnap in Santa Cruz/mobile` folder. Otherwise, add a copy of the desktop illustration/image into the `src/images/CoastSnap in Santa Cruz/mobile` folder.
+3. Open the `coastsnapInSantaCruz.json` file located in the `src/data` folder.
+4. Paste and modify the following template in order to add text for the new section in the `CoastSnapInSantaCruz` component.
+    - Make sure to paste the template in the order that you would like the new section to appear on the About page.
+      - Example: If you renamed the new section's illustration to `5` and there are 4 existing sections, then place the text template at the end of the list in `coastsnapInSantaCruz.json`. There should be 4 of these structured templates above our new template.
+    ```json
+    {
+      "title": "Section Title",
+      "text": "This is text that talks about the section title in more depth. You can bring attention to certain keywords by placing <span className=\"blueText\">and some important text in between these span tags</span> to bold the text with a <span className=\"blueText\">blue color</span>.",
+      "button": ["https://www.websitelink.com/", "Text on Button that Leads to the Specified Website When Clicked"],
+      "image": "Alternative Text that Appears When the Image Cannot Load"
+    },
+    ```
+    - The `button` and `image` properties above are optional in case you don't have any resources/links to add.
 
 ## Add New Section/Link to Footer
 - To add a new section to the footer, copy the following and add it to the object in `data/footer.json`:
@@ -275,7 +297,7 @@ Once the repository is copied to your local device, you just need to repeat step
 ## Save Your Website Changes to GitHub
 1. Open a terminal and navigate to the CoastSnap repository (e.g. `cd coastsnap`).
 2. Run `git add .` to stage or mark the files that you want to save changes for.
-  - Note: `.` stages all files that you have made a change on. You can also just replace `.` with a list of file names, separated with a space, to stage specific files (e.g. `git add Home.js LocationInfo.js`).
+    - Note: `.` stages all files that you have made a change on. You can also just replace `.` with a list of file names, separated with a space, to stage specific files (e.g. `git add Home.js LocationInfo.js`).
 3. Run `git commit -m "Commit message"` and replace `Commit message` with a brief summary of the changes you made.
 4. Run `git push` to push your changes for everyone to see on [GitHub](https://github.com/venuswku/CoastSnap).
 
