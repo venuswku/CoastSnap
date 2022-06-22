@@ -47,8 +47,8 @@ const LocationInfo = () => {
           </Link>
         </div>
         <div className="defaultTopBottomPadding">
-          <h2>Timelapses</h2>
-          <p className="grayText">The following videos have been compiled from the photos that our team has collected over several months.</p>
+          <h2>Timelapse</h2>
+          <p className="grayText">The following video has been compiled from the photos that our team has collected over several months.</p>
           <div className="timelapseVideos">
             {info.timelapseVids.map((vid, i) =>
               <Grid item xs={12} md={7} key={vid}>

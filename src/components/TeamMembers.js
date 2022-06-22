@@ -9,7 +9,9 @@ const TeamMembers = () => {
           {member.image ?
             <img src={require("../images/UCSC Team/" + member.image)} alt={member.name + "'s Profile Picture"} className="teammatePic" />
             :
-            <h2 className="teammateInitials">{member.initials}</h2>
+            <div className="teammateInitialsWrapper">
+              <h1 className="teammateInitials">{member.initials}</h1>
+            </div>
           }
           <h2>{member.name}</h2>
           <p className="grayText">

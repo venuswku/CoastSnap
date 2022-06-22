@@ -255,17 +255,22 @@ span, .blueText {
 .teammateWrapper {
   cursor: pointer;
 }
-.teammatePic {
-  width: 13%;
+.teammatePic, .teammateInitialsWrapper {
+  position: relative;
+  width: 10%;
   border-radius: 50%;
+}
+.teammateInitialsWrapper {
+  padding-top: 10%; /* 1:1 Aspect Ratio */
+  background-color: #BFDBF7;
 }
 .teammateInitials {
   font-family: "Fredoka", sans-serif;
   color: white;
-  width: 13%;
-  /* height: 13%; */
-  background-color: #BFDBF7;
-  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
 /* ---------- About Page Styles ---------- */
