@@ -8,6 +8,7 @@ View what the UCSC team did so far for the pilot CoastSnap program in our [progr
 [Create New Components](https://github.com/venuswku/CoastSnap#create-new-components)\
 [Add New Locations](https://github.com/venuswku/CoastSnap#add-new-locations)\
 [Add New Section to About Page](https://github.com/venuswku/CoastSnap#add-new-section-to-about-page)\
+[Add New Team Member to Homepage](https://github.com/venuswku/CoastSnap#add-new-team-member-to-homepage)\
 [Add New Section/Link to Footer](https://github.com/venuswku/CoastSnap#add-new-sectionlink-to-footer)\
 [Get a Local Copy of Repository to Modify Website](https://github.com/venuswku/CoastSnap#get-a-local-copy-of-repository-to-modify-website)\
 [Save Your Website Changes to GitHub](https://github.com/venuswku/CoastSnap#save-your-website-changes-to-github)\
@@ -21,18 +22,16 @@ The following files make up the main content of the website:
 - `src/pages` folder: pages of the website.
   - `Home.js`: homepage of website, which is the first page that any user sees when visiting the website.
     - Many examples of placing components in the homepage are found here.
-    - Required properties:
-      - `scrollElement`: element to scroll to when the homepage is loaded.
-      - `setScrollElement`: sets the new element to scroll to.
+    - No required properties.
     - Example from `App.js`:
       ```html
-      <Home scrollElement={scrollElement} setScrollElement={setScrollElement} />
+      <Home />
       ```
   - `About.js`: page that tells user more about the implementation of CoastSnap in Santa Cruz.
     - No required properties.
   - `LocationInfo.js`: page with more information about each Santa Cruz photo location.
     - No required properties.
-      - Uses the URL parameter to figure out which location to display information about.
+    - Uses the URL parameter to figure out which location to display information about.
     - Gets location information from `locations.json`
     - Example from `App.js`:
       ```html
@@ -40,12 +39,10 @@ The following files make up the main content of the website:
       ```
   - `UploadPicForm.js`: form that user fills out to upload their pictures through this website.
     - User must provide an image and fill out the Location, Name and Device fields.
-    - Required properties:
-      - `togglePopup`: function used to open and close the popup for confirming an image upload.
-      - `setUploadProgress`: function used to set the upload progress.
+    - No required properties.
     - Example from `App.js`:
       ```html
-      <UploadPicForm togglePopup={setConfirmUpload} setUploadProgress={setUploadProgress} />
+      <UploadPicForm />
       ```
 - `src/components` folder: reusable components of the website.
   - `CoastSnapFeatures.js`: list three main features of CoastSnap on the homepage.
@@ -105,8 +102,7 @@ The following files make up the main content of the website:
     - "Upload" leads to the Upload Form for uploading pictures through this website.
     - "About" leads to the About section on the homepage.
     - "Locations" leads to the Locations section on the homepage.
-    - Required property:
-      - `scrollTo`: function used to set the element to navigate to.
+    - No required properties.
     - Example from `App.js`:
       ```html
       <Navbar scrollTo={setScrollElement} />
@@ -119,17 +115,19 @@ The following files make up the main content of the website:
       ```html
       <Slideshow />
       ```
+  - `TeamMembers.js`: list of UCSC team members involved with CoastSnap.
+    - No required properties.
+    - Add or modify team member information by following [these instructions](https://github.com/venuswku/CoastSnap#add-new-team-member-to-homepage).
+    - Example from `Home.js`:
+      ```html
+      <TeamMembers />
+      ```
   - `UploadConfirmationPopup.js`: popup that appears after the user submits their picture and information in the Upload Form.
     - Either displays a progress bar or an error message (if the upload was unsuccessful).
-    - Required properties:
-      - `open`: boolean (true or false value) that determines whether or not to show the popup.
-      - `togglePopup`: function used to open and close the popup.
-      - `progess`: percentage of image that was uploaded; -1 if upload was unsuccessful.
-      - `setUploadProgress`: function used to set the upload progress.
-      - `scrollTo`: function used to set the element to navigate to.
+    - No required properties.
     - Example from `App.js`:
       ```html
-      <UploadConfirmationPopup open={confirmUpload} togglePopup={setConfirmUpload} progress={uploadProgress} setUploadProgress={setUploadProgress} scrollTo={setScrollElement} />
+      <UploadConfirmationPopup />
       ```
 - `src/data` folder: text used as content in the website (open the JSON files in this folder to see more examples).
   - `coastsnapInSantaCruz.json`: information for each section in the `CoastSnapInSantaCruz` component.
@@ -143,6 +141,18 @@ The following files make up the main content of the website:
   - `devices.json`: options provided for the Devices field in the Upload Form.
     - `devices`: list of devices that the user might have used to take a picture of the coastline.
     - `deviceNotListed`: last option with the message to input the name of the user's device if it was not listed.
+  - `teamMembers.json`: list of CoastSnap team members from UCSC.
+    - `name`: first and last name of the team member.
+    - One of the two following properties must be included:
+      - `image`: property for the name of the team member's image, if provided.
+      - `initials`: initials of the team member, if the image is not provided.
+    - `role`: role(s) that the team member has for the project.
+      - Examples: `"Web Developer"` for one role, `"Web Developer & UX/UI Designer"` for two roles
+    - `education`: team member's type of degree, major, and graduation year.
+      Examples: `"B.S. in Marine Biology, 2022"`, `"B.S. in Computer Science, 2022"`
+    - `link`: optional link to the team member's LinkedIn profile or personal website for people to learn more about them.
+      - Omit this from the team member's info if they don't have or want to provide a link.
+      - If provided, clicking on the team member will open up the link in a new browser tab.
   - `footer.json`: links to resources from the City of Santa Cruz and CoastSnap.
     - Example:
       ```json
@@ -188,6 +198,9 @@ The following files make up the main content of the website:
     - `mobile`: folder containing mobile versions of the illustrations.
       - File name should correspond to the desktop version's name.
   - `Location Info`: folder containing illustrations for the `LocationInfo` pages.
+  - `UCSC Team`: folder containing images for the `TeamMembers` component on the homepage.
+      - Images should be square-shaped for the sizing to match other team member's images.
+      - File name should correspond to the first and last name of the team member (with no spaces in between).
   - `Upload`: folder containing illustrations for the `UploadPicForm` page.
   - `Footer`: folder containing illustrations used for the `Footer` component.
   - `README`: folder containing images and gifs used in `README.md`.
@@ -198,6 +211,14 @@ The following files make up the main content of the website:
     - `#uploadedImg`: selector for elements with a property of `id="uploadedImg"`
     - `h1`: selector for elements with a `<h1>` tag
 - `App.js`: contains all possible routes for the website.
+  - `ThemeProvider` is used to override default Material UI (MUI) styling.
+  - `WebsiteContext` provides the following for any component or page to use:
+    - `scrollElement`: element to scroll to when the homepage is loaded.
+    - `setScrollElement`: sets the new element to scroll to.
+    - `confirmUpload`: boolean (true or false value) that determines whether or not to show the image upload confirmation popup.
+    - `setConfirmUpload`: function used to open and close the popup for confirming an image upload.
+    - `uploadProgess`: percentage of image that was uploaded; -1 if upload was unsuccessful.
+    - `setUploadProgress`: function used to set the image upload progress.
 
 ## Create New Components
 To create a new component, add a new `ComponentName.js` file in `src/components` and copy the following:
@@ -264,6 +285,39 @@ Replace `ComponentName` in the filename and code with a name that reflects the n
     },
     ```
     - The `button` and `image` properties above are optional in case you don't have any resources/links to add.
+
+## Add New Team Member to Homepage
+1. Open the `teamMembers.json` file located in the `src/data` folder.
+2. Paste the following template after the last teammate's info.
+    - If you have an image of the new team member,
+      - crop the image into a square shape for the best results
+      - rename the image to the new team member's first and last name (without spaces in between)
+      - place the image in the `src/images/UCSC Team` folder
+      - replace `FirstLast.jpg` with the name of the image and the image format (e.g. `.jpg`, `.png`):
+      ```json
+      {
+        "name": "First Last",
+        "image": "FirstLast.jpg",
+        "role": "New Team Member's Role(s)",
+        "education": "Type of Degree in Major, Graduation Year"
+      }
+      ```
+    - If you don't have an image of the new team member, then provide their initials instead:
+      ```json
+      {
+        "name": "First Last",
+        "initials": "FL",
+        "role": "New Team Member's Role(s)",
+        "education": "Type of Degree in Major, Graduation Year"
+      }
+      ```
+    - Look at other team members' info for examples.
+    - Note: Remember to add a comma `,` after the last teammate's info to separate the new teammate's info from theirs.
+3. If the new team member has a LinkedIn profile or personal website that they would like to share, then add the following property and replace the placeholder link with their preferred link:
+    ```json
+    "link": "https://www.linkedin.com/in/username"
+    ```
+    - Note: Remember to add a comma `,` after the new teammate's `education` property to separate it from the `link` property.
 
 ## Add New Section/Link to Footer
 - To add a new section to the footer, copy the following and add it to the object in `data/footer.json`:
