@@ -78,6 +78,9 @@ span, .blueText {
 .marginBottom10 {
   margin-bottom: 10px;
 }
+.marginLeft20 {
+  margin-left: 20px;
+}
 .flexColumn {
   display: flex;
   flex-direction: column;
@@ -253,7 +256,14 @@ span, .blueText {
 }
 
 .teammateWrapper {
-  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+.teammateWrapper:hover {
+  transform: scale(1.1);
 }
 .teammatePic, .teammateInitialsWrapper {
   position: relative;
