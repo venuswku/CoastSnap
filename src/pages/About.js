@@ -1,12 +1,11 @@
-import React from "react";
-import { useTheme, useMediaQuery } from "@mui/material";
+import React, { useContext } from "react";
+import { WebsiteContext } from "../App";
 import HeaderBackground from "../images/About/SantaCruzLighthouse.jpg";
 import CoastSnapInSantaCruz from "../components/CoastSnapInSantaCruz";
 import MethodsForUploadingPics from "../components/MethodsForUploadingPics";
 
 const About = () => {
-  const theme = useTheme();
-  const tablet = useMediaQuery(theme.breakpoints.down("md"));
+  const { tablet } = useContext(WebsiteContext);
 
   return (
     <div id="about">

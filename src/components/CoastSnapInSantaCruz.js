@@ -1,5 +1,6 @@
-import React from "react";
-import { useTheme, useMediaQuery, Box, Grid, Button } from "@mui/material";
+import React, { useContext } from "react";
+import { WebsiteContext } from "../App";
+import { Box, Grid, Button } from "@mui/material";
 const sections = require("../data/coastsnapInSantaCruz.json");
 
 // Import all images for this component.
@@ -12,8 +13,7 @@ const mobileImages = importAll(require.context("../images/CoastSnap In Santa Cru
 // Component that explains why we want to bring CoastSnap to Santa Cruz.
 // IMPORTANT: If you want to edit the text for a section, make sure to edit the text in src/data/coastsnapInSantaCruz.json!
 const CoastSnapInSantaCruz = () => {
-  const theme = useTheme();
-  const tablet = useMediaQuery(theme.breakpoints.down("md"));
+  const { tablet } = useContext(WebsiteContext);
 
   return (
     <div>

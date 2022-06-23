@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import { WebsiteContext } from "../App";
 import { useNavigate } from "react-router-dom";
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, useTheme, useMediaQuery, CircularProgress } from "@mui/material";
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, CircularProgress } from "@mui/material";
 
 const UploadConfirmationPopup = () => {
-  const { confirmUpload, setConfirmUpload, uploadProgress, setUploadProgress, setScrollElement } = useContext(WebsiteContext);
+  const { tablet, confirmUpload, setConfirmUpload, uploadProgress, setUploadProgress, setScrollElement } = useContext(WebsiteContext);
   const navigate = useNavigate();
-  const theme = useTheme();
-  const tablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleClose = (nextPath) => {
     setConfirmUpload(false);

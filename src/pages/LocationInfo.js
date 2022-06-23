@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { WebsiteContext } from "../App";
 import { useParams, Link } from "react-router-dom";
-import { useTheme, useMediaQuery, Button, Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { UploadButton } from "../components/Navbar";
 import Wave from "../images/Location Info/Wave.svg";
 import TransparentWave from "../images/Location Info/TransparentWave.svg";
@@ -17,8 +18,7 @@ const LocationInfo = () => {
   const { location } = useParams();
   const info = scLocationInfo.filter(loc => loc.name === location)[0];
   const image = require(`../images/${location}/${info.image}`);
-  const theme = useTheme();
-  const tablet = useMediaQuery(theme.breakpoints.down("md"));
+  const { tablet } = useContext(WebsiteContext);
   const [enlargedImg, setEnlargedImg] = React.useState(null);
   const [enlargedImgDescription, setEnlargedImgDescription] = React.useState(null);
 

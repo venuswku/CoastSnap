@@ -1,13 +1,11 @@
-import React from "react";
-import { useTheme, useMediaQuery } from "@mui/material";
+import React, { useContext } from "react";
+import { WebsiteContext } from "../App";
 import FooterTop from "../images/Footer/Footer.svg";
 import CoastSnapLogo from "../images/Footer/CoastSnapLogo.svg";
 const links = require("../data/footer.json");
 
 const Footer = () => {
-  const theme = useTheme();
-  const tablet = useMediaQuery(theme.breakpoints.down("md"));
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { mobile, tablet } = useContext(WebsiteContext);
 
   return (
     <div id="footer" className="fullWidth">

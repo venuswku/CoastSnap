@@ -213,6 +213,10 @@ The following files make up the main content of the website:
 - `App.js`: contains all possible routes for the website.
   - `ThemeProvider` is used to override default Material UI (MUI) styling.
   - `WebsiteContext` provides the following for any component or page to use:
+    - `mobile`: boolean (true or false value) that is used to check if the user's browser size is similar to mobile devices.
+      - MUI's default `sm`/small breakpoint = 600 pixels
+    - `tablet`: boolean (true or false value) that is used to check if the user's browser size is similar to tablets.
+      - MUI's default `md`/medium breakpoint = 900 pixels
     - `scrollElement`: element to scroll to when the homepage is loaded.
     - `setScrollElement`: sets the new element to scroll to.
     - `confirmUpload`: boolean (true or false value) that determines whether or not to show the image upload confirmation popup.

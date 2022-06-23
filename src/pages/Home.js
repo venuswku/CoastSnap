@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { WebsiteContext } from "../App";
 import { Link } from "react-router-dom";
-import { useTheme, useMediaQuery, Grid, Button } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import Slideshow from "../components/Slideshow";
 import { UploadButton } from "../components/Navbar";
 import CoastSnapFeatures from "../components/CoastSnapFeatures";
@@ -12,10 +12,7 @@ import TeamMembers from "../components/TeamMembers";
 const scLocationInfo = require("../data/locations.json");
 
 const Home = () => {
-  const { scrollElement, setScrollElement } = useContext(WebsiteContext);
-  const theme = useTheme();
-  const tablet = useMediaQuery(theme.breakpoints.down("md"));
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { mobile, tablet, scrollElement, setScrollElement } = useContext(WebsiteContext);
   const aboutRef = React.useRef(null);
   const uploadRef = React.useRef(null);
   const locationsRef = React.useRef(null);

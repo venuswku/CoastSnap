@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect, createContext } from "react";
 import { useLocation, Routes, Route } from "react-router-dom";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, useMediaQuery, ThemeProvider } from "@mui/material";
 import { blue, lightBlue } from "@mui/material/colors";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -67,9 +67,13 @@ function App() {
       },
     },
   });
+  // Used to make website responsive for different devices.
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const tablet = useMediaQuery(theme.breakpoints.down("md"));
+
+  const [scrollElement, setScrollElement] = React.useState("");
   const [confirmUpload, setConfirmUpload] = React.useState(false);
   const [uploadProgress, setUploadProgress] = React.useState(0);
-  const [scrollElement, setScrollElement] = React.useState("");
 
   // Scroll to top of a page whenever the URL route changes (only for pages that aren't the homepage).
   const location = useLocation();
@@ -81,7 +85,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <WebsiteContext.Provider value={{ confirmUpload, setConfirmUpload, uploadProgress, setUploadProgress, scrollElement, setScrollElement }}>
+      <WebsiteContext.Provider value={{ mobile, tablet, scrollElement, setScrollElement, confirmUpload, setConfirmUpload, uploadProgress, setUploadProgress }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

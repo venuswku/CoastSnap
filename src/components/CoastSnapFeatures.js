@@ -1,12 +1,12 @@
-import React from "react";
-import { useTheme, useMediaQuery, Grid } from "@mui/material";
+import React, { useContext } from "react";
+import { WebsiteContext } from "../App";
+import { Grid } from "@mui/material";
 import Monitors from "../images/Homepage/MonitorsCoastalChange.svg";
 import Encourages from "../images/Homepage/EncouragesCommunityParticipation.svg";
 import Educates from "../images/Homepage/EducatesAboutClimateChange.svg";
 
 const CoastSnapFeatures = () => {
-  const theme = useTheme();
-  const tablet = useMediaQuery(theme.breakpoints.down("md"));
+  const { tablet } = useContext(WebsiteContext);
 
   return (
     <div className="flexColumnCenter defaultPadding">
