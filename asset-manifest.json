@@ -1,8 +1,10 @@
 {
   "files": {
-    "main.css": "/CoastSnap/static/css/main.e6836f0d.css",
-    "main.js": "/CoastSnap/static/js/main.ffc21973.js",
-    "static/js/787.bee7bf00.chunk.js": "/CoastSnap/static/js/787.bee7bf00.chunk.js",
+    "main.css": "/CoastSnap/static/css/main.6c8d6b5d.css",
+    "main.js": "/CoastSnap/static/js/main.54e50544.js",
+    "static/media/LocationPage.gif": "/CoastSnap/static/media/LocationPage.25507c91b6ed41eb87da.gif",
+    "static/media/Homepage.gif": "/CoastSnap/static/media/Homepage.f7532adf52d68cbb2c05.gif",
+    "static/media/AboutPage.gif": "/CoastSnap/static/media/AboutPage.225d0af4d113f23b24cd.gif",
     "static/media/NB1_21_01_27_16_48_Iphone11_IB.jpeg": "/CoastSnap/static/media/NB1_21_01_27_16_48_Iphone11_IB.fc7e1249ced5fe426b55.jpeg",
     "static/media/3.jpg": "/CoastSnap/static/media/3.fc0a885cde59b528266e.jpg",
     "static/media/1.jpg": "/CoastSnap/static/media/1.d8e4acbe4c3443b54c9a.jpg",
@@ -10,9 +12,13 @@
     "static/media/4.jpg": "/CoastSnap/static/media/4.52ecca84ba244d4142d3.jpg",
     "static/media/2.jpg": "/CoastSnap/static/media/2.0aa5bf429aede507a74d.jpg",
     "static/media/5.jpg": "/CoastSnap/static/media/5.b087c29121e611fbff63.jpg",
+    "static/media/VenusKu.jpg": "/CoastSnap/static/media/VenusKu.489ae4e7fdb3fd120a50.jpg",
+    "static/media/LitziaGalvan.jpg": "/CoastSnap/static/media/LitziaGalvan.45ce3166330f790b454c.jpg",
     "static/media/AboutCoastSnap.jpg": "/CoastSnap/static/media/AboutCoastSnap.9cacd80b254704dc4b06.jpg",
     "static/media/SantaCruzLighthouse.jpg": "/CoastSnap/static/media/SantaCruzLighthouse.5582d82e24b569cbee6d.jpg",
+    "static/media/TransferBuildToUCSCServer.gif": "/CoastSnap/static/media/TransferBuildToUCSCServer.58f7ba7d7b74add50f58.gif",
     "static/media/NB1Pic5.jpg": "/CoastSnap/static/media/NB1Pic5.1619b3bebe129dddc6e9.jpg",
+    "static/media/UploadPicForm.gif": "/CoastSnap/static/media/UploadPicForm.c8f7f6b65280bfa88b4c.gif",
     "static/media/NB1Pic4.jpg": "/CoastSnap/static/media/NB1Pic4.9eb7f9eaa8189107d773.jpg",
     "static/media/NB1Pic3.jpg": "/CoastSnap/static/media/NB1Pic3.2cfcfe7772da3f2bb9ce.jpg",
     "static/media/NB1Pic2.jpg": "/CoastSnap/static/media/NB1Pic2.3e0d93a11c9b4f4e22e4.jpg",
@@ -24,6 +30,7 @@
     "static/media/NB1Pic1.jpg": "/CoastSnap/static/media/NB1Pic1.3aec782c14dac7146834.jpg",
     "static/media/NB1Pic6.jpg": "/CoastSnap/static/media/NB1Pic6.fc7d1dfd0d9c5fba053c.jpg",
     "static/media/4.svg": "/CoastSnap/static/media/4.7c0f86e793abdd18f19c.svg",
+    "static/media/ProductionBuild.PNG": "/CoastSnap/static/media/ProductionBuild.743d328e076ad1717263.PNG",
     "static/media/3.svg": "/CoastSnap/static/media/3.2b91489016fc53342e9e.svg",
     "static/media/CoastSnapLogo.svg": "/CoastSnap/static/media/CoastSnapLogo.6a877a3e7642898558f71b1b03d20732.svg",
     "static/media/2.svg": "/CoastSnap/static/media/2.d3e88b97754d45d640d7.svg",
@@ -40,12 +47,11 @@
     "static/media/TransparentWave.svg": "/CoastSnap/static/media/TransparentWave.c94616ead3ca005def5c541526cd100d.svg",
     "static/media/Footer.svg": "/CoastSnap/static/media/Footer.d2e3d2019fb2ef9731a26ce2cea39f65.svg",
     "static/media/Wave.svg": "/CoastSnap/static/media/Wave.658847f98fc3fd341b922ce05c5f696d.svg",
-    "main.e6836f0d.css.map": "/CoastSnap/static/css/main.e6836f0d.css.map",
-    "main.ffc21973.js.map": "/CoastSnap/static/js/main.ffc21973.js.map",
-    "787.bee7bf00.chunk.js.map": "/CoastSnap/static/js/787.bee7bf00.chunk.js.map"
+    "main.6c8d6b5d.css.map": "/CoastSnap/static/css/main.6c8d6b5d.css.map",
+    "main.54e50544.js.map": "/CoastSnap/static/js/main.54e50544.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6836f0d.css",
-    "static/js/main.ffc21973.js"
+    "static/css/main.6c8d6b5d.css",
+    "static/js/main.54e50544.js"
   ]
 }
