@@ -44,6 +44,7 @@ The following files make up the main content of the website:
       ```html
       <UploadPicForm />
       ```
+    ![Upload Picture Form](https://raw.githubusercontent.com/venuswku/CoastSnap/main/src/images/README/UploadPicForm.gif)
 - `src/components` folder: reusable components of the website.
   - `CoastSnapFeatures.js`: list three main features of CoastSnap on the homepage.
     - No required properties.
@@ -242,7 +243,7 @@ export default ComponentName;
 Replace `ComponentName` in the filename and code with a name that reflects the new component that you want to create.
 
 ## Add New Locations
-![CoastSnap Locations](https://raw.githubusercontent.com/venuswku/CoastSnap/main/src/images/README/LocationAndUploadPages.gif)
+![CoastSnap Locations](https://raw.githubusercontent.com/venuswku/CoastSnap/main/src/images/README/LocationPage.gif)
 1. Add the required location information in `locations.json`.
     - Example:
       ```json
