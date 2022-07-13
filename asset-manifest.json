@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CoastSnap/static/css/main.6c8d6b5d.css",
-    "main.js": "/CoastSnap/static/js/main.54e50544.js",
+    "main.js": "/CoastSnap/static/js/main.98ea52a3.js",
     "static/media/LocationPage.gif": "/CoastSnap/static/media/LocationPage.25507c91b6ed41eb87da.gif",
     "static/media/Homepage.gif": "/CoastSnap/static/media/Homepage.f7532adf52d68cbb2c05.gif",
     "static/media/AboutPage.gif": "/CoastSnap/static/media/AboutPage.225d0af4d113f23b24cd.gif",
@@ -15,6 +15,7 @@
     "static/media/VenusKu.jpg": "/CoastSnap/static/media/VenusKu.489ae4e7fdb3fd120a50.jpg",
     "static/media/LitziaGalvan.jpg": "/CoastSnap/static/media/LitziaGalvan.45ce3166330f790b454c.jpg",
     "static/media/AboutCoastSnap.jpg": "/CoastSnap/static/media/AboutCoastSnap.9cacd80b254704dc4b06.jpg",
+    "static/media/AndySurin.jpg": "/CoastSnap/static/media/AndySurin.3f617d5d644e2c13696c.jpg",
     "static/media/SantaCruzLighthouse.jpg": "/CoastSnap/static/media/SantaCruzLighthouse.5582d82e24b569cbee6d.jpg",
     "static/media/TransferBuildToUCSCServer.gif": "/CoastSnap/static/media/TransferBuildToUCSCServer.58f7ba7d7b74add50f58.gif",
     "static/media/NB1Pic5.jpg": "/CoastSnap/static/media/NB1Pic5.1619b3bebe129dddc6e9.jpg",
@@ -48,10 +49,10 @@
     "static/media/Footer.svg": "/CoastSnap/static/media/Footer.d2e3d2019fb2ef9731a26ce2cea39f65.svg",
     "static/media/Wave.svg": "/CoastSnap/static/media/Wave.658847f98fc3fd341b922ce05c5f696d.svg",
     "main.6c8d6b5d.css.map": "/CoastSnap/static/css/main.6c8d6b5d.css.map",
-    "main.54e50544.js.map": "/CoastSnap/static/js/main.54e50544.js.map"
+    "main.98ea52a3.js.map": "/CoastSnap/static/js/main.98ea52a3.js.map"
   },
   "entrypoints": [
     "static/css/main.6c8d6b5d.css",
-    "static/js/main.54e50544.js"
+    "static/js/main.98ea52a3.js"
   ]
 }
