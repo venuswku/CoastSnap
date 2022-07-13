@@ -2,9 +2,16 @@
   {
     "name": "Litzia Galvan",
     "image": "LitziaGalvan.jpg",
-    "role": "Project Logistics & Data Collector",
+    "role": "Logistics & Data Collector",
     "education": "B.S. in Marine Biology, 2022",
     "link": "https://www.linkedin.com/in/litzia-galvan-454926154"
+  },
+  {
+    "name": "Andy Surin",
+    "image": "AndySurin.jpg",
+    "role": "Data Collector",
+    "education": "B.S. in Marine Biology, 2024",
+    "link": "https://www.linkedin.com/in/andy-surin"
   },
   {
     "name": "Venus Ku",
