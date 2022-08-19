@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CoastSnap/static/css/main.6c8d6b5d.css",
-    "main.js": "/CoastSnap/static/js/main.98ea52a3.js",
+    "main.js": "/CoastSnap/static/js/main.b240ba48.js",
     "static/media/LocationPage.gif": "/CoastSnap/static/media/LocationPage.25507c91b6ed41eb87da.gif",
     "static/media/Homepage.gif": "/CoastSnap/static/media/Homepage.f7532adf52d68cbb2c05.gif",
     "static/media/AboutPage.gif": "/CoastSnap/static/media/AboutPage.225d0af4d113f23b24cd.gif",
@@ -30,6 +30,7 @@
     "static/media/NB2Pic1.jpg": "/CoastSnap/static/media/NB2Pic1.1435dac71d112c067963.jpg",
     "static/media/NB1Pic1.jpg": "/CoastSnap/static/media/NB1Pic1.3aec782c14dac7146834.jpg",
     "static/media/NB1Pic6.jpg": "/CoastSnap/static/media/NB1Pic6.fc7d1dfd0d9c5fba053c.jpg",
+    "static/media/StellaHein.jpeg": "/CoastSnap/static/media/StellaHein.06c58652cf6c4740c2a0.jpeg",
     "static/media/4.svg": "/CoastSnap/static/media/4.7c0f86e793abdd18f19c.svg",
     "static/media/ProductionBuild.PNG": "/CoastSnap/static/media/ProductionBuild.743d328e076ad1717263.PNG",
     "static/media/3.svg": "/CoastSnap/static/media/3.2b91489016fc53342e9e.svg",
@@ -49,10 +50,10 @@
     "static/media/Footer.svg": "/CoastSnap/static/media/Footer.d2e3d2019fb2ef9731a26ce2cea39f65.svg",
     "static/media/Wave.svg": "/CoastSnap/static/media/Wave.658847f98fc3fd341b922ce05c5f696d.svg",
     "main.6c8d6b5d.css.map": "/CoastSnap/static/css/main.6c8d6b5d.css.map",
-    "main.98ea52a3.js.map": "/CoastSnap/static/js/main.98ea52a3.js.map"
+    "main.b240ba48.js.map": "/CoastSnap/static/js/main.b240ba48.js.map"
   },
   "entrypoints": [
     "static/css/main.6c8d6b5d.css",
-    "static/js/main.98ea52a3.js"
+    "static/js/main.b240ba48.js"
   ]
 }
